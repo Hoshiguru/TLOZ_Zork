@@ -19,10 +19,11 @@ public class Game {
         System.out.println("Welcome to");
         System.out.println("\"The Legends of Zelda: Zork of the Wild\"");
         System.out.println("");
-        System.out.println("Type START to start the game");
+        System.out.println("Type start to start the game");
 
         boolean gameWon = false;
         while (gameWon != true) {
+            System.out.print(">");
             command = scanner.nextLine();
             switch (command) {
                 case "start":
