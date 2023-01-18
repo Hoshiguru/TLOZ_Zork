@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Random;
 
 public class Commands {
+    private Player player;
+
     /**
      * Exit the game tab
      */
@@ -20,11 +22,16 @@ public class Commands {
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-");
         System.out.println("## Interaction Commands ##\ncollect • map • score");
     }
+    public void score(){
+        System.out.println("There is not much to see here yet.");
+        System.out.println("Health: " + player.getHearts());
+    }
 
     /**
      * Start the Game
      */
     public void start(){
+        player = new Player(3, null, 15, "start");
         System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
     }
 

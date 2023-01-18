@@ -32,6 +32,9 @@ public class Game {
                 case "help":
                     cmds.help();
                     break;
+                case "score":
+                    cmds.score();
+                    break;
                 default:
                     System.out.println("Unknown Command. Try to use help, to see all commands.");
                     break;
