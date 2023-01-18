@@ -8,14 +8,20 @@ public class Location {
     private String quote; // e.g. Is it cold or dark?
     private ArrayList<Item> items; // loot, which you can collect with the command collect
     private String assignedMap;
-    private HashMap<String, Gate> gates; // Pattern (north, east, south, west) every Location could have 4 Gates, which are the directions you can go to
+    private HashMap<String, Gate> directions; // Pattern (north, east, south, west) every Location could have 4 Gates, which are the directions you can go to
 
-    public Location(String name, String quote, ArrayList<Item> items, String assignedMap, HashMap<String, Gate> gates) {
+    // Constructor to init the Location
+    public Location(String name, String quote, String assignedMap) {
+        this.name = name;
+        this.quote = quote;
+        this.assignedMap = assignedMap;
+    }
+    public Location(String name, String quote, ArrayList<Item> items, String assignedMap, HashMap<String, Gate> directions) {
         this.name = name;
         this.quote = quote;
         this.items = items;
         this.assignedMap = assignedMap;
-        this.gates = gates;
+        this.directions = directions;
     }
 
     public String getName() {
@@ -50,11 +56,14 @@ public class Location {
         this.assignedMap = assignedMap;
     }
 
-    public HashMap<String, Gate> getGates() {
-        return gates;
+    public HashMap<String, Gate> getDirections() {
+        return directions;
     }
 
-    public void setGates(HashMap<String, Gate> gates) {
-        this.gates = gates;
+    public void setDirections(Gate north, Gate east, Gate south, Gate west) {
+        directions.put("north", north);
+        directions.put("east", east);
+        directions.put("south", south);
+        directions.put("west", west);
     }
 }

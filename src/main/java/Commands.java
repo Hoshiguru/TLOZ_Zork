@@ -31,7 +31,6 @@ public class Commands {
      * Start the Game
      */
     public void start(){
-        player = new Player(3, null, 15, "start");
         System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
     }
 
