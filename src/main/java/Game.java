@@ -40,6 +40,9 @@ public class Game {
         desert.setDirections(null, null, gateDesertUnderwater_temple, gateCaveDesert);
         underwater_temple.setDirections(gateDesertUnderwater_temple, null, null, null);
 
+        // Startposition festlegen
+        currentLocation = castle_ruin;
+
         // Hier startet das Spiel
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -71,6 +74,9 @@ public class Game {
                     break;
                 case "score":
                     cmds.score();
+                    break;
+                case "map":
+                    cmds.map(currentLocation);
                     break;
                 default:
                     System.out.println("Unknown Command. Try to use help, to see all commands.");

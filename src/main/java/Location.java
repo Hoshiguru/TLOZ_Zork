@@ -16,13 +16,14 @@ public class Location {
         this.quote = quote;
         this.assignedMap = assignedMap;
     }
-    public Location(String name, String quote, ArrayList<Item> items, String assignedMap, HashMap<String, Gate> directions) {
+    public Location(String name, String quote, ArrayList<Item> items, String assignedMap) {
         this.name = name;
         this.quote = quote;
         this.items = items;
         this.assignedMap = assignedMap;
-        this.directions = directions;
+        this.directions = new HashMap<>();
     }
+
 
     public String getName() {
         return name;
@@ -61,6 +62,8 @@ public class Location {
     }
 
     public void setDirections(Gate north, Gate east, Gate south, Gate west) {
+        if (directions == null)
+            directions = new HashMap<String, Gate>();
         directions.put("north", north);
         directions.put("east", east);
         directions.put("south", south);

@@ -26,6 +26,9 @@ public class Commands {
         System.out.println("There is not much to see here yet.");
         System.out.println("Health: " + player.getHearts());
     }
+    public void map(Location location){
+        System.out.println("Die Map für " + location.getName() + " ist noch am entstehen...");
+    }
 
     /**
      * Start the Game
