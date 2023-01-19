@@ -1,9 +1,11 @@
-import java.io.InputStreamReader;
+package game;
+
 import java.util.Scanner;
+import game.cmds.*;
 
 public class Game {
     private Player player;
-    //private Location currentLocation;
+    //private game.Location currentLocation;
     private Location castle_ruin, woodland, castle, cave, desert, underwater_temple;
     //private Place places; // oder auch Räume
     public void startGame() {
@@ -14,7 +16,7 @@ public class Game {
 
         // Initialisierung Räume
         castle_ruin = new Location("Castle Ruin","\uD83C\uDFDB" ,"A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures.", "castle_ruin");
-        woodland = new Location("Woodland","\uD83C\uDF33" ,"A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland");
+        woodland = new Location("Woodland","\uD83C\uDF33" ,"A dense forest filled with dangerous enemies and valuable treasures. game.Location of the master sword.", "woodland");
         castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle");
         cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave");
         desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert");
@@ -46,7 +48,6 @@ public class Game {
         // Hier startet das Spiel
         Scanner scanner = new Scanner(System.in);
         String command;
-        Commands cmds = new Commands();
 
         System.out.println("     /\\");
         System.out.println("    /  \\");
@@ -59,29 +60,31 @@ public class Game {
         System.out.println("");
         System.out.println("Type start to start the game");
 
-        // Hier entsteht die Game Start Funktion, welche durchloopt
+        // Hier entsteht die game.Game Start Funktion, welche durchloopt
         boolean gameWon = false;
         while (gameWon != true) {
             System.out.print("> ");
             command = scanner.nextLine();
             if (command.startsWith("move")) {
+                MoveCommand cmd = new MoveCommand();
                 try {
                     String input = command.substring(4);
                     String[] parts = input.split(" ");
                     String direction = parts[1];
-                    cmds.move(player, direction);
+                    cmd.move(player, direction);
                 }
                 catch (Exception e) {
                     System.out.println("Please enter a valid direction • (n)orth, (e)ast, (s)outh, (w)est)");
                 }
-            } else if (command.equals("start")) {
-                cmds.start();
             } else if (command.equals("help")) {
-                cmds.help();
+               HelpCommand cmd = new HelpCommand();
+               cmd.help();
             } else if (command.equals("score")) {
-                cmds.score(player);
+                ScoreCommand cmd = new ScoreCommand();
+                cmd.score(player);
             } else if (command.equals("map")) {
-                cmds.map(player);
+                MapCommand cmd = new MapCommand();
+                cmd.map(player);
             } else {
                 System.out.println("Unknown Command. Try to use help, to see all commands.");
             }

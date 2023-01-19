@@ -1,3 +1,5 @@
+package game;
+
 public class Item {
     private String name;
     private String description;
@@ -35,7 +37,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
+        return "game.Item{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", weight=" + weight +

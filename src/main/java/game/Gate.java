@@ -1,5 +1,7 @@
-// Every Location could have 4 Gates, which are the directions you can go to.
-// On every Gate, you can append only 2 Locations -> Please note the map for orientation in the documentation
+package game;
+
+// Every game.Location could have 4 Gates, which are the directions you can go to.
+// On every game.Gate, you can append only 2 Locations -> Please note the map for orientation in the documentation
 public class Gate {
     private Location location1;
     private Location location2;
