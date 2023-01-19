@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+// TODO: Commands in eigene Klasse auslagern
 public class Commands {
     private Player player;
 
