@@ -1,3 +1,8 @@
+package game;
+
+import game.Item;
+import game.Location;
+
 import java.util.ArrayList;
 
 public class Player {

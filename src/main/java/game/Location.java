@@ -1,4 +1,8 @@
-import java.lang.reflect.Array;
+package game;
+
+import game.Gate;
+import game.Item;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -8,10 +12,10 @@ public class Location {
     private String quote; // e.g. Is it cold or dark?
     private ArrayList<Item> items; // loot, which you can collect with the command collect
     private String assignedMap;
-    private HashMap<String, Gate> directions; // Pattern (north, east, south, west) every Location could have 4 Gates, which are the directions you can go to
+    private HashMap<String, Gate> directions; // Pattern (north, east, south, west) every game.Location could have 4 Gates, which are the directions you can go to
     private String icon;
 
-    // Constructor to init the Location
+    // Constructor to init the game.Location
     public Location(String name, String icon, String quote, String assignedMap) {
         this.name = name;
         this.icon = icon;

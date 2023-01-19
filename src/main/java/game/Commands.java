@@ -1,9 +1,11 @@
+package game;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
-// TODO: Commands in eigene Klasse auslagern
+// TODO: game.Commands in eigene Klasse auslagern
 public class Commands {
     private Player player;
 
@@ -19,13 +21,13 @@ public class Commands {
      * Get more inforrmation about commands
      */
     public void help(){
-        System.out.println("## Move Commands ##\nMove\n(n)orth • (s)outh • (e)ast • (w)est");
+        System.out.println("## Move game.Commands ##\nMove\n(n)orth • (s)outh • (e)ast • (w)est");
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-");
-        System.out.println("## Interaction Commands ##\ncollect • map • score");
+        System.out.println("## Interaction game.Commands ##\ncollect • map • score");
     }
-    // Move Commands
+    // Move game.Commands
     public void move(Player player, String direction){
-        // Get the current Location
+        // Get the current game.Location
         Location currentLocation = player.getCurrentLocation();
         switch(direction){
             case "n":
@@ -43,13 +45,13 @@ public class Commands {
             default:
                 break;
         }
-        // Get the Gate of the current Location
+        // Get the game.Gate of the current game.Location
         Gate gate = currentLocation.getDirections().get(direction);
-        // Check if the Gate is null
+        // Check if the game.Gate is null
         if(gate == null){
             System.out.println("You can't go there!");
         }else{
-            // Get the Location of the Gate
+            // Get the game.Location of the game.Gate
             Location location1 = gate.getLocation1();
             Location location2 = gate.getLocation2();
             if (location1.getName().equals(currentLocation.getName())) {
@@ -84,7 +86,7 @@ public class Commands {
     }
 
     /**
-     * Start the Game
+     * Start the game.Game
      */
     public void start(){
         System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
