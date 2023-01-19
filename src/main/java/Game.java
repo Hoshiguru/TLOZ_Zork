@@ -62,13 +62,18 @@ public class Game {
         // Hier entsteht die Game Start Funktion, welche durchloopt
         boolean gameWon = false;
         while (gameWon != true) {
-            System.out.print(">");
+            System.out.print("> ");
             command = scanner.nextLine();
             if (command.startsWith("move")) {
-                String input = command.substring(4);
-                String[] parts = input.split(" ");
-                String direction = parts[1];
-                cmds.move(player, direction);
+                try {
+                    String input = command.substring(4);
+                    String[] parts = input.split(" ");
+                    String direction = parts[1];
+                    cmds.move(player, direction);
+                }
+                catch (Exception e) {
+                    System.out.println("Please enter a valid direction • (n)orth, (e)ast, (s)outh, (w)est)");
+                }
             } else if (command.equals("start")) {
                 cmds.start();
             } else if (command.equals("help")) {
