@@ -4,13 +4,13 @@ public class Player {
     private int hearts; // 10
     private ArrayList<Item> inventory;
     private double maxWeight; // Maximale Tragkraft von Items
-    private String currentLocationName;
+    private Location currentLocation;
 
-    public Player(int hearts, ArrayList<Item> inventory, double maxWeight, String currentLocationName) {
+    public Player(int hearts, ArrayList<Item> inventory, double maxWeight, Location currentLocationName) {
         this.hearts = hearts;
         this.inventory = inventory;
         this.maxWeight = maxWeight;
-        this.currentLocationName = currentLocationName;
+        this.currentLocation = currentLocation;
     }
 
     public int getHearts() {
@@ -37,11 +37,11 @@ public class Player {
         this.maxWeight = maxWeight;
     }
 
-    public String getCurrentLocationName() {
-        return currentLocationName;
+    public Location getCurrentLocation() {
+        return currentLocation;
     }
 
-    public void setCurrentLocationName(String currentLocationName) {
-        this.currentLocationName = currentLocationName;
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
     }
 }
