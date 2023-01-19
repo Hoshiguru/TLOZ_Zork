@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Game {
     private Player player;
-    private Location currentLocation;
+    //private Location currentLocation;
     private Location castle_ruin, woodland, castle, cave, desert, underwater_temple;
     //private Place places; // oder auch Räume
     public void startGame() {
@@ -13,12 +13,12 @@ public class Game {
         // TODO: Schreine hinzufügen
 
         // Initialisierung Räume
-        castle_ruin = new Location("Castle Ruin", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures.", "castle_ruin");
-        woodland = new Location("Woodland", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland");
-        castle = new Location("Castle", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle");
-        cave = new Location("Cave", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave");
-        desert = new Location("Desert", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert");
-        underwater_temple = new Location("Underwater Temple", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple");
+        castle_ruin = new Location("Castle Ruin","\uD83C\uDFDB" ,"A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures.", "castle_ruin");
+        woodland = new Location("Woodland","\uD83C\uDF33" ,"A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland");
+        castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle");
+        cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave");
+        desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert");
+        underwater_temple = new Location("Underwater Temple","\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple");
 
         // Initialisierung Items
         Item bow_and_arrow = new Item("Bow and Arrow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2);
@@ -41,7 +41,7 @@ public class Game {
         underwater_temple.setDirections(gateDesertUnderwater_temple, null, null, null);
 
         // Startposition festlegen
-        currentLocation = castle_ruin;
+        player.setCurrentLocation(castle_ruin);
 
         // Hier startet das Spiel
         Scanner scanner = new Scanner(System.in);
@@ -59,28 +59,26 @@ public class Game {
         System.out.println("");
         System.out.println("Type start to start the game");
 
-
         // Hier entsteht die Game Start Funktion, welche durchloopt
         boolean gameWon = false;
         while (gameWon != true) {
             System.out.print(">");
             command = scanner.nextLine();
-            switch (command) {
-                case "start":
-                    cmds.start();
-                    break;
-                case "help":
-                    cmds.help();
-                    break;
-                case "score":
-                    cmds.score();
-                    break;
-                case "map":
-                    cmds.map(currentLocation);
-                    break;
-                default:
-                    System.out.println("Unknown Command. Try to use help, to see all commands.");
-                    break;
+            if (command.startsWith("move")) {
+                String input = command.substring(4);
+                String[] parts = input.split(" ");
+                String direction = parts[1];
+                cmds.move(player, direction);
+            } else if (command.equals("start")) {
+                cmds.start();
+            } else if (command.equals("help")) {
+                cmds.help();
+            } else if (command.equals("score")) {
+                cmds.score(player);
+            } else if (command.equals("map")) {
+                cmds.map(player);
+            } else {
+                System.out.println("Unknown Command. Try to use help, to see all commands.");
             }
         }
 

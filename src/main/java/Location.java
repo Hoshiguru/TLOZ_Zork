@@ -9,15 +9,18 @@ public class Location {
     private ArrayList<Item> items; // loot, which you can collect with the command collect
     private String assignedMap;
     private HashMap<String, Gate> directions; // Pattern (north, east, south, west) every Location could have 4 Gates, which are the directions you can go to
+    private String icon;
 
     // Constructor to init the Location
-    public Location(String name, String quote, String assignedMap) {
+    public Location(String name, String icon, String quote, String assignedMap) {
         this.name = name;
+        this.icon = icon;
         this.quote = quote;
         this.assignedMap = assignedMap;
     }
-    public Location(String name, String quote, ArrayList<Item> items, String assignedMap) {
+    public Location(String name, String icon, String quote, ArrayList<Item> items, String assignedMap) {
         this.name = name;
+        this.icon = icon;
         this.quote = quote;
         this.items = items;
         this.assignedMap = assignedMap;
@@ -59,6 +62,14 @@ public class Location {
 
     public HashMap<String, Gate> getDirections() {
         return directions;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public void setDirections(Gate north, Gate east, Gate south, Gate west) {
