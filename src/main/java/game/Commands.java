@@ -29,21 +29,13 @@ public class Commands {
     public void move(Player player, String direction){
         // Get the current game.Location
         Location currentLocation = player.getCurrentLocation();
-        switch(direction){
-            case "n":
-                direction = "north";
-                break;
-            case "s":
-                direction = "south";
-                break;
-            case "e":
-                direction = "east";
-                break;
-            case "w":
-                direction = "west";
-               break;
-            default:
-                break;
+        switch (direction) {
+            case "n" -> direction = "north";
+            case "s" -> direction = "south";
+            case "e" -> direction = "east";
+            case "w" -> direction = "west";
+            default -> {
+            }
         }
         // Get the game.Gate of the current game.Location
         Gate gate = currentLocation.getDirections().get(direction);
