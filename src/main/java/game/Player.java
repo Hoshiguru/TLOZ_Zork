@@ -8,9 +8,9 @@ public class Player {
     private double maxWeight; // Maximale Tragkraft von Items
     private Location currentLocation;
 
-    public Player(int hearts, ArrayList<Item> inventory, double maxWeight, Location currentLocationName) {
+    public Player(int hearts, ArrayList<Item> inventory, double maxWeight, Location currentLocation) {
         this.hearts = hearts;
-        this.inventory = inventory;
+        this.inventory = new ArrayList<Item>();
         this.maxWeight = maxWeight;
         this.currentLocation = currentLocation;
     }
@@ -18,10 +18,25 @@ public class Player {
     public void addItem(Item item) {
         inventory.add(item);
     }
-    // TODO: Muss noch getestet werden, eventuell mit Iterator lösen
     public void removeItem(Item item) {
         inventory.remove(item);
     }
+    public Item findItem(String itemName) {
+        for (Item item : inventory) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
+    public double getInventoryWeight() {
+        double inventoryWeight = 0;
+        for (Item item : inventory) {
+            inventoryWeight += item.getWeight();
+        }
+        return inventoryWeight;
+    }
+
 
     public int getHearts() {
         return hearts;

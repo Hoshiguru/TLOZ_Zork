@@ -4,11 +4,13 @@ public class Item {
     private String name;
     private String description;
     private double weight;
+    private String icon;
 
-    public Item(String name, String description, double weight) {
+    public Item(String name, String description, double weight, String icon) {
         this.name = name;
         this.description = description;
         this.weight = weight;
+        this.icon = icon;
     }
 
     public String getName() {
@@ -33,6 +35,14 @@ public class Item {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     @Override
