@@ -7,12 +7,14 @@ public class Player {
     private ArrayList<Item> inventory;
     private double maxWeight; // Maximale Tragkraft von Items
     private Location currentLocation;
+    private Location previousLocation;
 
     public Player(int hearts, ArrayList<Item> inventory, double maxWeight, Location currentLocation) {
         this.hearts = hearts;
         this.inventory = new ArrayList<Item>();
         this.maxWeight = maxWeight;
         this.currentLocation = currentLocation;
+        this.previousLocation = null;
     }
 
     public void addItem(Item item) {
@@ -68,5 +70,13 @@ public class Player {
 
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
+    }
+
+    public Location getPreviousLocation() {
+        return previousLocation;
+    }
+
+    public void setPreviousLocation(Location previousLocation) {
+        this.previousLocation = previousLocation;
     }
 }
