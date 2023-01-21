@@ -1,4 +1,7 @@
-package game;
+package ch.bbw.tloz_zork.locations;
+
+import ch.bbw.tloz_zork.game.Gate;
+import ch.bbw.tloz_zork.items.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
