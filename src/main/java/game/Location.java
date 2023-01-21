@@ -13,7 +13,7 @@ public class Location {
     private String icon;
 
     // Constructor to init the game.Location
-    public Location(String name, String icon, String quote, String assignedMap) {
+    public Location(String name, String icon, String quote, String assignedMap, Item item) {
         this.name = name;
         this.icon = icon;
         this.quote = quote;
