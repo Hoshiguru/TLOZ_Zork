@@ -77,6 +77,10 @@ public class Commands {
         System.out.println("The map for this place is still being created...");
     }
 
+    public void bokoblinFight(Player player, String action){
+
+    }
+
     /**
      * Start the game.Game
      */

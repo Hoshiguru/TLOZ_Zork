@@ -11,7 +11,7 @@ public class Player {
     private double maxWeight; // Maximale Tragkraft von Items
     private Location currentLocation;
 
-    public Player(int hearts, ArrayList<Item> inventory, double maxWeight, Location currentLocationName) {
+    public Player(int hearts, ArrayList<Item> inventory, double maxWeight, Location currentLocation) {
         this.hearts = hearts;
         this.inventory = inventory;
         this.maxWeight = maxWeight;

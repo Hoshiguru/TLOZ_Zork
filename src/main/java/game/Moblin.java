@@ -4,8 +4,9 @@ public class Moblin {
     private int hearts; // 10
     private int ap; //attack power
     private Item item;
+    private int crit;
 
-    public Moblin(int hearts, int ap, Item item) {
+    public Moblin(int hearts, int ap, Item item, int crit) {
         this.hearts = hearts;
         this.ap = ap;
         this.item = item;
@@ -27,11 +28,21 @@ public class Moblin {
         this.ap = ap;
     }
 
-    public Item getItem() {
-        return item;
+    public int getCrit(){
+        return crit;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setCrit(int crit){
+        this.crit = crit;
+    }
+
+    @Override
+    public String toString() {
+        return "game.Lynel{" +
+                "hearts='" + hearts + '\'' +
+                ", ap ='" + ap + '\'' +
+                ", item =" + item +
+                ", crit ='" + crit +
+                '}';
     }
 }
