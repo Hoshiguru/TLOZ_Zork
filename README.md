@@ -21,7 +21,5 @@ Players can interact with the game world using the following commands:
 - `map`: view the map of the game world
 - `score`: view the player's current score
 
-![Image of a pixel art of Link](https://i.imgur.com/V7c0N3H.png)
-
 ## Installation
 Run the game using the command `java -jar Zelda.jar`.
