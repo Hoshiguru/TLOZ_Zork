@@ -1,26 +1,26 @@
 package game;
 
 public class Enemy {
-    private String enemy;
+    private String name;
     private int health;
     private int ap;
     private int crit;
     private Item item;
 
-    public Enemy(String enemy, int health, int ap, int crit, Item item) {
-        this.enemy = enemy;
+    public Enemy(String name, int health, int ap, int crit, Item item) {
+        this.name = name;
         this.health = health;
         this.ap = ap;
         this.crit = crit;
         this.item = item;
     }
 
-    public String getEnemy() {
-        return enemy;
+    public String getName() {
+        return name;
     }
 
-    public void setEnemy(String enemy) {
-        this.enemy = enemy;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getHealth() {
@@ -58,7 +58,7 @@ public class Enemy {
     @Override
     public String toString() {
         return "Enemy{" +
-                "enemy='" + enemy + '\'' +
+                "enemy='" + name + '\'' +
                 ", health=" + health +
                 ", ap=" + ap +
                 ", crit=" + crit +

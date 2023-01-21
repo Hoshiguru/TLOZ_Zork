@@ -34,6 +34,11 @@ public class Game {
         Gate gateCaveDesert = new Gate(cave, desert, false);
         Gate gateDesertUnderwater_temple = new Gate(desert, underwater_temple, false);
 
+        // Initialisierung Enemy
+        Enemy bokoblin = new Enemy("Bokoblin", 1, 1, 10, bow_and_arrow);
+        Enemy moblin = new Enemy("moblin", 1, 1, 10, iron_sword);
+        Enemy lynel = new Enemy("lynel", 1, 1, 10, shield);
+
         // Festlegen von Himmelsrichtungen
         castle_ruin.setDirections(gateCastle_ruinWoodland,  gateCastle_ruinCave, null, null);
         woodland.setDirections(null, null, gateCastle_ruinWoodland, gateWoodlandCastle);
