@@ -26,6 +26,8 @@ public class CommandHandler {
             moveCommand.move(player, direction);
         } else if (command.equals("help")) {
             helpCommand.help();
+        } else if (command.equals("back")) {
+            moveCommand.back(player);
         } else if (command.equals("score")) {
             scoreCommand.score(player);
         } else if (command.equals("map") || command.equals("m")) {
