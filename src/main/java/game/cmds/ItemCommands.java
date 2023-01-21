@@ -67,8 +67,10 @@ public class ItemCommands {
     }
     public void drop(Player player, String itemName) {
         Item item = player.findItem(itemName);
+        ArrayList<Item> roomItems = player.getCurrentLocation().getItems();
         if (item != null) {
             player.removeItem(item);
+            roomItems.add(item);
             System.out.println("\uD83D\uDCA8 You dropped the " + item.getName() + ".");
         } else {
             System.out.println("❌ You don't have this item in your inventory.");
