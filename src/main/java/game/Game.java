@@ -66,7 +66,6 @@ public class Game {
         System.out.println("");
         System.out.println("Type start to start the game");
 
-        // Hier entsteht die game.Game Start Funktion, welche durchloopt
         boolean gameWon = false;
         while (gameWon != true) {
             System.out.print("> ");
