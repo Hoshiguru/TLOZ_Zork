@@ -55,6 +55,7 @@ public class Game {
         Item iron_sword = new Item("Iron Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8);
         Item shield = new Item("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5);
         Item health_potion = new Item("Health Potion", "A healing item used to restore health.", 0.5);
+        Item apple = new Item("Apple", "A healing item used to restore health.", 0.2);
 
         // Initialisierung Räume
         castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures.", "castle_ruin", null);
@@ -79,6 +80,8 @@ public class Game {
         desert.setDirections(null, null, gateDesertUnderwater_temple, gateCaveDesert);
         underwater_temple.setDirections(gateDesertUnderwater_temple, null, null, null);
 
+        // Item auffüllen
+        player.addItem(apple);
         // Startposition festlegen
         player.setCurrentLocation(castle_ruin);
     }

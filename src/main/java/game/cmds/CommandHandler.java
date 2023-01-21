@@ -1,8 +1,7 @@
 package game.cmds;
 
 import game.Player;
-import game.exceptions.InvalidCommandException;
-import game.exceptions.InvalidDirectionException;
+import game.exceptions.*;
 
 public class CommandHandler {
     private MoveCommand moveCommand;
@@ -29,11 +28,16 @@ public class CommandHandler {
             helpCommand.help();
         } else if (command.equals("score")) {
             scoreCommand.score(player);
-        } else if (command.equals("map")) {
+        } else if (command.equals("map") || command.equals("m")) {
             mapCommand.map(player);
-        } else if (command.equals("grab")) {
+        } else if (command.equals("grab") || command.equals("g")) {
             itemCommands.grab(player);
-        } else if (command.equals("inventory")) {
+        } else if (command.startsWith("drop")) {
+            String input = command.substring(4);
+            String[] parts = input.split(" ");
+            String item = parts[1];
+            itemCommands.drop(player, item);
+        } else if (command.equals("inventory") || command.equals("i")) {
             itemCommands.inventory(player);
         } else {
             throw new InvalidCommandException("Unknown Command. Try to use help, to see all commands.");

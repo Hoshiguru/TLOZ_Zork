@@ -10,13 +10,16 @@ public class ItemCommands {
      * @param player
      */
     public void inventory(Player player){
+        double inventoryWeight = player.getInventoryWeight();
         ArrayList<Item> inventory = player.getInventory();
-        if (inventory == null){
+        if (inventory.size() == 0) {
             System.out.println("\uD83D\uDCBC Your inventory is empty.");
         } else {
+            System.out.println("⚖ Weight: " + inventoryWeight + " kg / " + player.getMaxWeight() + " kg");
             System.out.println("\uD83D\uDCBC Your inventory contains:");
+
             for (Item item : inventory) {
-                System.out.println(item.getName() + " - " + item.getDescription());
+                System.out.println(item.getName() + " - " + item.getDescription() + " 【" + item.getWeight() + " kg】");
             }
         }
     }
@@ -25,11 +28,12 @@ public class ItemCommands {
      *
      * @param player
      */
+    // TODO: Bei zu hohem Gewicht, Items nicht mehr aufnehmbar machen
     public void grab(Player player) {
         ArrayList<Item> roomItems = player.getCurrentLocation().getItems();
         ArrayList<Item> playerItems = player.getInventory();
-        System.out.println(player.getCurrentLocation());
-        System.out.println(player.getCurrentLocation().getItems());
+        double inventoryWeight = player.getInventoryWeight();
+        System.out.println(inventoryWeight);
         if (roomItems.size() == 0) {
             System.out.println("There is nothing to grab here.");
         }
@@ -46,6 +50,15 @@ public class ItemCommands {
             roomItems.clear();
         } else {
             System.out.println("There was an error during picking up the item.");
+        }
+    }
+    public void drop(Player player, String itemName) {
+        Item item = player.findItem(itemName);
+        if (item != null) {
+            player.removeItem(item);
+            System.out.println("\uD83D\uDCA8 You dropped the " + item.getName() + ".");
+        } else {
+            System.out.println("❌ You don't have this item in your inventory.");
         }
     }
 }

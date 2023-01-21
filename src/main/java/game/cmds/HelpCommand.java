@@ -3,9 +3,11 @@ package game.cmds;
 public class HelpCommand {
     public void help(){
         System.out.println("✧ Help ✧");
-        System.out.println("- Move commands -\nmove..\n(n)orth • (s)outh • (e)ast • (w)est");
+        System.out.println("- Move commands -\nmove <direction>\n(n)orth • (s)outh • (e)ast • (w)est");
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-");
-        System.out.println("- Interaction commands -\ninventory • grab • map • score");
+        System.out.println("- Interaction commands -\n(m)ap • score");
+        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-");
+        System.out.println("- Inventory commands -\n(i)nventory • (g)rab • drop <item>");
     }
 }
 
