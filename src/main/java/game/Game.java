@@ -14,7 +14,6 @@ public class Game {
     //private Place places; // oder auch Räume
     public void startGame() {
         // Hier wird alles initialisiert
-        player = new Player(3, null, 20.0, null);
         commandHandler = new CommandHandler();
 
 
@@ -48,8 +47,7 @@ public class Game {
         desert.setDirections(null, null, gateDesertUnderwater_temple, gateCaveDesert);
         underwater_temple.setDirections(gateDesertUnderwater_temple, null, null, null);
 
-        // Startposition festlegen
-        player.setCurrentLocation(castle_ruin);
+        player = new Player(3, null, 20.0, castle_ruin);
 
         // Hier startet das Spiel
         Scanner scanner = new Scanner(System.in);
