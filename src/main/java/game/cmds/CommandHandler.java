@@ -35,9 +35,14 @@ public class CommandHandler {
         } else if (command.startsWith("drop")) {
             String input = command.substring(4);
             String[] parts = input.split(" ");
-            String item = parts[1];
-            itemCommands.drop(player, item);
-        } else if (command.equals("inventory") || command.equals("i")) {
+            if (parts.length > 1) {
+                String item = parts[1];
+                itemCommands.drop(player, item);
+            } else {
+                System.out.println("Please provide an item to drop. Type 'drop <item>' to drop an item.");
+            }
+        }
+        else if (command.equals("inventory") || command.equals("i")) {
             itemCommands.inventory(player);
         } else {
             throw new InvalidCommandException("Unknown Command. Try to use help, to see all commands.");

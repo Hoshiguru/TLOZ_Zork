@@ -33,18 +33,17 @@ public class ItemCommands {
         ArrayList<Item> roomItems = player.getCurrentLocation().getItems();
         ArrayList<Item> playerItems = player.getInventory();
         double inventoryWeight = player.getInventoryWeight();
-        System.out.println(inventoryWeight);
         if (roomItems.size() == 0) {
-            System.out.println("There is nothing to grab here.");
+            System.out.println("❌ There is nothing to grab here.");
         }
         else if (roomItems.size() == 1){
-            System.out.println("You grab the " + roomItems.get(0).getName() + ".");
+            System.out.println("You grab the " + roomItems.get(0).getIcon() + roomItems.get(0).getName() + ".");
             playerItems.add(roomItems.get(0));
         }
         else if (roomItems.size() > 1) {
             System.out.println("You grab the following items:");
             for (Item item : roomItems) {
-                System.out.println(item.getName());
+                System.out.println(item.getIcon() + item.getName());
                 playerItems.add(item);
             }
             roomItems.clear();

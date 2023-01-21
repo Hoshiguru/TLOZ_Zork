@@ -5,8 +5,8 @@ import game.Item;
 public class Shield extends Item {
     private int defense;
 
-    public Shield(String name, String description, double weight, int defense) {
-        super(name, description, weight);
+    public Shield(String name, String description, double weight, String icon, int defense) {
+        super(name, description, weight, icon);
         this.defense = defense;
     }
 
