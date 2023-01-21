@@ -1,18 +1,22 @@
 package game;
 
 import game.cmds.*;
+import game.exceptions.InvalidCommandException;
+import game.exceptions.InvalidDirectionException;
 
 import java.util.Scanner;
 
 public class Game {
     private Player player;
-    //private game.Location currentLocation;
     private Location castle_ruin, woodland, castle, cave, desert, underwater_temple;
+    private CommandHandler commandHandler;
 
     //private Place places; // oder auch Räume
     public void startGame() {
         // Hier wird alles initialisiert
         player = new Player(3, null, 20.0, null);
+        commandHandler = new CommandHandler();
+
 
         // TODO: Schreine hinzufügen
         // Initialisierung Items
@@ -67,37 +71,14 @@ public class Game {
         while (gameWon != true) {
             System.out.print("> ");
             command = scanner.nextLine();
-            if (command.startsWith("move")) {
-                MoveCommand cmd = new MoveCommand();
-                try {
-                    String input = command.substring(4);
-                    String[] parts = input.split(" ");
-                    String direction = parts[1];
-                    cmd.move(player, direction);
-                } catch (Exception e) {
-                    System.out.println("Please enter a valid direction • (n)orth, (e)ast, (s)outh, (w)est)");
-                }
-            } else if (command.equals("help")) {
-                HelpCommand cmd = new HelpCommand();
-                cmd.help();
-            } else if (command.equals("score")) {
-                ScoreCommand cmd = new ScoreCommand();
-                cmd.score(player);
-            } else if (command.equals("map")) {
-                MapCommand cmd = new MapCommand();
-                cmd.map(player);
-            } else if (command.equals("grab")) {
-                ItemCommands cmd = new ItemCommands();
-                cmd.grab(player);
-            } else if (command.equals("inventory")) {
-                ItemCommands cmd = new ItemCommands();
-                cmd.inventory(player);
-            }
-            else {
-                System.out.println("Unknown Command. Try to use help, to see all commands.");
+            try {
+                commandHandler.handleCommand(command, player);
+            } catch (InvalidCommandException e) {
+                System.out.println(e.getMessage());
+            } catch (InvalidDirectionException e) {
+                System.out.println("Please enter a valid direction • (n)orth, (e)ast, (s)outh, (w)est)");
             }
         }
-
     }
 
 
