@@ -5,7 +5,7 @@ public class HelpCommand {
         System.out.println("✧ Help ✧");
         System.out.println("- Move commands -\nmove..\n(n)orth • (s)outh • (e)ast • (w)est");
         System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-");
-        System.out.println("- Interaction commands -\ncollect • map • score");
+        System.out.println("- Interaction commands -\ninventory • grab • map • score");
     }
 }
 

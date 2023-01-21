@@ -1,8 +1,5 @@
 package game;
 
-import game.Gate;
-import game.Item;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,11 +13,12 @@ public class Location {
     private String icon;
 
     // Constructor to init the game.Location
-    public Location(String name, String icon, String quote, String assignedMap) {
+    public Location(String name, String icon, String quote, String assignedMap, Item item) {
         this.name = name;
         this.icon = icon;
         this.quote = quote;
         this.assignedMap = assignedMap;
+        this.items = new ArrayList<>();
     }
     public Location(String name, String icon, String quote, ArrayList<Item> items, String assignedMap) {
         this.name = name;

@@ -1,8 +1,5 @@
 package game;
 
-import game.Item;
-import game.Location;
-
 import java.util.ArrayList;
 
 public class Player {
@@ -16,6 +13,14 @@ public class Player {
         this.inventory = inventory;
         this.maxWeight = maxWeight;
         this.currentLocation = currentLocation;
+    }
+
+    public void addItem(Item item) {
+        inventory.add(item);
+    }
+    // TODO: Muss noch getestet werden, eventuell mit Iterator lösen
+    public void removeItem(Item item) {
+        inventory.remove(item);
     }
 
     public int getHearts() {
