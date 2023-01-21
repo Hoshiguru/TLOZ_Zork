@@ -13,18 +13,18 @@ public class Location {
     private String icon;
 
     // Constructor to init the game.Location
-    public Location(String name, String icon, String quote, String assignedMap, Item item) {
+    public Location(String name, String icon, String quote, String assignedMap) {
         this.name = name;
         this.icon = icon;
         this.quote = quote;
         this.assignedMap = assignedMap;
-        this.items = new ArrayList<>();
+        this.items = new ArrayList<Item>();
     }
     public Location(String name, String icon, String quote, ArrayList<Item> items, String assignedMap) {
         this.name = name;
         this.icon = icon;
         this.quote = quote;
-        this.items = items;
+        this.items = new ArrayList<Item>();
         this.assignedMap = assignedMap;
         this.directions = new HashMap<>();
     }
@@ -50,8 +50,19 @@ public class Location {
         return items;
     }
 
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
+    public void addItem(Item item) {
+        items.add(item);
+    }
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+    public Item findItem(String itemName) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public String getAssignedMap() {

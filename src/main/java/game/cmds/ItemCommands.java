@@ -19,7 +19,7 @@ public class ItemCommands {
             System.out.println("\uD83D\uDCBC Your inventory contains:");
 
             for (Item item : inventory) {
-                System.out.println(item.getName() + " - " + item.getDescription() + " 【" + item.getWeight() + " kg】");
+                System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【" + item.getWeight() + " kg】");
             }
         }
     }
@@ -28,7 +28,6 @@ public class ItemCommands {
      *
      * @param player
      */
-    // TODO: Bei zu hohem Gewicht, Items nicht mehr aufnehmbar machen
     public void grab(Player player) {
         ArrayList<Item> roomItems = player.getCurrentLocation().getItems();
         ArrayList<Item> playerItems = player.getInventory();
@@ -36,18 +35,33 @@ public class ItemCommands {
         if (roomItems.size() == 0) {
             System.out.println("❌ There is nothing to grab here.");
         }
-        else if (roomItems.size() == 1){
-            System.out.println("You grab the " + roomItems.get(0).getIcon() + roomItems.get(0).getName() + ".");
-            playerItems.add(roomItems.get(0));
-        }
-        else if (roomItems.size() > 1) {
-            System.out.println("You grab the following items:");
-            for (Item item : roomItems) {
-                System.out.println(item.getIcon() + item.getName());
+        else if (roomItems.size() == 1 && !roomItems.isEmpty()){
+            if (inventoryWeight + roomItems.get(0).getWeight() <= player.getMaxWeight()) {
+                Item item = roomItems.get(0);
                 playerItems.add(item);
+                roomItems.remove(item);
+                System.out.println("You grab the " + item.getIcon() + item.getName() + ".");
+            } else {
+                System.out.println("❌ You can't carry any more items.");
             }
-            roomItems.clear();
-        } else {
+        } else if (roomItems.size() > 1) {
+            System.out.println("You grab the following items:");
+            for (int i = 0; i < roomItems.size(); i++) {
+                Item item = roomItems.get(i);
+                if (inventoryWeight + item.getWeight() <= player.getMaxWeight()) {
+                    playerItems.add(item);
+                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【" + item.getWeight() + " kg】");
+                    inventoryWeight += item.getWeight();
+                } else {
+                    System.out.println("❌ You can't carry any more items.");
+                    break;
+                }
+            }
+            for (Item item : playerItems) {
+                roomItems.remove(item);
+            }
+        }
+        else {
             System.out.println("There was an error during picking up the item.");
         }
     }
