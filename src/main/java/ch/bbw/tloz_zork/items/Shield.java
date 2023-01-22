@@ -1,6 +1,4 @@
-package game.items;
-
-import game.Item;
+package ch.bbw.tloz_zork.items;
 
 public class Shield extends Item {
     private int defense;

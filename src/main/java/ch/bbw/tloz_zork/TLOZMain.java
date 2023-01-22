@@ -1,6 +1,6 @@
-package game;
+package ch.bbw.tloz_zork;
 
-import game.Game;
+import ch.bbw.tloz_zork.game.Game;
 
 public class TLOZMain {
     public static void main(String[] args) {

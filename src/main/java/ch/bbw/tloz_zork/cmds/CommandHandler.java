@@ -1,7 +1,9 @@
-package game.cmds;
+package ch.bbw.tloz_zork.cmds;
 
-import game.Player;
-import game.exceptions.*;
+import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
+import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
+import ch.bbw.tloz_zork.game.Player;
+
 
 public class CommandHandler {
     private MoveCommand moveCommand;
@@ -18,12 +20,23 @@ public class CommandHandler {
         itemCommands = new ItemCommands();
     }
 
+    /**
+     * Handles the commands
+     * @param command
+     * @param player
+     * @throws InvalidCommandException
+     * @throws InvalidDirectionException
+     */
     public void handleCommand(String command, Player player) throws InvalidCommandException, InvalidDirectionException {
-        if (command.startsWith("move")) {
+        if (command.startsWith("move") || command.startsWith("walk")) {
             String input = command.substring(4);
             String[] parts = input.split(" ");
-            String direction = parts[1];
-            moveCommand.move(player, direction);
+            if (parts.length > 1) {
+                String direction = parts[1];
+                moveCommand.move(player, direction);
+            } else {
+                System.out.println("Please tell, where you want to go. Type 'move <direction>' to walk.");
+            }
         } else if (command.equals("help")) {
             helpCommand.help();
         } else if (command.equals("back")) {
@@ -43,8 +56,7 @@ public class CommandHandler {
             } else {
                 System.out.println("Please provide an item to drop. Type 'drop <item>' to drop an item.");
             }
-        }
-        else if (command.equals("inventory") || command.equals("i")) {
+        } else if (command.equals("inventory") || command.equals("i")) {
             itemCommands.inventory(player);
         } else {
             throw new InvalidCommandException("Unknown Command. Try to use help, to see all commands.");

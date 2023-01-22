@@ -1,4 +1,4 @@
-package game;
+package ch.bbw.tloz_zork.items;
 
 public class Item {
     private String name;

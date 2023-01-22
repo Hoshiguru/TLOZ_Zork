@@ -1,7 +1,16 @@
-package game.cmds;
+package ch.bbw.tloz_zork.cmds;
 
-import game.*;
+import ch.bbw.tloz_zork.game.Gate;
+import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.locations.Dungeon;
+import ch.bbw.tloz_zork.locations.Location;
+
 public class MoveCommand {
+    /**
+     * Move the player to a new Location
+     * @param player
+     * @param direction
+     */
     public void move(Player player, String direction){
         // Get the current game.Location
         Location currentLocation = player.getCurrentLocation();
@@ -18,7 +27,7 @@ public class MoveCommand {
         // Check if the game.Gate is null
         if(gate == null){
             System.out.println("You can't go there!");
-        }else{
+        }else if (!gate.isBlocked()){
             // Get the game.Location of the game.Gate
             Location location1 = gate.getLocation1();
             Location location2 = gate.getLocation2();
@@ -27,24 +36,38 @@ public class MoveCommand {
                 player.setCurrentLocation(location2);
                 System.out.println(location2.getIcon() + "You are now in " + location2.getName());
                 System.out.println(location2.getQuote());
+                if (location2 instanceof Dungeon) {
+                    Dungeon dungeon = (Dungeon) location2;
+                    dungeon.startChallenge();
+                }
             }
             else if (location2.getName().equals(currentLocation.getName())){
                 player.setPreviousLocation(location2);
                 player.setCurrentLocation(location1);
                 System.out.println(location1.getIcon() + "You are now in " + location1.getName());
                 System.out.println(location1.getQuote());
+                if (location1 instanceof Dungeon) {
+                    Dungeon dungeon = (Dungeon) location1;
+                    dungeon.startChallenge();
+                }
             }
             else {
                 System.out.println("Hmm. For whatever reason, you can\'t pass here");
             }
-            System.out.println(player.getCurrentLocation().getName());
+        }
+        else {
+            System.out.println("You can\'t go there.");
         }
     }
+    /**
+     * Move the player to the previous Location
+     * @param player
+     */
     public void back(Player player) {
         if (player.getPreviousLocation() != null){
             if (player.getPreviousLocation() == player.getCurrentLocation()) {
                 System.out.println("You cannot execute the 'back' command twice in a row.");
-            } else {
+            }  else {
                 player.setCurrentLocation(player.getPreviousLocation());
                 System.out.println(player.getCurrentLocation().getIcon() + "You are now in " + player.getCurrentLocation().getName());
                 System.out.println(player.getCurrentLocation().getQuote());
