@@ -96,9 +96,11 @@ public class Location {
         this.icon = icon;
     }
 
-    /**
-     * @param direction
-     * @return gate if exists
+    /** Sets the directions of the Location
+     * @param north
+     * @param east
+     * @param south
+     * @param west
      */
     public void setDirections(Gate north, Gate east, Gate south, Gate west) {
         if (directions == null)

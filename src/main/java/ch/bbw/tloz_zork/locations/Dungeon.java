@@ -3,6 +3,7 @@ package ch.bbw.tloz_zork.locations;
 import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Dungeon extends Location {
@@ -31,7 +32,13 @@ public class Dungeon extends Location {
             }
         }
         else {
-            System.out.println("You have already completed this dungeon! Search for another one.");
+            if (reward != null) {
+                addItem(reward);
+                System.out.println("✅ You have already completed this dungeon! You can grab a " + reward.getIcon() + reward.getName() + " as a reward.");
+                setReward(null);
+            } else {
+                System.out.println("✅ You have already completed this dungeon and collected your rewards! Search for another one.");
+            }
         }
     }
     public boolean isCompleted() {
