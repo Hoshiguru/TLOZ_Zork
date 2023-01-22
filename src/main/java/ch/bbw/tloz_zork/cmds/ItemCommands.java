@@ -66,6 +66,11 @@ public class ItemCommands {
             System.out.println("There was an error during picking up the item.");
         }
     }
+    /**
+     * This method is used to collect a specific item from the current location.
+     * @param player
+     * @param itemName
+     */
     public void drop(Player player, String itemName) {
         Item item = player.findItem(itemName);
         ArrayList<Item> roomItems = player.getCurrentLocation().getItems();

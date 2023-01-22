@@ -53,12 +53,20 @@ public class Location {
         return items;
     }
 
+    /**
+     * @param item
+     * @return true if item was added
+     */
     public void addItem(Item item) {
         items.add(item);
     }
     public void removeItem(Item item) {
         items.remove(item);
     }
+    /**
+     * @param itemName
+     * @return item if exists
+     */
     public Item findItem(String itemName) {
         for (Item item : items) {
             if (item.getName().equalsIgnoreCase(itemName)) {
@@ -88,6 +96,10 @@ public class Location {
         this.icon = icon;
     }
 
+    /**
+     * @param direction
+     * @return gate if exists
+     */
     public void setDirections(Gate north, Gate east, Gate south, Gate west) {
         if (directions == null)
             directions = new HashMap<String, Gate>();

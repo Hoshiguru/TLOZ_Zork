@@ -6,6 +6,11 @@ import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
 
 public class MoveCommand {
+    /**
+     * Move the player to a new Location
+     * @param player
+     * @param direction
+     */
     public void move(Player player, String direction){
         // Get the current game.Location
         Location currentLocation = player.getCurrentLocation();
@@ -33,7 +38,6 @@ public class MoveCommand {
                 System.out.println(location2.getQuote());
                 if (location2 instanceof Dungeon) {
                     Dungeon dungeon = (Dungeon) location2;
-                    System.out.println("\uD83D\uDEAA You just entered a dungeon. You can\'t go back, until you solved the Challenge.");
                     dungeon.startChallenge();
                 }
             }
@@ -44,7 +48,6 @@ public class MoveCommand {
                 System.out.println(location1.getQuote());
                 if (location1 instanceof Dungeon) {
                     Dungeon dungeon = (Dungeon) location1;
-                    System.out.println("\uD83D\uDEAA You just entered a dungeon. You can\'t go back, until you solved the Challenge.");
                     dungeon.startChallenge();
                 }
             }
@@ -56,11 +59,15 @@ public class MoveCommand {
             System.out.println("You can\'t go there.");
         }
     }
+    /**
+     * Move the player to the previous Location
+     * @param player
+     */
     public void back(Player player) {
         if (player.getPreviousLocation() != null){
             if (player.getPreviousLocation() == player.getCurrentLocation()) {
                 System.out.println("You cannot execute the 'back' command twice in a row.");
-            } else {
+            }  else {
                 player.setCurrentLocation(player.getPreviousLocation());
                 System.out.println(player.getCurrentLocation().getIcon() + "You are now in " + player.getCurrentLocation().getName());
                 System.out.println(player.getCurrentLocation().getQuote());

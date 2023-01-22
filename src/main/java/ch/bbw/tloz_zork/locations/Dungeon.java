@@ -10,13 +10,6 @@ public class Dungeon extends Location {
     private Item reward;
     private Riddle riddle;
     // TODO: Add a list of enemies
-
-   /* public Dungeon(String name, String description, String icon) {
-        super(name, description, icon);
-    }
-
-    */
-
     public Dungeon(String name, String icon, String quote, String assignedMap, boolean isCompleted, Item reward, Riddle riddle) {
         super(name, icon, quote, assignedMap);
         this.isCompleted = isCompleted;
@@ -24,17 +17,21 @@ public class Dungeon extends Location {
         this.riddle = riddle;
     }
 
+    /**
+     * Starts the challenge of the dungeon
+     */
     public void startChallenge(){
         if (!isCompleted) {
             // TODO: Add a fight against enemies
             if(riddle != null) {
+                System.out.println("\uD83D\uDEAA You just entered a dungeon. You can't go back, until you solved this riddle.");
                 riddle.answerPrompt(this);
             } else {
                 System.out.println("This challenge has neither a riddle nor enemies!");
             }
         }
         else {
-            System.out.println("You have already completed this challenge!");
+            System.out.println("You have already completed this dungeon! Search for another one.");
         }
     }
     public boolean isCompleted() {

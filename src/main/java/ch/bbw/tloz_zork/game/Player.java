@@ -6,7 +6,7 @@ import ch.bbw.tloz_zork.locations.Location;
 import java.util.ArrayList;
 
 public class Player {
-    private int hearts; // 10
+    private int hearts;
     private ArrayList<Item> inventory;
     private double maxWeight; // Maximale Tragkraft von Items
     private Location currentLocation;
@@ -19,13 +19,21 @@ public class Player {
         this.currentLocation = currentLocation;
         this.previousLocation = null;
     }
-
+    /**
+     * Adds an item to the inventory
+     * @param item
+     */
     public void addItem(Item item) {
         inventory.add(item);
     }
     public void removeItem(Item item) {
         inventory.remove(item);
     }
+    /**
+     * Returns the item with the given name
+     * @param itemName
+     * @return
+     */
     public Item findItem(String itemName) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(itemName)) {
@@ -34,6 +42,10 @@ public class Player {
         }
         return null;
     }
+    /**
+     * Returns the weight of all items in the inventory
+     * @return
+     */
     public double getInventoryWeight() {
         double inventoryWeight = 0;
         for (Item item : inventory) {
