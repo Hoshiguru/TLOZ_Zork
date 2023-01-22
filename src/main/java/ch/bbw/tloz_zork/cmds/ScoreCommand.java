@@ -1,7 +1,7 @@
 package ch.bbw.tloz_zork.cmds;
 
 
-import game.Player;
+import ch.bbw.tloz_zork.game.Player;
 
 public class ScoreCommand {
     private Player player;

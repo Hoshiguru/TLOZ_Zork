@@ -1,6 +1,9 @@
 package ch.bbw.tloz_zork.cmds;
 
-import game.*;
+import ch.bbw.tloz_zork.game.Gate;
+import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.locations.Location;
+
 public class MoveCommand {
     public void move(Player player, String direction){
         // Get the current game.Location

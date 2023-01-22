@@ -1,6 +1,6 @@
 package ch.bbw.tloz_zork.game;
 
-import game.Location;
+import ch.bbw.tloz_zork.locations.Location;
 
 // Every game.Location could have 4 Gates, which are the directions you can go to.
 // On every game.Gate, you can append only 2 Locations -> Please note the map for orientation in the documentation

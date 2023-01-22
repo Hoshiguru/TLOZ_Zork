@@ -1,6 +1,8 @@
 package ch.bbw.tloz_zork.cmds;
-import game.Location;
-import game.Player;
+
+
+import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.locations.Location;
 
 public class MapCommand {
     public void map(Player player){

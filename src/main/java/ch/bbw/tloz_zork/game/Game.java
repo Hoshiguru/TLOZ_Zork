@@ -1,8 +1,13 @@
-package game;
+package ch.bbw.tloz_zork.game;
 
-import game.cmds.*;
-import game.exceptions.InvalidCommandException;
-import game.exceptions.InvalidDirectionException;
+import ch.bbw.tloz_zork.*;
+import ch.bbw.tloz_zork.cmds.CommandHandler;
+import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
+import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
+import ch.bbw.tloz_zork.items.Item;
+import ch.bbw.tloz_zork.locations.Location;
+import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.game.Gate;
 
 import java.util.Scanner;
 

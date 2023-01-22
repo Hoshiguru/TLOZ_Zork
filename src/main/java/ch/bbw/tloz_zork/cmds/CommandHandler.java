@@ -1,8 +1,9 @@
 package ch.bbw.tloz_zork.cmds;
 
-import game.Player;
-import game.cmds.*;
-import game.exceptions.*;
+import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
+import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
+import ch.bbw.tloz_zork.game.Player;
+
 
 public class CommandHandler {
     private MoveCommand moveCommand;

@@ -1,7 +1,7 @@
 package ch.bbw.tloz_zork.locations;
 
-import game.Item;
-import game.Location;
+
+import ch.bbw.tloz_zork.items.Item;
 
 public class Dungeon extends Location {
     private boolean isCompleted;

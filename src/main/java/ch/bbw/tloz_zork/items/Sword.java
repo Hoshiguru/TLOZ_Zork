@@ -1,6 +1,5 @@
 package ch.bbw.tloz_zork.items;
 
-import game.Item;
 
 public class Sword extends Item {
     private int damage;
