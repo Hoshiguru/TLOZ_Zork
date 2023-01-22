@@ -21,7 +21,7 @@ public class CommandHandler {
     }
 
     public void handleCommand(String command, Player player) throws InvalidCommandException, InvalidDirectionException {
-        if (command.startsWith("move")) {
+        if (command.startsWith("move") || command.startsWith("walk")) {
             String input = command.substring(4);
             String[] parts = input.split(" ");
             String direction = parts[1];
