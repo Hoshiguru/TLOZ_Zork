@@ -18,8 +18,10 @@ Players can navigate the game world using the following move commands:
 Players can interact with the game world using the following commands:
 - `inventory`: view the player's current inventory
 - `grab`: pick up items in the game world
+- `drop`: drop items in the game world
 - `map`: view the map of the game world
 - `score`: view the player's current score
+- `fight`: fight enemies in the game world
 
 ## Installation
 Run the game using the command `java -jar Zelda.jar`.
