@@ -13,6 +13,7 @@ public class Player {
     private double maxWeight; // Maximale Tragkraft von Items
     private Location currentLocation;
     private Location previousLocation;
+    private int moves;
 
     public Player(int hearts, int ap, int stamina, ArrayList<Item> inventory, double maxWeight, Location currentLocation) {
         this.hearts = hearts;
@@ -22,6 +23,7 @@ public class Player {
         this.maxWeight = maxWeight;
         this.currentLocation = currentLocation;
         this.previousLocation = null;
+        this.moves = 0;
     }
     /**
      * Adds an item to the inventory
@@ -60,6 +62,13 @@ public class Player {
 
 
     public int getHearts() {
+        return hearts;
+    }
+    public String getHeartIcons() {
+        String hearts = "";
+        for (int i = 0; i < this.hearts; i++) {
+            hearts += "♥";
+        }
         return hearts;
     }
 
@@ -113,5 +122,13 @@ public class Player {
 
     public void setStamina(int stamina) {
         this.stamina = stamina;
+    }
+
+    public int getMoves() {
+        return moves;
+    }
+
+    public void increaseMoves() {
+        this.moves = moves + 1;
     }
 }
