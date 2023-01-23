@@ -1,7 +1,8 @@
-package game;
+package ch.bbw.tloz_zork.locations;
 
-import game.Gate;
-import game.Item;
+import ch.bbw.tloz_zork.enemies.Enemy;
+import ch.bbw.tloz_zork.game.Gate;
+import ch.bbw.tloz_zork.items.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,12 +23,13 @@ public class Location {
         this.icon = icon;
         this.quote = quote;
         this.assignedMap = assignedMap;
+        this.items = new ArrayList<Item>();
     }
-    public Location(String name, String icon, String quote, ArrayList<Item> items, String assignedMap) {
+    public Location(String name, String icon, String quote) {
         this.name = name;
         this.icon = icon;
         this.quote = quote;
-        this.items = items;
+        this.items = new ArrayList<Item>();
         this.assignedMap = assignedMap;
         this.directions = new HashMap<>();
     }
@@ -53,8 +55,27 @@ public class Location {
         return items;
     }
 
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
+    /**
+     * @param item
+     * @return true if item was added
+     */
+    public void addItem(Item item) {
+        items.add(item);
+    }
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+    /**
+     * @param itemName
+     * @return item if exists
+     */
+    public Item findItem(String itemName) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public String getAssignedMap() {
@@ -77,6 +98,12 @@ public class Location {
         this.icon = icon;
     }
 
+    /** Sets the directions of the Location
+     * @param north
+     * @param east
+     * @param south
+     * @param west
+     */
     public void setDirections(Gate north, Gate east, Gate south, Gate west) {
         if (directions == null)
             directions = new HashMap<String, Gate>();

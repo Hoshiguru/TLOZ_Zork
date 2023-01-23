@@ -1,8 +1,8 @@
-package game.cmds;
+package ch.bbw.tloz_zork.cmds;
 
-import game.Enemy;
-import game.Item;
-import game.Player;
+import ch.bbw.tloz_zork.enemies.Enemy;
+import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.items.Item;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,14 @@
-package game.cmds;
-import game.Location;
-import game.Player;
+package ch.bbw.tloz_zork.cmds;
+
+
+import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.locations.Location;
 
 public class MapCommand {
+    /**
+     * Displays the map for the current location
+     * @param player
+     */
     public void map(Player player){
         Location location = player.getCurrentLocation();
         System.out.println(location.getIcon() + "Your are in " + location.getName());
