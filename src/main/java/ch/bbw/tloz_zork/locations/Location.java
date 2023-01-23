@@ -1,5 +1,6 @@
 package ch.bbw.tloz_zork.locations;
 
+import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.game.Gate;
 import ch.bbw.tloz_zork.items.Item;
 
@@ -14,6 +15,7 @@ public class Location {
     private String assignedMap;
     private HashMap<String, Gate> directions; // Pattern (north, east, south, west) every game.Location could have 4 Gates, which are the directions you can go to
     private String icon;
+    private Enemy enemy;
 
     // Constructor to init the game.Location
     public Location(String name, String icon, String quote, String assignedMap) {
@@ -109,5 +111,13 @@ public class Location {
         directions.put("east", east);
         directions.put("south", south);
         directions.put("west", west);
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
     }
 }

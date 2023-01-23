@@ -1,14 +1,12 @@
 package ch.bbw.tloz_zork.game;
 
-import ch.bbw.tloz_zork.*;
+import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.cmds.CommandHandler;
 import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
 import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
 import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
-import ch.bbw.tloz_zork.game.Player;
-import ch.bbw.tloz_zork.game.Gate;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
 import java.util.Scanner;
@@ -20,7 +18,7 @@ public class Game {
 
     //private Place places; // oder auch Räume
     public void startGame() {
-        player = new Player(3, null, 10.0, null);
+        player = new Player(3, 1, 5, null, 20.0, null);
         commandHandler = new CommandHandler();
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -40,6 +38,8 @@ public class Game {
             System.out.println("Invalid command. Please type 'start' to begin the game.");
             System.out.print("》 ");
         }
+        CombatTutorial combatTutorial = new CombatTutorial();
+        combatTutorial.dummyTutorial();
         initializeGame();
         System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
         // Hier startet das Spiel
@@ -105,6 +105,11 @@ public class Game {
         Gate gateSpirit_dungeonCave = new Gate(spirit_dungeon, cave, true);
         Gate gateDesert_dungeonDesert = new Gate(desert_dungeon, desert, true);
         Gate gateShrine_of_lifeCastle_ruin = new Gate(shrine_of_life, castle_ruin, false);
+
+        // Initialisierung Enemy
+        Enemy bokoblin = new Enemy("Bokoblin", 1, 1, 10, bow);
+        Enemy moblin = new Enemy("moblin", 1, 1, 10, sword);
+        Enemy lynel = new Enemy("lynel", 1, 1, 10, shield);
 
         // Festlegen von Himmelsrichtungen
         castle_ruin.setDirections(gateCastle_ruinWoodland, gateCastle_ruinCave, null, gateTemple_of_timeCastle_ruin);
