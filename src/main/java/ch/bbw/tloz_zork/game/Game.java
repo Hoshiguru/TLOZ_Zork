@@ -9,6 +9,7 @@ import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class Game {
@@ -38,21 +39,35 @@ public class Game {
             System.out.println("Invalid command. Please type 'start' to begin the game.");
             System.out.print("》 ");
         }
-        CombatTutorial combatTutorial = new CombatTutorial();
-        combatTutorial.dummyTutorial();
-        initializeGame();
-        System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
-        // Hier startet das Spiel
-        while (true) {
-            System.out.print("》 ");
-            command = scanner.nextLine();
-            try {
-                commandHandler.handleCommand(command, player);
-            } catch (InvalidCommandException e) {
-                System.out.println(e.getMessage());
-            } catch (InvalidDirectionException e) {
-                System.out.println(e.getMessage());
-            }
+        System.out.println("Is this your first time playing The Legends of Zelda: Zork of the Wild?");
+        System.out.print("》 ");
+        switch (scanner.nextLine().toLowerCase()) {
+            case "yes":
+                CombatTutorial combatTutorial = new CombatTutorial();
+                combatTutorial.dummyTutorial();
+            case "no":
+                initializeGame();
+                System.out.println("");
+                loading(1000);
+                System.out.print(".");
+                loading(1000);
+                System.out.print(".");
+                loading(1000);
+                System.out.print(".");
+                System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
+                // Hier startet das Spiel
+                while (true) {
+                    System.out.print("》 ");
+                    command = scanner.nextLine();
+                    try {
+                        commandHandler.handleCommand(command, player);
+                    } catch (InvalidCommandException | InvalidDirectionException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+            default:
+                System.out.println("I need a yes or a no");
+                break;
         }
     }
 
@@ -131,7 +146,15 @@ public class Game {
         player.setCurrentLocation(shrine_of_life);
     }
 
+    // Methode für "loading screens
+    public static void loading(long limit) {
 
+        long startTime = System.currentTimeMillis();
+        long elapsedTime = 0L;
 
+        while (elapsedTime < limit) {
 
+            elapsedTime = (new Date()).getTime() - startTime;
+        }
+    }
 }

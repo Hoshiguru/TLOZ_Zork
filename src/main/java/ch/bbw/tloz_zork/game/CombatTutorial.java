@@ -16,7 +16,7 @@ public class CombatTutorial {
 
     public void dummyTutorial() {
         boolean contin = false;
-        System.out.println("Let's start with a quick tutorial on the combat system");
+        System.out.println("Then let's start with a quick tutorial on the combat system");
         System.out.println("You currently have " + player.getHearts() + " hearts");
         System.out.println("If you get to 0 hearts, you will lose the fight and have to start from the last checkpoint");
         System.out.println("this is the dummy");
