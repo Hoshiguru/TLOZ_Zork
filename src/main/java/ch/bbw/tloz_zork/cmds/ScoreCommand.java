@@ -10,8 +10,7 @@ public class ScoreCommand {
      * @param player
      */
     public void score(Player player){
-        System.out.println("There is not much to see here yet.");
-        // TODO: Show Hearts as Icon instead of text
-        System.out.println("Health: " + player.getHearts());
+        System.out.println("Total Moves: " + player.getMoves());
+        System.out.println("Health: " + player.getHeartIcons());
     }
 }

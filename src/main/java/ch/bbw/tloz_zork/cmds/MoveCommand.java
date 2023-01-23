@@ -28,7 +28,7 @@ public class MoveCommand {
         if(gate == null){
             System.out.println("You can't go there!");
         }else if (!gate.isBlocked()){
-            // Get the game.Location of the game.Gate
+            player.increaseMoves();
             Location location1 = gate.getLocation1();
             Location location2 = gate.getLocation2();
             if (location1.getName().equals(currentLocation.getName())) {
@@ -68,6 +68,7 @@ public class MoveCommand {
             if (player.getPreviousLocation() == player.getCurrentLocation()) {
                 System.out.println("You cannot execute the 'back' command twice in a row.");
             }  else {
+                player.increaseMoves();
                 player.setCurrentLocation(player.getPreviousLocation());
                 System.out.println(player.getCurrentLocation().getIcon() + "You are now in " + player.getCurrentLocation().getName());
                 System.out.println(player.getCurrentLocation().getQuote());

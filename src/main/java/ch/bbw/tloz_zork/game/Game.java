@@ -9,6 +9,7 @@ import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -65,6 +66,8 @@ public class Game {
                             commandHandler.handleCommand(command, player);
                         } catch (InvalidCommandException | InvalidDirectionException e) {
                             System.out.println(e.getMessage());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
                         }
                     }
                 default:
@@ -104,7 +107,6 @@ public class Game {
         underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians." + (!lynel.getIsDead() ? lynel.getQuote() : ""), "underwater_temple", lynel);
 
         // Initialisierung Dungeon
-        Dungeon shrine_of_life = new Dungeon("Shrine of Life", "⛩", "The spawn place of Link", "shrine_of_life", true, null, null);
         Dungeon temple_of_time = new Dungeon("Temple of Time", "⌛", "The Temple of Time is an impressive building located in the castle ruin of Hyrule. It is surrounded by a majestic waterfall and has a magnificent architecture reminiscent of ancient temples", "temple_of_time", false, sword, master_sword_riddle);
         Dungeon shadow_dungeon = new Dungeon("Shadow Dungeon", "🕳️", "A mysterious dungeon, between trees in the woodland, right next to the master sword place.", "shadow_temple", false, shield, zelda_name_riddle);
         Dungeon spirit_dungeon = new Dungeon("Spirit Dungeon", "\uD83D\uDC7B", "A mysterious temple lies in the underground, hidden in the cave.", "spirit_temple", false, sword, null); // TODO: Fill with enemies
@@ -130,7 +132,6 @@ public class Game {
         Gate gateShadow_dungeonWoodland = new Gate(shadow_dungeon, woodland, false);
         Gate gateSpirit_dungeonCave = new Gate(spirit_dungeon, cave, true);
         Gate gateDesert_dungeonDesert = new Gate(desert_dungeon, desert, true);
-        Gate gateShrine_of_lifeCastle_ruin = new Gate(shrine_of_life, castle_ruin, false);
 
         // Festlegen von Himmelsrichtungen
         castle_ruin.setDirections(gateCastle_ruinWoodland, gateCastle_ruinCave, null, gateTemple_of_timeCastle_ruin);
@@ -144,12 +145,11 @@ public class Game {
         shadow_dungeon.setDirections(null, null, gateShadow_dungeonWoodland, null);
         spirit_dungeon.setDirections(null, null, gateSpirit_dungeonCave, null);
         desert_dungeon.setDirections(null, null, null, gateDesert_dungeonDesert);
-        shrine_of_life.setDirections(gateShrine_of_lifeCastle_ruin, null, null, null);
 
         // Item auffüllen
         player.addItem(apple);
         // Startposition festlegen
-        player.setCurrentLocation(shrine_of_life);
+        player.setCurrentLocation(woodland);
     }
 
     // Methode für "loading screens

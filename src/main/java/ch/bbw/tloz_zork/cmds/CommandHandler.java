@@ -4,6 +4,8 @@ import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
 import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
 import ch.bbw.tloz_zork.game.Player;
 
+import java.io.IOException;
+
 
 public class CommandHandler {
     private MoveCommand moveCommand;
@@ -30,7 +32,7 @@ public class CommandHandler {
      * @throws InvalidCommandException
      * @throws InvalidDirectionException
      */
-    public void handleCommand(String command, Player player) throws InvalidCommandException, InvalidDirectionException {
+    public void handleCommand(String command, Player player) throws InvalidCommandException, InvalidDirectionException, IOException {
         if (command.startsWith("move") || command.startsWith("walk")) {
             String input = command.substring(4);
             String[] parts = input.split(" ");
