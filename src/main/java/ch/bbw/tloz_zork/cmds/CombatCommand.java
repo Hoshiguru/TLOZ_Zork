@@ -27,8 +27,14 @@ public class CombatCommand {
                         contin = true;
                     }
                     case "item", "i" -> {
-                        System.out.println("Your items: ");
-                        System.out.println(player.getInventory().toString());
+                        if (inventory.size() == 0) {
+                            System.out.println("\uD83D\uDCBC Your inventory is empty.");
+                        } else {
+                            System.out.println("\uD83D\uDCBC Your inventory contains:");
+                            for (Item item : inventory) {
+                                System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【" + item.getWeight() + " kg】");
+                            }
+                        }
                     }
                     case "flee", "f" -> {
                         System.out.println("You escaped");
@@ -69,7 +75,7 @@ public class CombatCommand {
             contin = false;
         }
 
-        System.out.println("You have received a " + enemy.getItem().getName());
+        System.out.println("You have received a " + enemy.getItem().getIcon() + enemy.getItem().getName());
         inventory.add(enemy.getItem());
         player.setInventory(inventory);
         enemy.setIsDead(true);
