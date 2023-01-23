@@ -85,16 +85,16 @@ public class Game {
         Item boomerang = new Item("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83E\uDE83");
 
         // Initialisierung Enemy
-        Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root);
-        Enemy moblin = new Enemy("moblin", 1, 1, 10, sword);
-        Enemy lynel = new Enemy("lynel", 5, 2, 3, shield);
+        Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root, "\n There is also a Bokoblin in this area. This Bokoblin holds a root. \n You can fight him anytime while you are in this Location", false);
+        Enemy moblin = new Enemy("moblin", 1, 1, 10, sword, null, false);
+        Enemy lynel = new Enemy("lynel", 5, 2, 3, shield, null, false);
 
         // Initialisierung Rätselelemente
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
         Riddle master_sword_riddle = new Riddle("How many heart chambers does it take to pull the master sword out of the stone?", null, "13");
 
         // Initialisierung Räume
-        castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. \n There is also a Bokoblin in this area. This Bokoblin holds a " + bokoblin.getItem().getName() + ". \n You can fight him anytime while you are in this Location", "castle_ruin", bokoblin);
+        castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. "  + (!bokoblin.getIsDead() ? bokoblin.getQuote() : ""), "castle_ruin", bokoblin);
         woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland", null);
         castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle", null);
         cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave", null);
