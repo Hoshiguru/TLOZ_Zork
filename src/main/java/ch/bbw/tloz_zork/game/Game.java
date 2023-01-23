@@ -46,6 +46,7 @@ public class Game {
                 CombatTutorial combatTutorial = new CombatTutorial();
                 combatTutorial.dummyTutorial();
             case "no":
+                System.out.println("Then let's jump right into your adventure!");
                 initializeGame();
                 System.out.println("");
                 loading(1000);
