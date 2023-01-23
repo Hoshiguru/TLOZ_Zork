@@ -9,6 +9,7 @@ import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -55,7 +56,7 @@ public class Game {
                 System.out.print(".");
                 loading(1000);
                 System.out.print(".");
-                System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
+                System.out.println("Link, are you awake? You're currently in the castle ruin. You have to find a way out of here.");
                 // Hier startet das Spiel
                 while (true) {
                     System.out.print("》 ");
@@ -64,6 +65,8 @@ public class Game {
                         commandHandler.handleCommand(command, player);
                     } catch (InvalidCommandException | InvalidDirectionException e) {
                         System.out.println(e.getMessage());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
                     }
                 }
             default:
