@@ -73,6 +73,5 @@ public class CombatCommand {
         inventory.add(enemy.getItem());
         player.setInventory(inventory);
         enemy.setIsDead(true);
-        player.getCurrentLocation().setQuote("A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. ");
     }
 }

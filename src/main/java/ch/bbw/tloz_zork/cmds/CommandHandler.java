@@ -67,7 +67,6 @@ public class CommandHandler {
             } else {
                 System.out.println("There are no enemies in this area");
             }
-            System.out.println(player.getCurrentLocation().getQuote());
         } else {
             throw new InvalidCommandException("Unknown Command. Try to use help, to see all commands.");
         }
