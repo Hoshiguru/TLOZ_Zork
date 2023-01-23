@@ -8,13 +8,17 @@ public class Enemy {
     private int ap;
     private int crit;
     private Item item;
+    private String quote;
+    private boolean isDead;
 
-    public Enemy(String name, int health, int ap, int crit, Item item) {
+    public Enemy(String name, int health, int ap, int crit, Item item, String quote, boolean isDead) {
         this.name = name;
         this.health = health;
         this.ap = ap;
         this.crit = crit;
         this.item = item;
+        this.quote = quote;
+        this.isDead = isDead;
     }
 
     public String getName() {
@@ -57,6 +61,22 @@ public class Enemy {
         this.item = item;
     }
 
+    public String getQuote() {
+        return quote;
+    }
+
+    public void setQuote(String quote) {
+        this.quote = quote;
+    }
+
+    public boolean getIsDead(){
+        return isDead;
+    }
+
+    public void setIsDead(boolean isDead){
+        this.isDead = isDead;
+    }
+
     @Override
     public String toString() {
         return "Enemy{" +
@@ -65,6 +85,7 @@ public class Enemy {
                 ", ap=" + ap +
                 ", crit=" + crit +
                 ", item=" + item +
+                ", quote=" + quote +
                 '}';
     }
 }

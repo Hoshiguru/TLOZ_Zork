@@ -13,6 +13,7 @@ public class CommandHandler {
     private ScoreCommand scoreCommand;
     private MapCommand mapCommand;
     private ItemCommands itemCommands;
+    private CombatCommand combatCommand;
 
     public CommandHandler() {
         moveCommand = new MoveCommand();
@@ -20,10 +21,12 @@ public class CommandHandler {
         scoreCommand = new ScoreCommand();
         mapCommand = new MapCommand();
         itemCommands = new ItemCommands();
+        combatCommand = new CombatCommand();
     }
 
     /**
      * Handles the commands
+     *
      * @param command
      * @param player
      * @throws InvalidCommandException
@@ -60,6 +63,12 @@ public class CommandHandler {
             }
         } else if (command.equals("inventory") || command.equals("i")) {
             itemCommands.inventory(player);
+        } else if (command.equals("fight") || command.equals("f")) {
+            if (player.getCurrentLocation().getEnemy().getHealth() > 0) {
+                combatCommand.combat(player, player.getCurrentLocation().getEnemy());
+            } else {
+                System.out.println("There are no enemies in this area");
+            }
         } else {
             throw new InvalidCommandException("Unknown Command. Try to use help, to see all commands.");
         }

@@ -18,14 +18,15 @@ public class Location {
     private Enemy enemy;
 
     // Constructor to init the game.Location
-    public Location(String name, String icon, String quote, String assignedMap) {
+    public Location(String name, String icon, String quote, String assignedMap, Enemy enemy) {
         this.name = name;
         this.icon = icon;
         this.quote = quote;
         this.assignedMap = assignedMap;
+        this.enemy = enemy;
         this.items = new ArrayList<Item>();
     }
-    public Location(String name, String icon, String quote) {
+    public Location(String s, String name, String icon, String quote) {
         this.name = name;
         this.icon = icon;
         this.quote = quote;
