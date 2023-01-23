@@ -57,7 +57,7 @@ public class Game {
                     System.out.print(".");
                     loading(1000);
                     System.out.print(".");
-                    System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
+                    System.out.println("Link, are you awake? You're currently in the castle ruin. You have to find the master sword to defeat Ganon. Good luck!");
                     // Hier startet das Spiel
                     while (true) {
                         System.out.print("》 ");
@@ -149,7 +149,7 @@ public class Game {
         // Item auffüllen
         player.addItem(apple);
         // Startposition festlegen
-        player.setCurrentLocation(woodland);
+        player.setCurrentLocation(castle_ruin);
     }
 
     // Methode für "loading screens
