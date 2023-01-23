@@ -40,58 +40,66 @@ public class Game {
             System.out.print("》 ");
         }
         System.out.println("Is this your first time playing The Legends of Zelda: Zork of the Wild?");
-        System.out.print("》 ");
-        switch (scanner.nextLine().toLowerCase()) {
-            case "yes":
-                CombatTutorial combatTutorial = new CombatTutorial();
-                combatTutorial.dummyTutorial();
-            case "no":
-                System.out.println("Then let's jump right into your adventure!");
-                initializeGame();
-                System.out.println("");
-                loading(1000);
-                System.out.print(".");
-                loading(1000);
-                System.out.print(".");
-                loading(1000);
-                System.out.print(".");
-                System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
-                // Hier startet das Spiel
-                while (true) {
-                    System.out.print("》 ");
-                    command = scanner.nextLine();
-                    try {
-                        commandHandler.handleCommand(command, player);
-                    } catch (InvalidCommandException | InvalidDirectionException e) {
-                        System.out.println(e.getMessage());
+        while (true) {
+            System.out.print("》 ");
+            switch (scanner.nextLine().toLowerCase()) {
+                case "yes":
+                    CombatTutorial combatTutorial = new CombatTutorial();
+                    combatTutorial.dummyTutorial();
+                case "no":
+                    System.out.println("Then let's jump right into your adventure!");
+                    initializeGame();
+                    System.out.println("");
+                    loading(1000);
+                    System.out.print(".");
+                    loading(1000);
+                    System.out.print(".");
+                    loading(1000);
+                    System.out.print(".");
+                    System.out.println("Link, are you awake? You're currently in the Shrine of Life. Walk in direction to north, to exit.");
+                    // Hier startet das Spiel
+                    while (true) {
+                        System.out.print("》 ");
+                        command = scanner.nextLine();
+                        try {
+                            commandHandler.handleCommand(command, player);
+                        } catch (InvalidCommandException | InvalidDirectionException e) {
+                            System.out.println(e.getMessage());
+                        }
                     }
-                }
-            default:
-                System.out.println("I need a yes or a no");
-                break;
+                default:
+                    System.out.println("I need a yes or a no");
+                    break;
+            }
         }
     }
 
     private void initializeGame() {
         // Hier wird alles initialisiert
         Item bow = new Item("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83C\uDFF9");
+        Item root = new Item("Root", "A stick. Very light to carry but unfortunately not too strong.", 0.7, "\uD83C\uDFF9");
         Item sword = new Item("Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "\uD83D\uDDE1");
         Item shield = new Item("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "\uD83D\uDEE1");
         Item banana = new Item("Banana", "A healing item used to restore health.", 0.5, "\uD83D\uDC9F");
         Item apple = new Item("Apple", "A healing item used to restore health.", 0.2, "\uD83C\uDF4E");
         Item boomerang = new Item("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83E\uDE83");
 
+        // Initialisierung Enemy
+        Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root);
+        Enemy moblin = new Enemy("moblin", 1, 1, 10, sword);
+        Enemy lynel = new Enemy("lynel", 5, 2, 3, shield);
+
         // Initialisierung Rätselelemente
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
         Riddle master_sword_riddle = new Riddle("How many heart chambers does it take to pull the master sword out of the stone?", null, "13");
 
         // Initialisierung Räume
-        castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures.", "castle_ruin");
-        woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland");
-        castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle");
-        cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave");
-        desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert");
-        underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple");
+        castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. \n There is also a Bokoblin in this area. This Bokoblin holds a " + bokoblin.getItem().getName() + ". \n You can fight him anytime while you are in this Location", "castle_ruin", bokoblin);
+        woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland", null);
+        castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle", null);
+        cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave", null);
+        desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert", null);
+        underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple", null);
 
         // Initialisierung Dungeon
         Dungeon shrine_of_life = new Dungeon("Shrine of Life", "⛩", "The spawn place of Link", "shrine_of_life", true, null, null);
@@ -121,11 +129,6 @@ public class Game {
         Gate gateSpirit_dungeonCave = new Gate(spirit_dungeon, cave, true);
         Gate gateDesert_dungeonDesert = new Gate(desert_dungeon, desert, true);
         Gate gateShrine_of_lifeCastle_ruin = new Gate(shrine_of_life, castle_ruin, false);
-
-        // Initialisierung Enemy
-        Enemy bokoblin = new Enemy("Bokoblin", 1, 1, 10, bow);
-        Enemy moblin = new Enemy("moblin", 1, 1, 10, sword);
-        Enemy lynel = new Enemy("lynel", 1, 1, 10, shield);
 
         // Festlegen von Himmelsrichtungen
         castle_ruin.setDirections(gateCastle_ruinWoodland, gateCastle_ruinCave, null, gateTemple_of_timeCastle_ruin);

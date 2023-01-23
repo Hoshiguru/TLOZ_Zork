@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class CombatTutorial {
     ArrayList<Item> itemArrayList = new ArrayList<Item>();
     Player player = new Player(3, 1, 5, itemArrayList, 20.0, null);
-    Item sword = new Item("Iron Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "⚔️");
-    Enemy dummy = new Enemy("dummy", 1, 1, 2147483647, sword);
+    Item root = new Item("root", "A melee weapon used to defeat enemies and hit close targets.", 0.2, "⚔️");
+    Enemy dummy = new Enemy("dummy", 1, 1, 2147483647, root);
     Scanner command = new Scanner(System.in);
 
     public void dummyTutorial() {
@@ -20,22 +20,22 @@ public class CombatTutorial {
         System.out.println("You currently have " + player.getHearts() + " hearts");
         System.out.println("If you get to 0 hearts, you will lose the fight and have to start from the last checkpoint");
         System.out.println("this is the dummy");
-        System.out.println(" ____________________________________________");
+        System.out.println();
         System.out.println("| " + dummy.getName() + " | hearts: " + dummy.getHealth() + " | damage: " + dummy.getAp() + " | " + dummy.getItem().getName() + " |");
-        System.out.println(" ____________________________________________");
+        System.out.println();
         System.out.println("To win the fight, you have to get the dummy's health to 0");
         System.out.println("Press enter to continue");
-        System.out.print("> ");
+        System.out.print("》 ");
         command.nextLine();
         System.out.println("WATCH OUT! THE DUMMY IS GOING TO ATTACK YOU");
         System.out.println("Type in \"dodge\" to dodge the attack");
 
         while (!contin) {
-            System.out.println(" _____________________________________________");
+            System.out.println();
             System.out.println("| " + dummy.getName() + "  | hearts: " + dummy.getHealth() + " | damage: " + dummy.getAp() + " | " + dummy.getItem().getName() + " |");
             System.out.println("| player | hearts: " + player.getHearts() + " | damage: " + player.getAp() + " | stamina: " + player.getStamina() + " |");
-            System.out.println(" _____________________________________________");
-            System.out.print("> ");
+            System.out.println();
+            System.out.print("》 ");
             switch (command.nextLine().toLowerCase()) {
                 case "dodge":
                     player.setStamina(player.getStamina() - 1);
@@ -49,23 +49,23 @@ public class CombatTutorial {
         contin = false;
         System.out.println("Friendly reminder that you only have a certain amount of stamina to dodge!");
         System.out.println("Press enter to continue");
-        System.out.print("> ");
+        System.out.print("》 ");
         command.nextLine();
         System.out.println("Now you want to attack the dummy to win the fight");
         System.out.println("So please type in \"attack\" to attack the dummy");
         while (!contin) {
-            System.out.println(" ____________________________________________");
+            System.out.println();
             System.out.println("| " + dummy.getName() + "  | hearts: " + dummy.getHealth() + " | damage: " + dummy.getAp() + " | " + dummy.getItem().getName() + " |");
             System.out.println("| player | hearts: " + player.getHearts() + " | damage: " + player.getAp() + " | stamina: " + player.getStamina() + " |");
-            System.out.println(" ____________________________________________");
-            System.out.print("> ");
+            System.out.println();
+            System.out.print("》 ");
             switch (command.nextLine().toLowerCase()) {
                 case "attack":
                     dummy.setHealth(dummy.getHealth() - 1);
                     System.out.println("Now you have dealt 1 damage to the dummy.");
                     System.out.println("If you have any items, you can deal more damage.");
                     System.out.println("Press enter to continue");
-                    System.out.print("> ");
+                    System.out.print("》 ");
                     contin = true;
                     break;
                 case "dodge":
@@ -76,22 +76,19 @@ public class CombatTutorial {
             }
         }
         command.nextLine();
-        System.out.println(" _____________________________________________");
         System.out.println("| " + dummy.getName() + "  | hearts: " + dummy.getHealth() + " | damage: " + dummy.getAp() + " | " + dummy.getItem().getName() + " |");
         System.out.println("| player | hearts: " + player.getHearts() + " | damage: " + player.getAp() + " | stamina: " + player.getStamina() + " |");
-        System.out.println(" _____________________________________________");
+        System.out.println();
         System.out.println("As you can see, the dummy has " + dummy.getHealth() + " hearts now.");
         System.out.println("The dummy also dropped an item");
         System.out.println("Type \"collect\" to collect the item");
-        System.out.print("> ");
+        System.out.print("》 ");
         switch (command.nextLine().toLowerCase()) {
             case "collect":
                 System.out.println("You have collected " + dummy.getItem().getName() + "!");
                 itemArrayList.add(dummy.getItem());
                 break;
             case "attack":
-                System.out.println("You are out of combat");
-                break;
             case "dodge":
                 System.out.println("You are out of combat");
                 break;
