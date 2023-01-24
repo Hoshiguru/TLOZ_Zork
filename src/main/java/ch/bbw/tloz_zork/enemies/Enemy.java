@@ -8,16 +8,14 @@ public class Enemy {
     private int ap; // attack power
     private int crit; // critical hit chance
     private Item item;
-    private String quote;
     private boolean isDead;
 
-    public Enemy(String name, int health, int ap, int crit, Item item, String quote, boolean isDead) {
+    public Enemy(String name, int health, int ap, int crit, Item item, boolean isDead) {
         this.name = name;
         this.health = health;
         this.ap = ap;
         this.crit = crit;
         this.item = item;
-        this.quote = quote;
         this.isDead = isDead;
     }
 
@@ -61,14 +59,6 @@ public class Enemy {
         this.item = item;
     }
 
-    public String getQuote() {
-        return quote;
-    }
-
-    public void setQuote(String quote) {
-        this.quote = quote;
-    }
-
     public boolean getIsDead(){
         return isDead;
     }
@@ -85,7 +75,6 @@ public class Enemy {
                 ", ap=" + ap +
                 ", crit=" + crit +
                 ", item=" + item +
-                ", quote=" + quote +
                 '}';
     }
 }

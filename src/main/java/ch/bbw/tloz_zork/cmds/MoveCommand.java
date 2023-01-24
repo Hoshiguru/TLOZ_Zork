@@ -31,11 +31,16 @@ public class MoveCommand {
             player.increaseMoves();
             Location location1 = gate.getLocation1();
             Location location2 = gate.getLocation2();
+            // TODO: Versuchen, das in einer Methode zu machen
             if (location1.getName().equals(currentLocation.getName())) {
                 player.setPreviousLocation(location1);
                 player.setCurrentLocation(location2);
                 System.out.println(location2.getIcon() + "You are now in " + location2.getName());
                 System.out.println(location2.getQuote());
+                // TODO: Eventuell in Location auslagern e.g. location.checkEnemyStatus
+                if (location2.getEnemy() != null) {
+                    System.out.println("⚠️There is also a " + location2.getEnemy().getName() + " in this area. This enemy holds a " + location2.getEnemy().getItem().getName() + ".\nYou can 'fight' him anytime while you are in this Location");
+                }
                 if (location2 instanceof Dungeon) {
                     Dungeon dungeon = (Dungeon) location2;
                     dungeon.startChallenge(player);
@@ -46,6 +51,9 @@ public class MoveCommand {
                 player.setCurrentLocation(location1);
                 System.out.println(location1.getIcon() + "You are now in " + location1.getName());
                 System.out.println(location1.getQuote());
+                if (location1.getEnemy() != null) {
+                    System.out.println("There is also a " + location1.getEnemy().getName() + " in this area. This enemy holds a " + location1.getEnemy().getItem().getName() + ".\nYou can 'fight' him anytime while you are in this Location");
+                }
                 if (location1 instanceof Dungeon) {
                     Dungeon dungeon = (Dungeon) location1;
                     dungeon.startChallenge(player);

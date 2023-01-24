@@ -101,25 +101,24 @@ public class Game {
         Item boomerang = new Item("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83E\uDE83");
 
         // Initialisierung Enemy
-        //TODO: Quote nicht hardcoden
-        Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root, "\nThere is also a Bokoblin in this area. This Bokoblin holds a root.\nYou can fight him anytime while you are in this Location", false);
-        Enemy moblin = new Enemy("moblin", 1, 1, 10, sword, "\nThere is also a Moblin in this area. This Moblin holds a sword.\nYou can fight him anytime while you are in this Location", false);
-        Enemy lynel = new Enemy("lynel", 5, 2, 3, shield, "\nThere is also a Lynel in this area. This Lynel holds a shield.\nYou can fight him anytime while you are in this Location", false);
-        Enemy stalfos = new Enemy("stalfos", 2, 3, 5, sword, "\nThere are Stalfos in this area. These Stalfos are holding swords.", false);
-        Enemy darknut = new Enemy("darknut", 1, 2, 3, sword, "\nThere are Darknuts in this area. These Darknuts are holding swords.", false);
-        Enemy ganon = new Enemy("Ganon", 8, 3, 7, boomerang, "\nThere is also Ganon in this area. This Ganon holds a boomerang.\nYou can fight him anytime while you are in this Location", false);
+        Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root, false);
+        Enemy moblin = new Enemy("moblin", 1, 1, 10, sword, false);
+        Enemy lynel = new Enemy("lynel", 5, 2, 3, shield, false);
+        Enemy stalfos = new Enemy("stalfos", 2, 3, 5, sword, false);
+        Enemy darknut = new Enemy("darknut", 1, 2, 3, sword, false);
+        Enemy ganon = new Enemy("Ganon", 8, 3, 7, boomerang, false);
 
         // Initialisierung Rätselelemente
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
         Riddle master_sword_riddle = new Riddle("How many heart chambers does it take to pull the master sword out of the stone?", null, "13");
 
         // Initialisierung Räume
-        castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. " + (!bokoblin.getIsDead() ? bokoblin.getQuote() : ""), "castle_ruin", bokoblin);
-        woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword." + (!lynel.getIsDead() ? lynel.getQuote() : ""), "woodland", lynel);
-        castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power." + (!lynel.getIsDead() ? lynel.getQuote() : ""), "castle", ganon);
+        castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. ", "castle_ruin", bokoblin);
+        woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland", lynel);
+        castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle", ganon);
         cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave", (Enemy) null);
-        desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms." + (!moblin.getIsDead() ? moblin.getQuote() : ""), "desert", moblin);
-        underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians." + (!lynel.getIsDead() ? lynel.getQuote() : ""), "underwater_temple", lynel);
+        desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert", moblin);
+        underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple", lynel);
 
         // Initialisierung Dungeon
         Dungeon temple_of_time = new Dungeon("Temple of Time", "⌛", "The Temple of Time is an impressive building located in the castle ruin of Hyrule. It is surrounded by a majestic waterfall and has a magnificent architecture reminiscent of ancient temples", "temple_of_time", false, master_sword_riddle);
