@@ -11,7 +11,7 @@ public class CombatCommand {
     boolean contin = false;
     Scanner scan = new Scanner(System.in);
 
-    public void combat(Player player, Enemy enemy) {
+    public void combat(Player player, Enemy enemy, boolean isInDungeon) {
         // New Array List to add enemies Item if defeated
         ArrayList<Item> inventory = player.getInventory();
         System.out.println("You have decided to fight a " + enemy.getName() + "!");
@@ -43,18 +43,24 @@ public class CombatCommand {
                     }
                     // End the Method
                     case "flee", "f" -> {
-                        System.out.println("You escaped");
-                        return;
+                        if (isInDungeon) {
+                            System.out.println("You can't flee from a dungeon!");
+                        } else {
+                            System.out.println("You escaped");
+                            return;
+                        }
                     }
                     // Help
                     case "help", "h" -> {
                         System.out.println("'Attack' to attack the enemy");
                         System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
                         System.out.println("'Item' to open your Inventory");
-                        System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
-                        System.out.println("'flee' to flee");
+                        if (!isInDungeon) {
+                            System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+                            System.out.println("'Flee' to flee");
+                        }
                     }
-                    default -> System.out.println("Unknown Command. Try to use help, to see all commands.");
+                    default -> System.out.println("Unknown Command. Try to use 'help', to see all commands.");
                 }
 
             }
@@ -69,7 +75,7 @@ public class CombatCommand {
                     while (!contin) {
                         switch (scan.nextLine().toLowerCase()) {
                             // PLayer stamina = player stamina - 1
-                            case "yes", "y" -> {
+                            case "yes", "y", "dodge" -> {
                                 player.setStamina(player.getStamina() - 1);
                                 System.out.println("You dodged the attack");
                                 contin = true;
@@ -98,6 +104,7 @@ public class CombatCommand {
             player.setDead(true);
         } else {
             // Add enemy Item to your inventory
+            System.out.println("\uD83D\uDDE1 You have defeated the " + enemy.getName() + "!");
             System.out.println("You have received a " + enemy.getItem().getIcon() + enemy.getItem().getName());
             inventory.add(enemy.getItem());
             player.setInventory(inventory);

@@ -105,6 +105,8 @@ public class Game {
         Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root, "\nThere is also a Bokoblin in this area. This Bokoblin holds a root.\nYou can fight him anytime while you are in this Location", false);
         Enemy moblin = new Enemy("moblin", 1, 1, 10, sword, "\nThere is also a Moblin in this area. This Moblin holds a sword.\nYou can fight him anytime while you are in this Location", false);
         Enemy lynel = new Enemy("lynel", 5, 2, 3, shield, "\nThere is also a Lynel in this area. This Lynel holds a shield.\nYou can fight him anytime while you are in this Location", false);
+        Enemy stalfos = new Enemy("stalfos", 2, 3, 5, sword, "\nThere are Stalfos in this area. These Stalfos are holding swords.", false);
+        Enemy darknut = new Enemy("darknut", 1, 2, 3, sword, "\nThere are Darknuts in this area. These Darknuts are holding swords.", false);
         Enemy ganon = new Enemy("Ganon", 8, 3, 7, boomerang, "\nThere is also Ganon in this area. This Ganon holds a boomerang.\nYou can fight him anytime while you are in this Location", false);
 
         // Initialisierung Rätselelemente
@@ -122,8 +124,8 @@ public class Game {
         // Initialisierung Dungeon
         Dungeon temple_of_time = new Dungeon("Temple of Time", "⌛", "The Temple of Time is an impressive building located in the castle ruin of Hyrule. It is surrounded by a majestic waterfall and has a magnificent architecture reminiscent of ancient temples", "temple_of_time", false, sword, master_sword_riddle);
         Dungeon shadow_dungeon = new Dungeon("Shadow Dungeon", "🕳️", "A mysterious dungeon, between trees in the woodland, right next to the master sword place.", "shadow_temple", false, shield, zelda_name_riddle);
-        Dungeon spirit_dungeon = new Dungeon("Spirit Dungeon", "\uD83D\uDC7B", "A mysterious temple lies in the underground, hidden in the cave.", "spirit_temple", false, sword, null); // TODO: Fill with enemies
-        Dungeon desert_dungeon = new Dungeon("Water Dungeon", "\uD83D\uDCA6", "An underwater dungeon, which is located directly in the underwater temple", "water_temple", false, sword, null); // TODO: Fill with enemies
+        Dungeon spirit_dungeon = new Dungeon("Spirit Dungeon", "\uD83D\uDC7B", "A mysterious temple lies in the underground, hidden in the cave.", "spirit_dungeon", false, apple, stalfos, player);
+        Dungeon desert_dungeon = new Dungeon("Desert Dungeon", "\uD83C\uDF35", "An desert dungeon, which is located in the east of the desert.", "desert_dungeon", false, sword, darknut, player);
 
         // Initialisierung Raum-Items
         //TODO: Eventuell randomizen
@@ -136,15 +138,15 @@ public class Game {
 
         // Initialisierung Zugänge (Gates) -> Map
         Gate gateCastle_ruinWoodland = new Gate(castle_ruin, woodland, false);
-        Gate gateWoodlandCastle = new Gate(woodland, castle, false);
+        Gate gateWoodlandCastle = new Gate(woodland, castle, true);
         Gate gateCastle_ruinCave = new Gate(castle_ruin, cave, false);
         Gate gateCaveDesert = new Gate(cave, desert, false);
         Gate gateDesertUnderwater_temple = new Gate(desert, underwater_temple, false);
 
         Gate gateTemple_of_timeCastle_ruin = new Gate(temple_of_time, castle_ruin, false);
         Gate gateShadow_dungeonWoodland = new Gate(shadow_dungeon, woodland, false);
-        Gate gateSpirit_dungeonCave = new Gate(spirit_dungeon, cave, true);
-        Gate gateDesert_dungeonDesert = new Gate(desert_dungeon, desert, true);
+        Gate gateSpirit_dungeonCave = new Gate(spirit_dungeon, cave, false);
+        Gate gateDesert_dungeonDesert = new Gate(desert_dungeon, desert, false);
 
         // Festlegen von Himmelsrichtungen
         castle_ruin.setDirections(gateCastle_ruinWoodland, gateCastle_ruinCave, null, gateTemple_of_timeCastle_ruin);

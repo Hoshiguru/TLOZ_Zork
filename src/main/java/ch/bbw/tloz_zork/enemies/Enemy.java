@@ -4,9 +4,9 @@ import ch.bbw.tloz_zork.items.Item;
 
 public class Enemy {
     private String name;
-    private int health;
-    private int ap;
-    private int crit;
+    private int health; // health points
+    private int ap; // attack power
+    private int crit; // critical hit chance
     private Item item;
     private String quote;
     private boolean isDead;
