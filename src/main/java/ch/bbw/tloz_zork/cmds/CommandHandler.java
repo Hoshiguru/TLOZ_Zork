@@ -46,7 +46,7 @@ public class CommandHandler {
             helpCommand.help();
         } else if (command.equals("back")) {
             moveCommand.back(player);
-        } else if (command.equals("score")) {
+        } else if (command.equals("score") || command.equals("s")) {
             scoreCommand.score(player);
         } else if (command.equals("map") || command.equals("m")) {
             mapCommand.map(player);
@@ -66,7 +66,7 @@ public class CommandHandler {
         } else if (command.equals("fight") || command.equals("f")) {
             // Can only be entered a fight if there is an enemy at the Location
             if (player.getCurrentLocation().getEnemy().getHealth() > 0) {
-                combatCommand.combat(player, player.getCurrentLocation().getEnemy());
+                combatCommand.combat(player, player.getCurrentLocation().getEnemy(), false);
             } else {
                 // Else it prints out this
                 System.out.println("There are no enemies in this area");

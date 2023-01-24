@@ -7,8 +7,10 @@ import java.util.ArrayList;
 
 public class Player {
     private int hearts;
+    private int maxHearts;
     private int ap;
     private int stamina;
+    private int maxStamina;
     private ArrayList<Item> inventory;
     private double maxWeight; // Maximale Tragkraft von Items
     private Location currentLocation;
@@ -16,10 +18,12 @@ public class Player {
     private int moves;
     private boolean dead;
 
-    public Player(int hearts, int ap, int stamina, ArrayList<Item> inventory, double maxWeight, Location currentLocation, boolean dead) {
+    public Player(int hearts, int maxHearts, int ap, int stamina, int maxStagima, ArrayList<Item> inventory, double maxWeight, Location currentLocation, boolean dead) {
         this.hearts = hearts;
+        this.maxHearts = maxHearts;
         this.ap = ap;
         this.stamina = stamina;
+        this.maxStamina = maxStagima;
         this.inventory = new ArrayList<Item>();;
         this.maxWeight = maxWeight;
         this.currentLocation = currentLocation;
@@ -68,12 +72,26 @@ public class Player {
     }
     public String getHeartIcons() {
         String hearts = "";
-        for (int i = 0; i < this.hearts; i++) {
-            hearts += "♥";
+        for (int i = 0; i < this.maxHearts; i++) {
+            if (i < this.hearts) {
+                hearts += "♥";
+            } else {
+                hearts += "♡";
+            }
         }
         return hearts;
     }
-
+    public String getStaminaIcons() {
+        String stamina = "";
+        for (int i = 0; i < this.maxStamina; i++) {
+            if (i < this.stamina) {
+                stamina += "\uD83D\uDD25";
+            } else {
+                stamina += "\uD83D\uDD26";
+            }
+        }
+        return stamina;
+    }
     public void setHearts(int hearts) {
         this.hearts = hearts;
     }
@@ -140,5 +158,21 @@ public class Player {
 
     public void setDead(boolean playerIsDead) {
         this.dead = playerIsDead;
+    }
+
+    public int getMaxHearts() {
+        return maxHearts;
+    }
+
+    public void increaseMaxHearts() {
+        this.maxHearts = maxHearts + 1;
+    }
+
+    public int getMaxStamina() {
+        return maxStamina;
+    }
+
+    public void increaseMaxStamina() {
+        this.maxStamina = maxStamina + 1;
     }
 }

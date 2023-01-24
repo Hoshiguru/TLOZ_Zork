@@ -1,7 +1,6 @@
 package ch.bbw.tloz_zork.game;
 
 import ch.bbw.tloz_zork.enemies.Enemy;
-import ch.bbw.tloz_zork.game.Player;
 import ch.bbw.tloz_zork.items.Item;
 
 import java.util.ArrayList;
@@ -10,9 +9,10 @@ import java.util.Scanner;
 public class CombatTutorial {
     // These initialization are only for the tutorial
     ArrayList<Item> itemArrayList = new ArrayList<Item>();
-    Player player = new Player(3, 1, 5, itemArrayList, 20.0, null, false);
+    Player player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false);
+
     Item root = new Item("root", "A melee weapon used to defeat enemies and hit close targets.", 0.2, "⚔️");
-    Enemy dummy = new Enemy("dummy", 1, 1, 2147483647, root, null, false);
+    Enemy dummy = new Enemy("dummy", 1, 1, 2147483647, root, false);
     Scanner command = new Scanner(System.in);
 
     public void dummyTutorial() {
