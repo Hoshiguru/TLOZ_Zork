@@ -5,6 +5,7 @@ import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.locations.Location;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Player {
     private int hearts;
@@ -61,21 +62,21 @@ public class Player {
      * @return
      */
     public HealingItem eatItem(String itemName) {
-        for (Item item : inventory) {
-            if (item.getName().equalsIgnoreCase(itemName) && item instanceof HealingItem) { // TODO: JUNIT TEST
+        Iterator<Item> iterator = inventory.iterator();
+        while (iterator.hasNext()) {
+            Item item = iterator.next();
+            if (item.getName().equalsIgnoreCase(itemName) && item instanceof HealingItem) {
                 HealingItem healingItem = (HealingItem) item;
-                // check if hearts + healing amount is greater than max hearts
                 if (hearts + healingItem.getHealingAmount() > maxHearts) {
                     hearts = maxHearts;
                     System.out.println("Your hearts are full!");
                 } else {
-                    inventory.remove(healingItem);
+                    iterator.remove();
                     hearts += healingItem.getHealingAmount();
                     System.out.println("You ate " + healingItem.getIcon() + healingItem.getName() + " 【+" + healingItem.getHealingAmount() + "♥】");
                 }
             }
             else if (item.getName().equalsIgnoreCase(itemName) && !(item instanceof HealingItem)) {
-                // TODO: Spieler essen lassen, aber herzen verlieren (Waffe essen?)
                 System.out.println("You can't eat that!");
             }
         }
