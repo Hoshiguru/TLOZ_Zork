@@ -14,8 +14,9 @@ public class Player {
     private Location currentLocation;
     private Location previousLocation;
     private int moves;
+    private boolean dead;
 
-    public Player(int hearts, int ap, int stamina, ArrayList<Item> inventory, double maxWeight, Location currentLocation) {
+    public Player(int hearts, int ap, int stamina, ArrayList<Item> inventory, double maxWeight, Location currentLocation, boolean dead) {
         this.hearts = hearts;
         this.ap = ap;
         this.stamina = stamina;
@@ -24,6 +25,7 @@ public class Player {
         this.currentLocation = currentLocation;
         this.previousLocation = null;
         this.moves = 0;
+        this.dead=dead;
     }
     /**
      * Adds an item to the inventory
@@ -130,5 +132,13 @@ public class Player {
 
     public void increaseMoves() {
         this.moves = moves + 1;
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean playerIsDead) {
+        this.dead = playerIsDead;
     }
 }

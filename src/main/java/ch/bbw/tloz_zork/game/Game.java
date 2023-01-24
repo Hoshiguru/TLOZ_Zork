@@ -20,7 +20,7 @@ public class Game {
 
     //private Place places; // oder auch Räume
     public void startGame() {
-        player = new Player(3, 1, 5, null, 20.0, null);
+        player = new Player(3, 1, 2, null, 20.0, null, false);
         commandHandler = new CommandHandler();
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -41,25 +41,27 @@ public class Game {
             System.out.print("》 ");
         }
         System.out.println("Is this your first time playing The Legends of Zelda: Zork of the Wild?");
-        while (true) {
+        while (!player.isDead()) {
             System.out.print("》 ");
             switch (scanner.nextLine().toLowerCase()) {
                 case "yes":
+                case "y":
                     CombatTutorial combatTutorial = new CombatTutorial();
                     combatTutorial.dummyTutorial();
                 case "no":
+                case "n":
                     System.out.println("Then let's jump right into your adventure!");
                     initializeGame();
                     System.out.println("");
-                    loading(1000);
+                    //loading(1000);
                     System.out.print(".");
-                    loading(1000);
+                    //loading(1000);
                     System.out.print(".");
-                    loading(1000);
+                    //loading(1000);
                     System.out.print(".");
                     System.out.println("Link, are you awake? You're currently in the castle ruin. You have to find the master sword to defeat Ganon. Good luck!");
                     // Hier startet das Spiel
-                    while (true) {
+                    while (!player.isDead()) {
                         System.out.print("》 ");
                         command = scanner.nextLine();
                         try {
@@ -69,12 +71,23 @@ public class Game {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
+                        if (player.isDead()) {
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println("You died");
+                            System.out.println("Game over!");
+                        }
                     }
+                    break;
                 default:
                     System.out.println("I need a yes or a no");
                     break;
             }
         }
+
     }
 
     private void initializeGame() {
@@ -99,9 +112,9 @@ public class Game {
         Riddle master_sword_riddle = new Riddle("How many heart chambers does it take to pull the master sword out of the stone?", null, "13");
 
         // Initialisierung Räume
-        castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. "  + (!bokoblin.getIsDead() ? bokoblin.getQuote() : ""), "castle_ruin", bokoblin);
+        castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. " + (!bokoblin.getIsDead() ? bokoblin.getQuote() : ""), "castle_ruin", bokoblin);
         woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword." + (!lynel.getIsDead() ? lynel.getQuote() : ""), "woodland", lynel);
-        castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power."+ (!lynel.getIsDead() ? lynel.getQuote() : ""), "castle", ganon);
+        castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power." + (!lynel.getIsDead() ? lynel.getQuote() : ""), "castle", ganon);
         cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave", null);
         desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms." + (!moblin.getIsDead() ? moblin.getQuote() : ""), "desert", moblin);
         underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians." + (!lynel.getIsDead() ? lynel.getQuote() : ""), "underwater_temple", lynel);
