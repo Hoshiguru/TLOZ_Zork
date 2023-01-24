@@ -23,7 +23,7 @@ public class CombatCommand {
             // Loop
             while (!contin) {
                 System.out.print("》 ");
-                switch (scan.nextLine().toLowerCase()) {
+                switch (scan.next().toLowerCase()) {
                     // Enemy health = enemy health - player ap
                     case "attack", "a" -> {
                         System.out.println("The enemy gets -" + player.getAp() + " hearts");
@@ -41,6 +41,14 @@ public class CombatCommand {
                             }
                         }
                     }
+                    case "eat", "e" -> {
+                        System.out.println("What do you want to eat?");
+                        System.out.print("》 ");
+                        String item = scan.next().toLowerCase();
+                        player.eatItem(item);
+                        break;
+                    }
+
                     // End the Method
                     case "flee", "f" -> {
                         if (isInDungeon) {
@@ -73,7 +81,7 @@ public class CombatCommand {
                     System.out.print("》 ");
                     // Loop
                     while (!contin) {
-                        switch (scan.nextLine().toLowerCase()) {
+                        switch (scan.next().toLowerCase()) {
                             // PLayer stamina = player stamina - 1
                             case "yes", "y", "dodge" -> {
                                 player.setStamina(player.getStamina() - 1);
