@@ -3,7 +3,6 @@ package ch.bbw.tloz_zork.locations;
 import ch.bbw.tloz_zork.cmds.CombatCommand;
 import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.game.Player;
-import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
 import java.util.Scanner;
@@ -40,7 +39,6 @@ public class Dungeon extends Location {
             } else {
                 System.out.println("This dungeon has neither a riddle nor enemies!");
             }
-            System.out.println("✅ You have completed the dungeon!");
             selectReward(player);
         }
         else {
@@ -50,9 +48,15 @@ public class Dungeon extends Location {
     private void selectReward(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Select your reward: ");
-        System.out.println("+1 \uD83D\uDD25 Heart Container \t +1 \uD83D\uDD25 Stamina Container");
+        System.out.println("Please choose between ❤'heart' or \uD83D\uDD25'stamina'");
         System.out.print("》 ");
-        switch (scan.nextLine().toLowerCase()) {
+        String choice = scan.nextLine().toLowerCase();
+        while(!(choice.equals("heart") || choice.equals("stamina"))){
+            System.out.println("Invalid choice, please choose between 'heart' or 'stamina'");
+            System.out.print("》 ");
+            choice = scan.nextLine().toLowerCase();
+        }
+        switch (choice) {
             case "heart" -> {
                 player.increaseMaxHearts();
                 player.setHearts(player.getMaxHearts()); // After getting a heart container, the player will get full hearts
@@ -63,9 +67,9 @@ public class Dungeon extends Location {
                 player.setStamina(player.getMaxStamina()); // After getting a stamina container, the player will get full stamina
                 System.out.println("You got a stamina container! Now you have " + player.getMaxStamina() + " stamina.");
             }
-            default -> System.out.println("Please choose between 'heart' or 'stamina'");
         }
     }
+
     public boolean isCompleted() {
         return isCompleted;
     }
