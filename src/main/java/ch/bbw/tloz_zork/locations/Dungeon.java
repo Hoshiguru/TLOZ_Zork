@@ -43,7 +43,6 @@ public class Dungeon extends Location {
             System.out.println("✅ You have completed the dungeon!");
             selectReward(player);
         }
-        // TODO: Auswahl zwischen Herzkammern und Ausdauerkammern
         else {
             System.out.println("✅ You have already completed this dungeon and collected your rewards! Search for another one.");
         }

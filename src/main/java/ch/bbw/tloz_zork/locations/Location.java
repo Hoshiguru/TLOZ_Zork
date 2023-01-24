@@ -26,7 +26,7 @@ public class Location {
         this.enemy = enemy;
         this.items = new ArrayList<Item>();
     }
-    public Location(String s, String name, String icon, String quote) {
+    public Location(String name, String icon, String quote, String assignedMap){
         this.name = name;
         this.icon = icon;
         this.quote = quote;

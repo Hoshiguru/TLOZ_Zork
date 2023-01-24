@@ -2,11 +2,12 @@ package ch.bbw.tloz_zork.cmds;
 
 
 import ch.bbw.tloz_zork.game.Player;
-import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
 
-import java.io.*;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class MapCommand {
     /**
