@@ -12,5 +12,6 @@ public class ScoreCommand {
     public void score(Player player){
         System.out.println("Total Moves: " + player.getMoves());
         System.out.println("Health: " + player.getHeartIcons());
+        System.out.println("Stamina: " + player.getStaminaIcons());
     }
 }

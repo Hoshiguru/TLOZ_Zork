@@ -20,7 +20,7 @@ public class Game {
 
     //private Place places; // oder auch Räume
     public void startGame() {
-        player = new Player(3, 1, 2, null, 20.0, null, false);
+        player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false);
         commandHandler = new CommandHandler();
         Scanner scanner = new Scanner(System.in);
         String command;
