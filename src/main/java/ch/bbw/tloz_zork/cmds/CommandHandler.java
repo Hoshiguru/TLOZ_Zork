@@ -42,7 +42,7 @@ public class CommandHandler {
             } else {
                 System.out.println("Please tell, where you want to go. Type 'move <direction>' to walk.");
             }
-        } else if (command.equals("help")) {
+        } else if (command.equals("help") || command.equals("h")) {
             helpCommand.help();
         } else if (command.equals("back")) {
             moveCommand.back(player);
@@ -61,7 +61,7 @@ public class CommandHandler {
             } else {
                 System.out.println("Please provide an item to drop. Type 'drop <item>' to drop an item.");
             }
-        } else if (command.startsWith("eat")) {
+        } else if (command.startsWith("eat") || command.startsWith("e")) {
             String input = command.substring(3);
             String[] parts = input.split(" ");
             if (parts.length > 1) {
@@ -69,6 +69,15 @@ public class CommandHandler {
                 itemCommands.eat(player, item);
             } else {
                 System.out.println("Please provide an item to eat. Type 'eat <item>' to eat an item.");
+            }
+        } else if (command.startsWith("use") || command.startsWith("u")) {
+            String input = command.substring(3);
+            String[] parts = input.split(" ");
+            if (parts.length > 1) {
+                String item = parts[1];
+                itemCommands.use(player, item);
+            } else {
+                System.out.println("Please provide an item to eat. Type 'use <item>' to equip an weapon.");
             }
         } else if (command.equals("inventory") || command.equals("i")) {
             itemCommands.inventory(player);

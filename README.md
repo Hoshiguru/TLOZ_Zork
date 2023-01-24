@@ -14,11 +14,13 @@ Players can navigate the game world using the following move commands:
 - `south`
 - `east`
 - `west`
-
+- `back`
 Players can interact with the game world using the following commands:
 - `inventory`: view the player's current inventory
 - `grab`: pick up items in the game world
-- `drop`: drop items in the game world
+- `drop <item>`: drop items in the game world
+- `eat <item>`: eat items in the game world
+- `use <item>`: equip weapons in the game world
 - `map`: view the map of the game world
 - `score`: view the player's current score
 - `fight`: fight enemies in the game world

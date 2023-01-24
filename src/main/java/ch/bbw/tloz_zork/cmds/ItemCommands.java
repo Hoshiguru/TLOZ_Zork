@@ -18,6 +18,11 @@ public class ItemCommands {
         if (inventory.size() == 0) {
             System.out.println("\uD83D\uDCBC Your inventory is empty.");
         } else {
+            if (player.getWeaponInHand() != null) {
+                System.out.println("✋ You are holding: " + player.getWeaponInHand().getName() + " +" + player.getWeaponInHand().getDamage() + " \uD83D\uDCA5");
+            } else {
+                System.out.println("\uD83D\uDCA1 Equip a weapon with 'use <weapon>'.");
+            }
             System.out.println("⚖ Weight: " + inventoryWeight + " kg / " + player.getMaxWeight() + " kg");
             System.out.println("\uD83D\uDCBC Your inventory contains:");
 
@@ -83,6 +88,14 @@ public class ItemCommands {
         Item item = player.findItem(itemName);
         if (item != null) {
             player.eatItem(itemName);
+        } else {
+            System.out.println("❌ You don't have this item in your inventory.");
+        }
+    }
+    public void use(Player player, String itemName) {
+        Item item = player.findItem(itemName);
+        if (item != null) {
+            player.useWeapon(itemName);
         } else {
             System.out.println("❌ You don't have this item in your inventory.");
         }

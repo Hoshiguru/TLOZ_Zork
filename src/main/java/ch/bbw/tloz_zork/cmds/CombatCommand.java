@@ -63,6 +63,8 @@ public class CombatCommand {
                         System.out.println("'Attack' to attack the enemy");
                         System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
                         System.out.println("'Item' to open your Inventory");
+                        System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+                        System.out.println("'Eat' to heal with an item from your inventory");
                         if (!isInDungeon) {
                             System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
                             System.out.println("'Flee' to flee");
