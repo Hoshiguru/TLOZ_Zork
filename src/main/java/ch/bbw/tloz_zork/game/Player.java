@@ -1,5 +1,6 @@
 package ch.bbw.tloz_zork.game;
 
+import ch.bbw.tloz_zork.items.HealingItem;
 import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.locations.Location;
 
@@ -54,6 +55,33 @@ public class Player {
         }
         return null;
     }
+    /**
+     * Returns the item with the given name and removes it from the inventory
+     * @param itemName
+     * @return
+     */
+    public HealingItem eatItem(String itemName) {
+        for (Item item : inventory) {
+            if (item.getName().equalsIgnoreCase(itemName) && item instanceof HealingItem) { // TODO: JUNIT TEST
+                HealingItem healingItem = (HealingItem) item;
+                // check if hearts + healing amount is greater than max hearts
+                if (hearts + healingItem.getHealingAmount() > maxHearts) {
+                    hearts = maxHearts;
+                    System.out.println("Your hearts are full!");
+                } else {
+                    inventory.remove(healingItem);
+                    hearts += healingItem.getHealingAmount();
+                    System.out.println("You ate " + healingItem.getIcon() + healingItem.getName() + " 【+" + healingItem.getHealingAmount() + "♥】");
+                }
+            }
+            else if (item.getName().equalsIgnoreCase(itemName) && !(item instanceof HealingItem)) {
+                // TODO: Spieler essen lassen, aber herzen verlieren (Waffe essen?)
+                System.out.println("You can't eat that!");
+            }
+        }
+        return null;
+    }
+
     /**
      * Returns the weight of all items in the inventory
      * @return

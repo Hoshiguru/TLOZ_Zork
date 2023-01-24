@@ -1,10 +1,11 @@
 package ch.bbw.tloz_zork.game;
 
-import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.cmds.CommandHandler;
+import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
 import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
-import ch.bbw.tloz_zork.items.Item;
+import ch.bbw.tloz_zork.items.HealingItem;
+import ch.bbw.tloz_zork.items.WeaponItem;
 import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
 import ch.bbw.tloz_zork.riddles.Riddle;
@@ -92,21 +93,42 @@ public class Game {
 
     private void initializeGame() {
         // Hier wird alles initialisiert
-        Item bow = new Item("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83C\uDFF9");
-        Item root = new Item("Root", "A stick. Very light to carry but unfortunately not too strong.", 0.7, "\uD83C\uDFF9");
-        Item sword = new Item("Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "\uD83D\uDDE1");
-        Item shield = new Item("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "\uD83D\uDEE1");
-        Item banana = new Item("Banana", "A healing item used to restore health.", 0.5, "\uD83D\uDC9F");
-        Item apple = new Item("Apple", "A healing item used to restore health.", 0.2, "\uD83C\uDF4E");
-        Item boomerang = new Item("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83E\uDE83");
+        //Item bow = new Item("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83C\uDFF9");
+        //Item root = new Item("Root", "A stick. Very light to carry but unfortunately not too strong.", 0.7, "\uD83C\uDFF9");
+        //Item sword = new Item("Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "\uD83D\uDDE1");
+        //Item shield = new Item("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "\uD83D\uDEE1");
+        //Item banana = new Item("Banana", "A healing item used to restore health.", 0.5, "\uD83D\uDC9F");
+        //Item apple = new Item("Apple", "A healing item used to restore health.", 0.2, "\uD83C\uDF4E");
+        //Item boomerang = new Item("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83E\uDE83");
+
+        // All HealingItems, which u can use to heal
+        HealingItem apple = new HealingItem("Apple", "A healing item used to restore health.", 0.2, "🍎", 1);
+        HealingItem banana = new HealingItem("Banana", "A healing item used to restore health.", 0.5, "🍌", 2);
+        HealingItem fish = new HealingItem("Fish", "A healing item used to restore health.", 0.8, "🐟", 3);
+        HealingItem meat = new HealingItem("Meat", "A healing item used to restore health.", 1.0, "🥩", 4);
+
+        // All Weapons, which u can use to fight
+        WeaponItem sword = new WeaponItem("Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "🗡️", 5);
+        WeaponItem hammer = new WeaponItem("Hammer", "A heavy melee weapon used to defeat enemies and break through obstacles.", 5.0, "🔨", 3);
+        WeaponItem axe = new WeaponItem("Axe", "A heavy melee weapon used to defeat enemies and chop down trees.", 3.5, "🪓", 4);
+        WeaponItem spear = new WeaponItem("Spear", "A long melee weapon used to defeat enemies from a distance.", 2.0, "🗿", 2);
+        WeaponItem mace = new WeaponItem("Mace", "A heavy melee weapon used to defeat enemies and crush armor.", 4.0, "🔨", 5);
+        WeaponItem scythe = new WeaponItem("Scythe", "A long melee weapon used to defeat enemies and harvest crops.", 2.5, "🌾", 3);
+        WeaponItem kunai = new WeaponItem("Kunai", "A short ranged weapon used to defeat enemies and hit distant targets.", 0.5, "🗡️", 1);
+        WeaponItem throwingKnives = new WeaponItem("ThrowingKnives", "A ranged weapon used to defeat enemies and hit distant targets.", 0.7, "🗡️", 5);
+        WeaponItem bow = new WeaponItem("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🏹", 3);
+        WeaponItem boomerang = new WeaponItem("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🪃", 1);
+        WeaponItem root = new WeaponItem("Root", "A stick. Very light to carry but unfortunately not too strong.", 0.7, "🌲", 1);
+        WeaponItem shield = new WeaponItem("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "🛡️", 1); //TODO: Eventuell eigene Klasse für defensive Items
+
 
         // Initialisierung Enemy
         Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root, false);
         Enemy moblin = new Enemy("moblin", 1, 1, 10, sword, false);
-        Enemy lynel = new Enemy("lynel", 5, 2, 3, shield, false);
-        Enemy stalfos = new Enemy("stalfos", 2, 3, 5, sword, false);
+        Enemy lynel = new Enemy("lynel", 5, 2, 3, mace, false);
+        Enemy stalfos = new Enemy("stalfos", 2, 3, 5, spear, false);
         Enemy darknut = new Enemy("darknut", 1, 2, 3, sword, false);
-        Enemy ganon = new Enemy("Ganon", 8, 3, 7, boomerang, false);
+        Enemy ganon = new Enemy("Ganon", 8, 3, 7, throwingKnives, false);
 
         // Initialisierung Rätselelemente
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
@@ -129,11 +151,12 @@ public class Game {
         // Initialisierung Raum-Items
         //TODO: Eventuell randomizen
         castle_ruin.addItem(bow);
-        castle_ruin.addItem(shield);
+        castle_ruin.addItem(meat);
         woodland.addItem(banana);
-        castle.addItem(sword);
+        castle.addItem(hammer);
         cave.addItem(apple);
         underwater_temple.addItem(boomerang);
+        underwater_temple.addItem(fish);
 
         // Initialisierung Zugänge (Gates) -> Map
         Gate gateCastle_ruinWoodland = new Gate(castle_ruin, woodland, false);

@@ -1,10 +1,9 @@
 package ch.bbw.tloz_zork.items;
 
-
-public class Sword extends Item {
+public class WeaponItem extends Item{
     private int damage;
 
-    public Sword(String name, String description, double weight, String icon, int damage) {
+    public WeaponItem(String name, String description, double weight, String icon, int damage) {
         super(name, description, weight, icon);
         this.damage = damage;
     }

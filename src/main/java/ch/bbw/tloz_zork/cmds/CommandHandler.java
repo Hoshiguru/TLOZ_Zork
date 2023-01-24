@@ -61,6 +61,15 @@ public class CommandHandler {
             } else {
                 System.out.println("Please provide an item to drop. Type 'drop <item>' to drop an item.");
             }
+        } else if (command.startsWith("eat")) {
+            String input = command.substring(3);
+            String[] parts = input.split(" ");
+            if (parts.length > 1) {
+                String item = parts[1];
+                itemCommands.eat(player, item);
+            } else {
+                System.out.println("Please provide an item to eat. Type 'eat <item>' to eat an item.");
+            }
         } else if (command.equals("inventory") || command.equals("i")) {
             itemCommands.inventory(player);
         } else if (command.equals("fight") || command.equals("f")) {
