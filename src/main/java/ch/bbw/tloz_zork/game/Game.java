@@ -152,7 +152,7 @@ public class Game {
         player.setCurrentLocation(castle_ruin);
     }
 
-    // Methode für "loading screens
+    // Methode für loading times
     public static void loading(long limit) {
 
         long startTime = System.currentTimeMillis();

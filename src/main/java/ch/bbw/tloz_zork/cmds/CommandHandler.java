@@ -64,9 +64,11 @@ public class CommandHandler {
         } else if (command.equals("inventory") || command.equals("i")) {
             itemCommands.inventory(player);
         } else if (command.equals("fight") || command.equals("f")) {
+            // Can only be entered a fight if there is an enemy at the Location
             if (player.getCurrentLocation().getEnemy().getHealth() > 0) {
                 combatCommand.combat(player, player.getCurrentLocation().getEnemy());
             } else {
+                // Else it prints out this
                 System.out.println("There are no enemies in this area");
             }
         } else {

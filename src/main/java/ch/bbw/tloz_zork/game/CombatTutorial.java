@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CombatTutorial {
+    // These initialization are only for the tutorial
     ArrayList<Item> itemArrayList = new ArrayList<Item>();
     Player player = new Player(3, 1, 5, itemArrayList, 20.0, null);
     Item root = new Item("root", "A melee weapon used to defeat enemies and hit close targets.", 0.2, "⚔️");
@@ -29,7 +30,7 @@ public class CombatTutorial {
         command.nextLine();
         System.out.println("WATCH OUT! THE DUMMY IS GOING TO ATTACK YOU");
         System.out.println("Type in \"dodge\" to dodge the attack");
-
+        // Loops until you type in "dodge"
         while (!contin) {
             System.out.println();
             System.out.println("| " + dummy.getName() + "  | hearts: " + dummy.getHealth() + " | damage: " + dummy.getAp() + " | " + dummy.getItem().getName() + " |");
@@ -37,6 +38,7 @@ public class CombatTutorial {
             System.out.println();
             System.out.print("》 ");
             switch (command.nextLine().toLowerCase()) {
+                // Player stamina = player stamina - 1
                 case "dodge":
                     player.setStamina(player.getStamina() - 1);
                     System.out.println("Good job!");
@@ -46,6 +48,7 @@ public class CombatTutorial {
                     System.out.println("you have to defend yourself! try again");
             }
         }
+        // Set back to false so I can loop again
         contin = false;
         System.out.println("Friendly reminder that you only have a certain amount of stamina to dodge!");
         System.out.println("Press enter to continue");
@@ -60,8 +63,9 @@ public class CombatTutorial {
             System.out.println();
             System.out.print("》 ");
             switch (command.nextLine().toLowerCase()) {
+                // Dummy = dummy health - player ap
                 case "attack":
-                    dummy.setHealth(dummy.getHealth() - 1);
+                    dummy.setHealth(dummy.getHealth() - player.getAp());
                     System.out.println("Now you have dealt 1 damage to the dummy.");
                     System.out.println("If you have any items, you can deal more damage.");
                     System.out.println("Press enter to continue");
@@ -83,7 +87,9 @@ public class CombatTutorial {
         System.out.println("The dummy also dropped an item");
         System.out.println("Type \"collect\" to collect the item");
         System.out.print("》 ");
+        // Collect the item
         switch (command.nextLine().toLowerCase()) {
+            // Dummies Item gets added to your inventory
             case "collect":
                 System.out.println("You have collected " + dummy.getItem().getName() + "!");
                 itemArrayList.add(dummy.getItem());

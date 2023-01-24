@@ -12,20 +12,25 @@ public class CombatCommand {
     Scanner scan = new Scanner(System.in);
 
     public void combat(Player player, Enemy enemy) {
+        // New Array List to add enemies Item if defeated
         ArrayList<Item> inventory = player.getInventory();
         System.out.println("You have decided to fight a " + enemy.getName() + "!");
+        // This while goes so long, until the enemies health goes to 0
         while (enemy.getHealth() > 0) {
             System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " + enemy.getItem().getName() + " |");
             System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getAp() + " | stamina: " + player.getStamina() + " |");
             System.out.println();
+            // Loop
             while (!contin) {
                 System.out.print("》 ");
                 switch (scan.nextLine().toLowerCase()) {
+                    // Enemy health = enemy health - player ap
                     case "attack", "a" -> {
                         System.out.println("The enemy gets -" + player.getAp() + " hearts");
                         enemy.setHealth(enemy.getHealth() - player.getAp());
                         contin = true;
                     }
+                    // Show inventory
                     case "item", "i" -> {
                         if (inventory.size() == 0) {
                             System.out.println("\uD83D\uDCBC Your inventory is empty.");
@@ -36,10 +41,12 @@ public class CombatCommand {
                             }
                         }
                     }
+                    // End the Method
                     case "flee", "f" -> {
                         System.out.println("You escaped");
                         return;
                     }
+                    // Help
                     case "help", "h" -> {
                         System.out.println("'Attack' to attack the enemy");
                         System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
@@ -51,18 +58,22 @@ public class CombatCommand {
                 }
 
             }
+            //Set back to false so you can loop again
             contin = false;
             if (enemy.getHealth() > 0) {
                 System.out.println(enemy.getName() + " wants to attack you");
                 System.out.println("do you want to dodge?");
                 System.out.print("》 ");
+                // Loop
                 while (!contin) {
                     switch (scan.nextLine().toLowerCase()) {
+                        // PLayer stamina = player stamina - 1
                         case "yes" -> {
                             player.setStamina(player.getStamina() - 1);
                             System.out.println("You dodged the attack");
                             contin = true;
                         }
+                        // Player health = player health - enemy ap
                         case "no" -> {
                             player.setHearts(player.getHearts() - enemy.getAp());
                             System.out.println("You get -" + enemy.getAp() + " hearts");
@@ -74,7 +85,7 @@ public class CombatCommand {
             }
             contin = false;
         }
-
+        // Add enemy Item to your inventory
         System.out.println("You have received a " + enemy.getItem().getIcon() + enemy.getItem().getName());
         inventory.add(enemy.getItem());
         player.setInventory(inventory);
