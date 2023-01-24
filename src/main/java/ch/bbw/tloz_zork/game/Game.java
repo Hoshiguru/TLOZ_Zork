@@ -122,10 +122,10 @@ public class Game {
         underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians." + (!lynel.getIsDead() ? lynel.getQuote() : ""), "underwater_temple", lynel);
 
         // Initialisierung Dungeon
-        Dungeon temple_of_time = new Dungeon("Temple of Time", "⌛", "The Temple of Time is an impressive building located in the castle ruin of Hyrule. It is surrounded by a majestic waterfall and has a magnificent architecture reminiscent of ancient temples", "temple_of_time", false, sword, master_sword_riddle);
-        Dungeon shadow_dungeon = new Dungeon("Shadow Dungeon", "🕳️", "A mysterious dungeon, between trees in the woodland, right next to the master sword place.", "shadow_temple", false, shield, zelda_name_riddle);
-        Dungeon spirit_dungeon = new Dungeon("Spirit Dungeon", "\uD83D\uDC7B", "A mysterious temple lies in the underground, hidden in the cave.", "spirit_dungeon", false, apple, stalfos, player);
-        Dungeon desert_dungeon = new Dungeon("Desert Dungeon", "\uD83C\uDF35", "An desert dungeon, which is located in the east of the desert.", "desert_dungeon", false, sword, darknut, player);
+        Dungeon temple_of_time = new Dungeon("Temple of Time", "⌛", "The Temple of Time is an impressive building located in the castle ruin of Hyrule. It is surrounded by a majestic waterfall and has a magnificent architecture reminiscent of ancient temples", "temple_of_time", false, master_sword_riddle);
+        Dungeon shadow_dungeon = new Dungeon("Shadow Dungeon", "🕳️", "A mysterious dungeon, between trees in the woodland, right next to the master sword place.", "shadow_temple", false, zelda_name_riddle);
+        Dungeon spirit_dungeon = new Dungeon("Spirit Dungeon", "\uD83D\uDC7B", "A mysterious temple lies in the underground, hidden in the cave.", "spirit_dungeon", false, stalfos);
+        Dungeon desert_dungeon = new Dungeon("Desert Dungeon", "\uD83C\uDF35", "An desert dungeon, which is located in the east of the desert.", "desert_dungeon", false, darknut);
 
         // Initialisierung Raum-Items
         //TODO: Eventuell randomizen

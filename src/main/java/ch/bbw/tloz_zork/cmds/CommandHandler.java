@@ -46,7 +46,7 @@ public class CommandHandler {
             helpCommand.help();
         } else if (command.equals("back")) {
             moveCommand.back(player);
-        } else if (command.equals("score")) {
+        } else if (command.equals("score") || command.equals("s")) {
             scoreCommand.score(player);
         } else if (command.equals("map") || command.equals("m")) {
             mapCommand.map(player);

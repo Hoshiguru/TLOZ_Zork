@@ -38,7 +38,7 @@ public class MoveCommand {
                 System.out.println(location2.getQuote());
                 if (location2 instanceof Dungeon) {
                     Dungeon dungeon = (Dungeon) location2;
-                    dungeon.startChallenge();
+                    dungeon.startChallenge(player);
                 }
             }
             else if (location2.getName().equals(currentLocation.getName())){
@@ -48,7 +48,7 @@ public class MoveCommand {
                 System.out.println(location1.getQuote());
                 if (location1 instanceof Dungeon) {
                     Dungeon dungeon = (Dungeon) location1;
-                    dungeon.startChallenge();
+                    dungeon.startChallenge(player);
                 }
             }
             else {

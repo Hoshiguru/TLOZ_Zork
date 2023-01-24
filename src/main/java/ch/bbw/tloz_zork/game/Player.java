@@ -164,15 +164,15 @@ public class Player {
         return maxHearts;
     }
 
-    public void setMaxHearts(int maxHearts) {
-        this.maxHearts = maxHearts;
+    public void increaseMaxHearts() {
+        this.maxHearts = maxHearts + 1;
     }
 
     public int getMaxStamina() {
         return maxStamina;
     }
 
-    public void setMaxStamina(int maxStamina) {
-        this.maxStamina = maxStamina;
+    public void increaseMaxStamina() {
+        this.maxStamina = maxStamina + 1;
     }
 }

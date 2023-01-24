@@ -6,55 +6,65 @@ import ch.bbw.tloz_zork.game.Player;
 import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
+import java.util.Scanner;
+
 public class Dungeon extends Location {
     private boolean isCompleted;
-    private Item reward;
     private Riddle riddle;
     private Enemy enemy;
-    private Player player;
 
-    public Dungeon(String name, String icon, String quote, String assignedMap, boolean isCompleted, Item reward, Riddle riddle) {
+    public Dungeon(String name, String icon, String quote, String assignedMap, boolean isCompleted, Riddle riddle) {
         super(name, icon, quote, assignedMap);
         this.isCompleted = isCompleted;
-        this.reward = reward;
         this.riddle = riddle;
     }
 
-    public Dungeon(String name, String icon, String quote, String assignedMap, boolean isCompleted, Item reward, Enemy enemy, Player player) {
+    public Dungeon(String name, String icon, String quote, String assignedMap, boolean isCompleted, Enemy enemy) {
         super(name, icon, quote, assignedMap);
         this.isCompleted = isCompleted;
-        this.reward = reward;
         this.enemy = enemy;
-        this.player = player;
     }
 
     /**
      * Starts the challenge of the dungeon
      */
-    public void startChallenge(){
+    public void startChallenge(Player player){
         if (!isCompleted) {
             if(riddle != null) {
                 System.out.println("\uD83D\uDEAA You just entered a dungeon. You can't go back, until you solved this riddle.");
                 riddle.answerPrompt(this);
-            }
-            if(enemy != null) {
+            } else if(enemy != null) {
                 CombatCommand combatCommand = new CombatCommand();
                 System.out.println("\uD83D\uDEAA You just entered a dungeon. You can't go back, until you defeated this enemy.");
                 combatCommand.combat(player, enemy, true);
-            }
-            else {
+            } else {
                 System.out.println("This dungeon has neither a riddle nor enemies!");
             }
+            System.out.println("✅ You have completed the dungeon!");
+            selectReward(player);
         }
         // TODO: Auswahl zwischen Herzkammern und Ausdauerkammern
         else {
-            if (reward != null) {
-                addItem(reward);
-                System.out.println("✅ You have already completed this dungeon! You can grab a " + reward.getIcon() + reward.getName() + " as a reward.");
-                setReward(null);
-            } else {
-                System.out.println("✅ You have already completed this dungeon and collected your rewards! Search for another one.");
+            System.out.println("✅ You have already completed this dungeon and collected your rewards! Search for another one.");
+        }
+    }
+    private void selectReward(Player player) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Select your reward: ");
+        System.out.println("+1 \uD83D\uDD25 Heart Container \t +1 \uD83D\uDD25 Stamina Container");
+        System.out.print("》 ");
+        switch (scan.nextLine().toLowerCase()) {
+            case "heart" -> {
+                player.increaseMaxHearts();
+                player.setHearts(player.getMaxHearts()); // After getting a heart container, the player will get full hearts
+                System.out.println("You got a heart container! Now you have " + player.getMaxHearts() + " hearts.");
             }
+            case "stamina" -> {
+                player.increaseMaxStamina();
+                player.setStamina(player.getMaxStamina()); // After getting a stamina container, the player will get full stamina
+                System.out.println("You got a stamina container! Now you have " + player.getMaxStamina() + " stamina.");
+            }
+            default -> System.out.println("Please choose between 'heart' or 'stamina'");
         }
     }
     public boolean isCompleted() {
@@ -63,14 +73,6 @@ public class Dungeon extends Location {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
-    }
-
-    public Item getReward() {
-        return reward;
-    }
-
-    public void setReward(Item reward) {
-        this.reward = reward;
     }
 
 }
