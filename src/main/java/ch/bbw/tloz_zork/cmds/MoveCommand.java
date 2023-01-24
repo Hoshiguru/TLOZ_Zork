@@ -34,6 +34,12 @@ public class MoveCommand {
             System.out.println("You can\'t go there.");
         }
     }
+
+    /**
+     * Check, if the Player uses a shortcut
+     * @param direction
+     * @return
+     */
     private String getFullDirection(String direction) {
         switch (direction) {
             case "n" -> direction = "north";
@@ -45,6 +51,13 @@ public class MoveCommand {
         }
         return direction;
     }
+
+    /**
+     * Get the next Location of the player
+     * @param currentLocation
+     * @param gate
+     * @return
+     */
     private Location getNextLocation(Location currentLocation, Gate gate) {
         Location location1 = gate.getLocation1();
         Location location2 = gate.getLocation2();
@@ -57,6 +70,11 @@ public class MoveCommand {
             return currentLocation;
         }
     }
+
+    /**
+     * Check if there is an enemy in the current Location
+     * @param location
+     */
     private void checkEnemyStatus(Location location) {
         if (location.getEnemy() != null && !location.getEnemy().getIsDead()){
             System.out.println("⚠️There is also a " + location.getEnemy().getName() + " in this area. This enemy holds a " + location.getEnemy().getItem().getName() + ".\nYou can 'fight' him anytime while you are in this Location");
