@@ -26,6 +26,7 @@ public class Dungeon extends Location {
 
     /**
      * Starts the challenge of the dungeon
+     * @param player
      */
     public void startChallenge(Player player){
         if (!isCompleted) {
@@ -45,6 +46,11 @@ public class Dungeon extends Location {
             System.out.println("✅ You have already completed this dungeon and collected your rewards! Search for another one.");
         }
     }
+
+    /**
+     * Selects the reward for the dungeon
+     * @param player
+     */
     private void selectReward(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Select your reward: ");
