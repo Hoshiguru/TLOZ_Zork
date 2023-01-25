@@ -1,9 +1,12 @@
 package ch.bbw.tloz_zork.game;
 
+import ch.bbw.tloz_zork.items.HealingItem;
 import ch.bbw.tloz_zork.items.Item;
+import ch.bbw.tloz_zork.items.WeaponItem;
 import ch.bbw.tloz_zork.locations.Location;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Player {
     private int hearts;
@@ -12,6 +15,7 @@ public class Player {
     private int stamina;
     private int maxStamina;
     private ArrayList<Item> inventory;
+    private WeaponItem weaponInHand; // Weapon which is currently in the players hand
     private double maxWeight; // Maximale Tragkraft von Items
     private Location currentLocation;
     private Location previousLocation;
@@ -24,9 +28,10 @@ public class Player {
         this.ap = ap;
         this.stamina = stamina;
         this.maxStamina = maxStagima;
-        this.inventory = new ArrayList<Item>();;
+        this.inventory = new ArrayList<Item>();
         this.maxWeight = maxWeight;
         this.currentLocation = currentLocation;
+        this.weaponInHand = null;
         this.previousLocation = null;
         this.moves = 0;
         this.dead=dead;
@@ -55,6 +60,53 @@ public class Player {
         return null;
     }
     /**
+     * Returns the item with the given name and removes it from the inventory
+     * @param itemName
+     * @return
+     */
+    public HealingItem eatItem(String itemName) {
+        Iterator<Item> iterator = inventory.iterator();
+        while (iterator.hasNext()) {
+            Item item = iterator.next();
+            if (item.getName().equalsIgnoreCase(itemName) && item instanceof HealingItem) {
+                HealingItem healingItem = (HealingItem) item;
+                if (hearts + healingItem.getHealingAmount() > maxHearts) {
+                    hearts = maxHearts;
+                    System.out.println("Your hearts are full!");
+                } else {
+                    iterator.remove();
+                    hearts += healingItem.getHealingAmount();
+                    System.out.println("You ate " + healingItem.getIcon() + healingItem.getName() + " 【+" + healingItem.getHealingAmount() + "♥】");
+                }
+            }
+            else if (item.getName().equalsIgnoreCase(itemName) && !(item instanceof HealingItem)) {
+                System.out.println("You can't eat that!");
+            }
+        }
+        return null;
+    }
+
+    public WeaponItem useWeapon(String weaponName) {
+        Iterator<Item> iterator = inventory.iterator();
+        while (iterator.hasNext()) {
+            Item item = iterator.next();
+            if (item.getName().equalsIgnoreCase(weaponName) && item instanceof WeaponItem) {
+                WeaponItem weaponItem = (WeaponItem) item;
+                if (weaponInHand != null) {
+                    System.out.println("You unequipped " + weaponInHand.getIcon() + weaponInHand.getName());
+                }
+                weaponInHand = weaponItem;
+                iterator.remove();
+                System.out.println("You equipped " + weaponItem.getIcon() + weaponItem.getName());
+            }
+            else if (item.getName().equalsIgnoreCase(weaponName) && !(item instanceof WeaponItem)) {
+                System.out.println("You can't use that! Try it with a weapon!");
+            }
+        }
+        return null;
+    }
+
+    /**
      * Returns the weight of all items in the inventory
      * @return
      */
@@ -66,6 +118,12 @@ public class Player {
         return inventoryWeight;
     }
 
+    public int getFullAp() {
+        if (weaponInHand != null) {
+            return ap + weaponInHand.getDamage();
+        }
+        return ap;
+    }
 
     public int getHearts() {
         return hearts;
@@ -92,6 +150,7 @@ public class Player {
         }
         return stamina;
     }
+
     public void setHearts(int hearts) {
         this.hearts = hearts;
     }
@@ -127,11 +186,9 @@ public class Player {
     public void setPreviousLocation(Location previousLocation) {
         this.previousLocation = previousLocation;
     }
-
     public int getAp() {
         return ap;
     }
-
     public void setAp(int ap) {
         this.ap = ap;
     }
@@ -175,4 +232,10 @@ public class Player {
     public void increaseMaxStamina() {
         this.maxStamina = maxStamina + 1;
     }
+
+    public WeaponItem getWeaponInHand() {
+        return weaponInHand;
+    }
+
+
 }

@@ -2,7 +2,9 @@ package ch.bbw.tloz_zork.cmds;
 
 
 import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.items.HealingItem;
 import ch.bbw.tloz_zork.items.Item;
+import ch.bbw.tloz_zork.items.WeaponItem;
 
 import java.util.ArrayList;
 
@@ -16,11 +18,22 @@ public class ItemCommands {
         if (inventory.size() == 0) {
             System.out.println("\uD83D\uDCBC Your inventory is empty.");
         } else {
+            if (player.getWeaponInHand() != null) {
+                System.out.println("✋ You are holding: " + player.getWeaponInHand().getName() + " +" + player.getWeaponInHand().getDamage() + "\uD83D\uDCA5");
+            } else {
+                System.out.println("\uD83D\uDCA1 Equip a weapon with 'use <weapon>'.");
+            }
             System.out.println("⚖ Weight: " + inventoryWeight + " kg / " + player.getMaxWeight() + " kg");
             System.out.println("\uD83D\uDCBC Your inventory contains:");
 
             for (Item item : inventory) {
-                System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【" + item.getWeight() + " kg】");
+                if(item instanceof HealingItem){
+                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【⚖" + item.getWeight() + " kg | +" + ((HealingItem) item).getHealingAmount() + "♥】");
+                } else if (item instanceof WeaponItem) {
+                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【⚖" + item.getWeight() + " kg | +" + ((WeaponItem) item).getDamage() + "\uD83D\uDCA5】");
+                } else {
+                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【⚖" + item.getWeight() + " kg】");
+                }
             }
         }
     }
@@ -71,6 +84,22 @@ public class ItemCommands {
      * @param player
      * @param itemName
      */
+    public void eat(Player player, String itemName) {
+        Item item = player.findItem(itemName);
+        if (item != null) {
+            player.eatItem(itemName);
+        } else {
+            System.out.println("❌ You don't have this item in your inventory.");
+        }
+    }
+    public void use(Player player, String itemName) {
+        Item item = player.findItem(itemName);
+        if (item != null) {
+            player.useWeapon(itemName);
+        } else {
+            System.out.println("❌ You don't have this item in your inventory.");
+        }
+    }
     public void drop(Player player, String itemName) {
         Item item = player.findItem(itemName);
         ArrayList<Item> roomItems = player.getCurrentLocation().getItems();

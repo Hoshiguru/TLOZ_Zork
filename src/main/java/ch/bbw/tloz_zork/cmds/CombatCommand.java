@@ -18,16 +18,16 @@ public class CombatCommand {
         // This while goes so long, until the enemies health goes to 0
         while (enemy.getHealth() > 0 && player.getHearts() > 0) {
             System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " + enemy.getItem().getName() + " |");
-            System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getAp() + " | stamina: " + player.getStamina() + " |");
+            System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getFullAp() + " | stamina: " + player.getStamina() + " |");
             System.out.println();
             // Loop
             while (!contin) {
                 System.out.print("》 ");
-                switch (scan.nextLine().toLowerCase()) {
+                switch (scan.next().toLowerCase()) {
                     // Enemy health = enemy health - player ap
                     case "attack", "a" -> {
-                        System.out.println("The enemy gets -" + player.getAp() + " hearts");
-                        enemy.setHealth(enemy.getHealth() - player.getAp());
+                        System.out.println("The enemy gets -" + player.getFullAp() + " hearts");
+                        enemy.setHealth(enemy.getHealth() - player.getFullAp());
                         contin = true;
                     }
                     // Show inventory
@@ -41,6 +41,21 @@ public class CombatCommand {
                             }
                         }
                     }
+                    case "eat", "e" -> {
+                        System.out.println("What do you want to eat?");
+                        System.out.print("》 ");
+                        String item = scan.next().toLowerCase();
+                        player.eatItem(item);
+                        break;
+                    }
+                    case "use", "u" -> {
+                        System.out.println("What weapon do you want to equip?");
+                        System.out.print("》 ");
+                        String weapon = scan.next().toLowerCase();
+                        player.useWeapon(weapon);
+                        break;
+                    }
+
                     // End the Method
                     case "flee", "f" -> {
                         if (isInDungeon) {
@@ -55,6 +70,10 @@ public class CombatCommand {
                         System.out.println("'Attack' to attack the enemy");
                         System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
                         System.out.println("'Item' to open your Inventory");
+                        System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+                        System.out.println("'Eat' to heal with an item from your inventory");
+                        System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+                        System.out.println("'Use' to equip a weapon from your inventory");
                         if (!isInDungeon) {
                             System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
                             System.out.println("'Flee' to flee");
@@ -73,7 +92,7 @@ public class CombatCommand {
                     System.out.print("》 ");
                     // Loop
                     while (!contin) {
-                        switch (scan.nextLine().toLowerCase()) {
+                        switch (scan.next().toLowerCase()) {
                             // PLayer stamina = player stamina - 1
                             case "yes", "y", "dodge" -> {
                                 player.setStamina(player.getStamina() - 1);

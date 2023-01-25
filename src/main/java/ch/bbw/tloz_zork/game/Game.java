@@ -1,10 +1,11 @@
 package ch.bbw.tloz_zork.game;
 
-import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.cmds.CommandHandler;
+import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
 import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
-import ch.bbw.tloz_zork.items.Item;
+import ch.bbw.tloz_zork.items.HealingItem;
+import ch.bbw.tloz_zork.items.WeaponItem;
 import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
 import ch.bbw.tloz_zork.riddles.Riddle;
@@ -91,28 +92,40 @@ public class Game {
     }
 
     private void initializeGame() {
-        // Hier wird alles initialisiert
-        Item bow = new Item("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83C\uDFF9");
-        Item root = new Item("Root", "A stick. Very light to carry but unfortunately not too strong.", 0.7, "\uD83C\uDFF9");
-        Item sword = new Item("Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "\uD83D\uDDE1");
-        Item shield = new Item("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "\uD83D\uDEE1");
-        Item banana = new Item("Banana", "A healing item used to restore health.", 0.5, "\uD83D\uDC9F");
-        Item apple = new Item("Apple", "A healing item used to restore health.", 0.2, "\uD83C\uDF4E");
-        Item boomerang = new Item("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "\uD83E\uDE83");
 
-        // Initialisierung Enemy
+        // All HealingItems, which u can use to heal
+        HealingItem apple = new HealingItem("Apple", "A healing item used to restore health.", 0.2, "🍎", 1);
+        HealingItem banana = new HealingItem("Banana", "A healing item used to restore health.", 0.5, "🍌", 2);
+        HealingItem fish = new HealingItem("Fish", "A healing item used to restore health.", 0.8, "🐟", 3);
+        HealingItem meat = new HealingItem("Meat", "A healing item used to restore health.", 1.0, "🥩", 4);
+
+        // All Weapons, which u can use to fight
+        WeaponItem sword = new WeaponItem("Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "🗡️", 5);
+        WeaponItem hammer = new WeaponItem("Hammer", "A heavy melee weapon used to defeat enemies and break through obstacles.", 5.0, "🔨", 3);
+        WeaponItem axe = new WeaponItem("Axe", "A heavy melee weapon used to defeat enemies and chop down trees.", 3.5, "🪓", 4);
+        WeaponItem spear = new WeaponItem("Spear", "A long melee weapon used to defeat enemies from a distance.", 2.0, "🗿", 2);
+        WeaponItem mace = new WeaponItem("Mace", "A heavy melee weapon used to defeat enemies and crush armor.", 4.0, "🔨", 5);
+        WeaponItem scythe = new WeaponItem("Scythe", "A long melee weapon used to defeat enemies and harvest crops.", 2.5, "🌾", 3);
+        WeaponItem kunai = new WeaponItem("Kunai", "A short ranged weapon used to defeat enemies and hit distant targets.", 0.5, "🗡️", 1);
+        WeaponItem throwingKnives = new WeaponItem("ThrowingKnives", "A ranged weapon used to defeat enemies and hit distant targets.", 0.7, "🗡️", 5);
+        WeaponItem bow = new WeaponItem("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🏹", 3);
+        WeaponItem boomerang = new WeaponItem("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🪃", 1);
+        WeaponItem root = new WeaponItem("Root", "A stick. Very light to carry but unfortunately not too strong.", 0.7, "🌲", 1);
+        WeaponItem shield = new WeaponItem("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "🛡️", 1); //TODO: Eventuell eigene Klasse für defensive Items
+
+        // Initialisation Enemy
         Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root, false);
         Enemy moblin = new Enemy("moblin", 1, 1, 10, sword, false);
-        Enemy lynel = new Enemy("lynel", 5, 2, 3, shield, false);
-        Enemy stalfos = new Enemy("stalfos", 2, 3, 5, sword, false);
+        Enemy lynel = new Enemy("lynel", 5, 2, 3, mace, false);
+        Enemy stalfos = new Enemy("stalfos", 2, 3, 5, spear, false);
         Enemy darknut = new Enemy("darknut", 1, 2, 3, sword, false);
-        Enemy ganon = new Enemy("Ganon", 8, 3, 7, boomerang, false);
+        Enemy ganon = new Enemy("Ganon", 8, 3, 7, throwingKnives, false);
 
-        // Initialisierung Rätselelemente
+        // Initialisation riddles
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
         Riddle master_sword_riddle = new Riddle("How many heart chambers does it take to pull the master sword out of the stone?", null, "13");
 
-        // Initialisierung Räume
+        // Initialisation Locations
         castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. ", "castle_ruin", bokoblin);
         woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland", lynel);
         castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle", ganon);
@@ -120,22 +133,23 @@ public class Game {
         desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert", moblin);
         underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple", lynel);
 
-        // Initialisierung Dungeon
+        // Initialisation Dungeon
         Dungeon temple_of_time = new Dungeon("Temple of Time", "⌛", "The Temple of Time is an impressive building located in the castle ruin of Hyrule. It is surrounded by a majestic waterfall and has a magnificent architecture reminiscent of ancient temples", "temple_of_time", false, master_sword_riddle);
         Dungeon shadow_dungeon = new Dungeon("Shadow Dungeon", "🕳️", "A mysterious dungeon, between trees in the woodland, right next to the master sword place.", "shadow_dungeon", false, zelda_name_riddle);
         Dungeon spirit_dungeon = new Dungeon("Spirit Dungeon", "\uD83D\uDC7B", "A mysterious temple lies in the underground, hidden in the cave.", "spirit_dungeon", false, stalfos);
         Dungeon desert_dungeon = new Dungeon("Desert Dungeon", "\uD83C\uDF35", "An desert dungeon, which is located in the east of the desert.", "desert_dungeon", false, darknut);
 
-        // Initialisierung Raum-Items
+        // Initialisation Raum-Items
         //TODO: Eventuell randomizen
         castle_ruin.addItem(bow);
-        castle_ruin.addItem(shield);
+        castle_ruin.addItem(meat);
         woodland.addItem(banana);
-        castle.addItem(sword);
+        castle.addItem(hammer);
         cave.addItem(apple);
         underwater_temple.addItem(boomerang);
+        underwater_temple.addItem(fish);
 
-        // Initialisierung Zugänge (Gates) -> Map
+        // Initialisation Gates
         Gate gateCastle_ruinWoodland = new Gate(castle_ruin, woodland, false);
         Gate gateWoodlandCastle = new Gate(woodland, castle, true);
         Gate gateCastle_ruinCave = new Gate(castle_ruin, cave, false);
