@@ -114,12 +114,13 @@ public class Game {
         WeaponItem shield = new WeaponItem("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "🛡️", 1); //TODO: Eventuell eigene Klasse für defensive Items
 
         // Initialisation Enemy
-        Enemy bokoblin = new Enemy("Bokoblin", 2, 1, 10, root, false);
-        Enemy moblin = new Enemy("moblin", 1, 1, 10, sword, false);
-        Enemy lynel = new Enemy("lynel", 5, 2, 3, mace, false);
-        Enemy stalfos = new Enemy("stalfos", 2, 3, 5, spear, false);
-        Enemy darknut = new Enemy("darknut", 1, 2, 3, sword, false);
-        Enemy ganon = new Enemy("Ganon", 8, 3, 7, throwingKnives, false);
+        Enemy bokoblin = new Enemy("Bokoblin", 5, 1, 10, root, false);
+        Enemy moblin = new Enemy("moblin", 3, 1, 10, sword, false);
+        Enemy lynel_1 = new Enemy("lynel", 15, 4, 3, mace, false);
+        Enemy lynel_2 = new Enemy("lynel", 17, 5, 3, mace, false);
+        Enemy stalfos = new Enemy("stalfos", 5, 3, 5, spear, false);
+        Enemy darknut = new Enemy("darknut", 4, 2, 3, sword, false);
+        Enemy ganon = new Enemy("Ganon", 20, 6, 7, throwingKnives, false);
 
         // Initialisation riddles
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
@@ -127,17 +128,17 @@ public class Game {
 
         // Initialisation Locations
         castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. ", "castle_ruin", bokoblin);
-        woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland", lynel);
+        woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland", stalfos);
         castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle", ganon);
         cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave", (Enemy) null);
         desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert", moblin);
-        underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple", lynel);
+        underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple", lynel_1);
 
         // Initialisation Dungeon
         Dungeon temple_of_time = new Dungeon("Temple of Time", "⌛", "The Temple of Time is an impressive building located in the castle ruin of Hyrule. It is surrounded by a majestic waterfall and has a magnificent architecture reminiscent of ancient temples", "temple_of_time", false, master_sword_riddle);
         Dungeon shadow_dungeon = new Dungeon("Shadow Dungeon", "🕳️", "A mysterious dungeon, between trees in the woodland, right next to the master sword place.", "shadow_dungeon", false, zelda_name_riddle);
-        Dungeon spirit_dungeon = new Dungeon("Spirit Dungeon", "\uD83D\uDC7B", "A mysterious temple lies in the underground, hidden in the cave.", "spirit_dungeon", false, stalfos);
-        Dungeon desert_dungeon = new Dungeon("Desert Dungeon", "\uD83C\uDF35", "An desert dungeon, which is located in the east of the desert.", "desert_dungeon", false, darknut);
+        Dungeon spirit_dungeon = new Dungeon("Spirit Dungeon", "\uD83D\uDC7B", "A mysterious temple lies in the underground, hidden in the cave.", "spirit_dungeon", false, darknut);
+        Dungeon desert_dungeon = new Dungeon("Desert Dungeon", "\uD83C\uDF35", "An desert dungeon, which is located in the east of the desert.", "desert_dungeon", false, lynel_2);
 
         // Initialisation Raum-Items
         //TODO: Eventuell randomizen

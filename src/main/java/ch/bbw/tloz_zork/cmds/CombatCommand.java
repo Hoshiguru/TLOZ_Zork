@@ -2,7 +2,9 @@ package ch.bbw.tloz_zork.cmds;
 
 import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.items.HealingItem;
 import ch.bbw.tloz_zork.items.Item;
+import ch.bbw.tloz_zork.items.WeaponItem;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,8 +19,8 @@ public class CombatCommand {
         System.out.println("You have decided to fight a " + enemy.getName() + "!");
         // This while goes so long, until the enemies health goes to 0
         while (enemy.getHealth() > 0 && player.getHearts() > 0) {
-            System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " + enemy.getItem().getName() + " |");
-            System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getFullAp() + " | stamina: " + player.getStamina() + " |");
+            System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " +enemy.getItem().getIcon() + enemy.getItem().getName() + " |");
+            System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getFullAp() + " | stamina: " + player.getStamina() + " | ");
             System.out.println();
             // Loop
             while (!contin) {
@@ -37,8 +39,13 @@ public class CombatCommand {
                         } else {
                             System.out.println("\uD83D\uDCBC Your inventory contains:");
                             for (Item item : inventory) {
-                                System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【" + item.getWeight() + " kg】");
-                            }
+                                if(item instanceof HealingItem){
+                                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【+" + ((HealingItem) item).getHealingAmount() + "♥】");
+                                } else if (item instanceof WeaponItem) {
+                                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【 +" + ((WeaponItem) item).getDamage() + "\uD83D\uDCA5】");
+                                } else {
+                                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription());
+                                }                            }
                         }
                     }
                     case "eat", "e" -> {
@@ -96,14 +103,14 @@ public class CombatCommand {
                             // PLayer stamina = player stamina - 1
                             case "yes", "y", "dodge" -> {
                                 player.setStamina(player.getStamina() - 1);
-                                System.out.println("You dodged the attack");
+                                System.out.println("You dodged the attack (" + player.getStaminaIcons() + ")");
                                 contin = true;
                                 break;
                             }
                             // Player health = player health - enemy ap
                             case "no", "n" -> {
                                 player.setHearts(player.getHearts() - enemy.getAp());
-                                System.out.println("You get -" + enemy.getAp() + " hearts");
+                                System.out.println("You get -" + enemy.getAp() + " hearts (" + player.getHeartIcons() + ")");
                                 contin = true;
                                 break;
                             }

@@ -91,7 +91,7 @@ public class CommandHandler {
                     itemCommands.use(player, item);
                 }
             } else {
-                System.out.println("Please provide an item to eat. Type 'use <item>' to equip an weapon.");
+                System.out.println("Please provide an item to equip. Type 'use <item>' to equip an weapon.");
             }
         } else if (command.equals("inventory") || command.equals("i")) {
             itemCommands.inventory(player);
