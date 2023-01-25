@@ -1,6 +1,7 @@
 package ch.bbw.tloz_zork.game;
 
 import ch.bbw.tloz_zork.cmds.CommandHandler;
+import ch.bbw.tloz_zork.enemies.BossEnemy;
 import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
 import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
@@ -11,6 +12,8 @@ import ch.bbw.tloz_zork.locations.Location;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -21,7 +24,7 @@ public class Game {
 
     //private Place places; // oder auch Räume
     public void startGame() {
-        player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false);
+        player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false, false);
         commandHandler = new CommandHandler();
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -42,7 +45,7 @@ public class Game {
             System.out.print("》 ");
         }
         System.out.println("Is this your first time playing The Legends of Zelda: Zork of the Wild?");
-        while (!player.isDead()) {
+        while (!player.isDead() || !player.isHasWon()) {
             System.out.print("》 ");
             switch (scanner.nextLine().toLowerCase()) {
                 case "yes":
@@ -81,6 +84,15 @@ public class Game {
                             System.out.println("You died");
                             System.out.println("Game over!");
                         }
+                        else if (player.isHasWon()) {
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println("You won");
+                            System.out.println("Congratulations!");
+                        }
                     }
                     break;
                 default:
@@ -105,8 +117,8 @@ public class Game {
         WeaponItem axe = new WeaponItem("Axe", "A heavy melee weapon used to defeat enemies and chop down trees.", 3.5, "🪓", 4);
         WeaponItem spear = new WeaponItem("Spear", "A long melee weapon used to defeat enemies from a distance.", 2.0, "🗿", 2);
         WeaponItem mace = new WeaponItem("Mace", "A heavy melee weapon used to defeat enemies and crush armor.", 4.0, "🔨", 5);
-        WeaponItem scythe = new WeaponItem("Scythe", "A long melee weapon used to defeat enemies and harvest crops.", 2.5, "🌾", 3);
-        WeaponItem kunai = new WeaponItem("Kunai", "A short ranged weapon used to defeat enemies and hit distant targets.", 0.5, "🗡️", 1);
+        WeaponItem scythe = new WeaponItem("Scythe", "A long melee weapon used to defeat enemies and harvest crops.", 2.5, "🌾", 5);
+        WeaponItem kunai = new WeaponItem("Kunai", "A short ranged weapon used to defeat enemies and hit distant targets.", 0.5, "🗡️", 6);
         WeaponItem throwingKnives = new WeaponItem("ThrowingKnives", "A ranged weapon used to defeat enemies and hit distant targets.", 0.7, "🗡️", 5);
         WeaponItem bow = new WeaponItem("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🏹", 3);
         WeaponItem boomerang = new WeaponItem("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🪃", 1);
@@ -120,7 +132,7 @@ public class Game {
         Enemy lynel_2 = new Enemy("lynel", 17, 5, 3, mace, false);
         Enemy stalfos = new Enemy("stalfos", 5, 3, 5, spear, false);
         Enemy darknut = new Enemy("darknut", 4, 2, 3, sword, false);
-        Enemy ganon = new Enemy("Ganon", 20, 6, 7, throwingKnives, false);
+        BossEnemy ganon = new BossEnemy("Ganon", 25, 0, 7, false, new ArrayList<WeaponItem>(Arrays.asList(axe, scythe, kunai)));
 
         // Initialisation riddles
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");

@@ -1,5 +1,6 @@
 package ch.bbw.tloz_zork.cmds;
 
+import ch.bbw.tloz_zork.enemies.BossEnemy;
 import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.game.Player;
 import ch.bbw.tloz_zork.items.HealingItem;
@@ -19,9 +20,24 @@ public class CombatCommand {
         System.out.println("You have decided to fight a " + enemy.getName() + "!");
         // This while goes so long, until the enemies health goes to 0
         while (enemy.getHealth() > 0 && player.getHearts() > 0) {
-            System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " +enemy.getItem().getIcon() + enemy.getItem().getName() + " |");
-            System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getFullAp() + " | stamina: " + player.getStamina() + " | ");
-            System.out.println();
+            if (enemy instanceof BossEnemy) {
+                if (((BossEnemy) enemy).getPhase() == 1 && enemy.getHealth() < 15) {
+                    ((BossEnemy) enemy).switchPhase();
+                    System.out.println(enemy.getName() + " is getting angry! He now has a " + ((BossEnemy) enemy).getWeaponInHand().getName() + "【 +" + ((BossEnemy) enemy).getWeaponInHand().getDamage() + "\uD83D\uDCA5】" + " in hand!");
+                }
+                if (((BossEnemy) enemy).getPhase() == 2 && enemy.getHealth() < 10) {
+                    ((BossEnemy) enemy).switchPhase();
+                    System.out.println(enemy.getName() + " is getting angrier! He now has a " + ((BossEnemy) enemy).getWeaponInHand().getName() + "【 +" + ((BossEnemy) enemy).getWeaponInHand().getDamage() + "\uD83D\uDCA5】" + " in hand!");
+                }
+                System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " + ((BossEnemy) enemy).getWeaponInHand().getIcon() + ((BossEnemy) enemy).getWeaponInHand().getName()+ " |");
+                System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getFullAp() + " | stamina: " + player.getStamina() + " | ");
+                System.out.println();
+            } else {
+                System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " +enemy.getItem().getIcon() + enemy.getItem().getName() + " |");
+                System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getFullAp() + " | stamina: " + player.getStamina() + " | ");
+                System.out.println();
+            }
+
             // Loop
             while (!contin) {
                 System.out.print("》 ");
@@ -129,6 +145,12 @@ public class CombatCommand {
         if(player.getHearts() <= 0){
             player.setDead(true);
         } else {
+            if (enemy instanceof BossEnemy) {
+                System.out.println("\uD83D\uDDE1 You have defeated ganon!");
+                enemy.setIsDead(true);
+                player.setHasWon(true);
+                return;
+            }
             // Add enemy Item to your inventory
             System.out.println("\uD83D\uDDE1 You have defeated the " + enemy.getName() + "!");
             System.out.println("You have received a " + enemy.getItem().getIcon() + enemy.getItem().getName());

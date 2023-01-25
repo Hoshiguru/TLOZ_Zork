@@ -19,7 +19,7 @@ public class Gate {
         return location1;
     }
 
-    public void setLocation1(Location location1) {
+    public void setLocation1(Location location1, Player player) {
         this.location1 = location1;
     }
 
@@ -27,15 +27,16 @@ public class Gate {
         return location2;
     }
 
-    public void setLocation2(Location location2) {
+    public void setLocation2(Location location2, Player player) {
         this.location2 = location2;
     }
 
-    public boolean isBlocked() {
+    public boolean isBlocked(Player player) {
+        if (player.getMaxHearts() < 6 && this.isBlocked) {
+            this.isBlocked = true;
+        } else {
+            this.isBlocked = false;
+        }
         return isBlocked;
-    }
-
-    public void setBlocked(boolean blocked) {
-        isBlocked = blocked;
     }
 }

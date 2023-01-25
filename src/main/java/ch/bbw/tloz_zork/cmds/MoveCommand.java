@@ -18,7 +18,7 @@ public class MoveCommand {
         // Check if the game.Gate is null
         if(gate == null){
             System.out.println("You can't go there!");
-        }else if (!gate.isBlocked()){
+        }else if (!gate.isBlocked(player)){
             player.increaseMoves();
             Location nextLocation = getNextLocation(currentLocation, gate);
             player.setPreviousLocation(currentLocation);
@@ -30,7 +30,10 @@ public class MoveCommand {
                 Dungeon dungeon = (Dungeon) nextLocation;
                 dungeon.startChallenge(player);
             }
-        } else {
+        } else if (gate.isBlocked(player)){
+            System.out.println("You need 6 heart chambers (max. hearts) to pass this gate. You need " + (6 - player.getMaxHearts()) + " more hearts. Complete dungeons to get more hearts.");
+        }
+        else {
             System.out.println("You can\'t go there.");
         }
     }

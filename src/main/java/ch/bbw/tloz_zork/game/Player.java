@@ -20,9 +20,11 @@ public class Player {
     private Location currentLocation;
     private Location previousLocation;
     private int moves;
+    private int kills;
     private boolean dead;
+    private boolean hasWon;
 
-    public Player(int hearts, int maxHearts, int ap, int stamina, int maxStagima, ArrayList<Item> inventory, double maxWeight, Location currentLocation, boolean dead) {
+    public Player(int hearts, int maxHearts, int ap, int stamina, int maxStagima, ArrayList<Item> inventory, double maxWeight, Location currentLocation, boolean dead, boolean hasWon) {
         this.hearts = hearts;
         this.maxHearts = maxHearts;
         this.ap = ap;
@@ -35,6 +37,8 @@ public class Player {
         this.previousLocation = null;
         this.moves = 0;
         this.dead=dead;
+        this.hasWon=hasWon;
+        this.kills=0;
     }
     /**
      * Adds an item to the inventory
@@ -237,5 +241,19 @@ public class Player {
         return weaponInHand;
     }
 
+    public int getKills() {
+        return kills;
+    }
 
+    public void setKills(int kills) {
+        this.kills = kills;
+    }
+
+    public boolean isHasWon() {
+        return hasWon;
+    }
+
+    public void setHasWon(boolean hasWon) {
+        this.hasWon = hasWon;
+    }
 }
