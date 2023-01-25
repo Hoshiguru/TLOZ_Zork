@@ -19,7 +19,7 @@ public class ItemCommands {
             System.out.println("\uD83D\uDCBC Your inventory is empty.");
         } else {
             if (player.getWeaponInHand() != null) {
-                System.out.println("✋ You are holding: " + player.getWeaponInHand().getName() + " +" + player.getWeaponInHand().getDamage() + " \uD83D\uDCA5");
+                System.out.println("✋ You are holding: " + player.getWeaponInHand().getName() + " +" + player.getWeaponInHand().getDamage() + "\uD83D\uDCA5");
             } else {
                 System.out.println("\uD83D\uDCA1 Equip a weapon with 'use <weapon>'.");
             }

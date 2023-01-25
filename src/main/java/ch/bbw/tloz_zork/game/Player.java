@@ -118,6 +118,12 @@ public class Player {
         return inventoryWeight;
     }
 
+    public int getFullAp() {
+        if (weaponInHand != null) {
+            return ap + weaponInHand.getDamage();
+        }
+        return ap;
+    }
 
     public int getHearts() {
         return hearts;
@@ -180,11 +186,9 @@ public class Player {
     public void setPreviousLocation(Location previousLocation) {
         this.previousLocation = previousLocation;
     }
-
     public int getAp() {
         return ap;
     }
-
     public void setAp(int ap) {
         this.ap = ap;
     }
