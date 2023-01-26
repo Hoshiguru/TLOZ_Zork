@@ -110,7 +110,7 @@ public class Game {
         HealingItem banana = new HealingItem("Banana", "A healing item used to restore health.", 0.5, "🍌", 2);
         HealingItem fish = new HealingItem("Fish", "A healing item used to restore health.", 0.8, "🐟", 3);
         HealingItem meat = new HealingItem("Meat", "A healing item used to restore health.", 1.0, "🥩", 4);
-
+        HealingItem steak = new HealingItem("Steak", "A healing item used to restore health.", 1.5, "🥩", 5);
         // All Weapons, which u can use to fight
         WeaponItem sword = new WeaponItem("Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "🗡️", 5);
         WeaponItem hammer = new WeaponItem("Hammer", "A heavy melee weapon used to defeat enemies and break through obstacles.", 5.0, "🔨", 3);
@@ -119,12 +119,11 @@ public class Game {
         WeaponItem mace = new WeaponItem("Mace", "A heavy melee weapon used to defeat enemies and crush armor.", 4.0, "🔨", 5);
         WeaponItem scythe = new WeaponItem("Scythe", "A long melee weapon used to defeat enemies and harvest crops.", 2.5, "🌾", 5);
         WeaponItem kunai = new WeaponItem("Kunai", "A short ranged weapon used to defeat enemies and hit distant targets.", 0.5, "🗡️", 6);
-        WeaponItem throwingKnives = new WeaponItem("ThrowingKnives", "A ranged weapon used to defeat enemies and hit distant targets.", 0.7, "🗡️", 5);
         WeaponItem bow = new WeaponItem("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🏹", 3);
         WeaponItem boomerang = new WeaponItem("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🪃", 1);
         WeaponItem root = new WeaponItem("Root", "A stick. Very light to carry but unfortunately not too strong.", 0.7, "🌲", 1);
         WeaponItem shield = new WeaponItem("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "🛡️", 1); //TODO: Eventuell eigene Klasse für defensive Items
-
+        WeaponItem masterSword = new WeaponItem("Master Sword", "The legendary sword of the hero of time. It is said that only the chosen one can wield it.", 10.0, "⚔️", 10);
         // Initialisation Enemy
         Enemy bokoblin = new Enemy("Bokoblin", 5, 1, 10, root, false);
         Enemy moblin = new Enemy("moblin", 3, 1, 10, sword, false);
@@ -159,7 +158,8 @@ public class Game {
         woodland.addItem(banana);
         castle.addItem(hammer);
         cave.addItem(apple);
-        underwater_temple.addItem(boomerang);
+        desert.addItem(steak);
+        underwater_temple.addItem(masterSword);
         underwater_temple.addItem(fish);
 
         // Initialisation Gates

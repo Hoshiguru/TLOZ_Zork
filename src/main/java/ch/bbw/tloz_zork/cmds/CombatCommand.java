@@ -146,7 +146,7 @@ public class CombatCommand {
             player.setDead(true);
         } else {
             if (enemy instanceof BossEnemy) {
-                System.out.println("\uD83D\uDDE1 You have defeated ganon!");
+                System.out.println("\uD83D\uDDE1 You have defeated "+ enemy.getName() +" !");
                 enemy.setIsDead(true);
                 player.setHasWon(true);
                 return;
@@ -157,6 +157,7 @@ public class CombatCommand {
             inventory.add(enemy.getItem());
             player.setInventory(inventory);
             enemy.setIsDead(true);
+            player.increaseKills();
         }
     }
 }

@@ -6,7 +6,7 @@ public class HelpCommand {
         System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
         System.out.println("『 Interaction commands 』\n(m)ap • (s)core • (f)ight");
         System.out.println("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
-        System.out.println("『 Item commands 』\n(i)nventory • (g)rab • drop <item> • (e)at <item> • (u)se <item>");
+        System.out.println("『 Item commands 』\n(i)nventory • (g)rab • drop <item> • eat <item> • use <item>");
     }
 }
 
