@@ -24,7 +24,7 @@ public class Game {
 
     //private Place places; // oder auch Räume
     public void startGame() {
-        player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false, false);
+        player = new Player(3, 3, 1, 5, 5, null, 20.0, null, false, false);
         commandHandler = new CommandHandler();
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -35,7 +35,10 @@ public class Game {
         System.out.println(" /  \\  /  \\");
         System.out.println("/____\\/____\\");
         System.out.println("Welcome to");
-        System.out.println("\"The Legends of Zelda: Zork of the Wild\"");
+        System.out.println("\n" +
+                "▀█▀ █░█ █▀▀   █░░ █▀▀ █▀▀ █▀▀ █▄░█ █▀▄   █▀█ █▀▀   ▀█ █▀▀ █░░ █▀▄ ▄▀█\n" +
+                "░█░ █▀█ ██▄   █▄▄ ██▄ █▄█ ██▄ █░▀█ █▄▀   █▄█ █▀░   █▄ ██▄ █▄▄ █▄▀ █▀█");
+        System.out.println("Zork of the Wild");
         System.out.println("");
         System.out.println("Type 'start' to start the game");
         System.out.print("》 ");
@@ -63,7 +66,7 @@ public class Game {
                     System.out.print(".");
                     //loading(1000);
                     System.out.print(".");
-                    System.out.println("Link, are you awake? You're currently in the castle ruin. You have to find the master sword to defeat Ganon. Good luck!");
+                    System.out.println("Link, are you awake? You're currently in " + player.getCurrentLocation().getIcon() + " " + player.getCurrentLocation().getName() + ". You have to find the master sword to defeat Ganon. Good luck!");
                     // Hier startet das Spiel
                     while (!player.isDead()) {
                         System.out.print("》 ");
@@ -81,16 +84,27 @@ public class Game {
                             System.out.println();
                             System.out.println();
                             System.out.println();
-                            System.out.println("You died");
+                            System.out.println("\n" +
+                                    "██╗░░░██╗░█████╗░██╗░░░██╗  ██████╗░██╗███████╗██████╗░\n" +
+                                    "╚██╗░██╔╝██╔══██╗██║░░░██║  ██╔══██╗██║██╔════╝██╔══██╗\n" +
+                                    "░╚████╔╝░██║░░██║██║░░░██║  ██║░░██║██║█████╗░░██║░░██║\n" +
+                                    "░░╚██╔╝░░██║░░██║██║░░░██║  ██║░░██║██║██╔══╝░░██║░░██║\n" +
+                                    "░░░██║░░░╚█████╔╝╚██████╔╝  ██████╔╝██║███████╗██████╔╝\n" +
+                                    "░░░╚═╝░░░░╚════╝░░╚═════╝░  ╚═════╝░╚═╝╚══════╝╚═════╝░");
                             System.out.println("Game over!");
-                        }
-                        else if (player.isHasWon()) {
+                        } else if (player.isHasWon()) {
                             System.out.println();
                             System.out.println();
                             System.out.println();
                             System.out.println();
                             System.out.println();
-                            System.out.println("You won");
+                            System.out.println("\n" +
+                                    "██╗░░░██╗░█████╗░██╗░░░██╗  ░██╗░░░░░░░██╗░█████╗░███╗░░██╗\n" +
+                                    "╚██╗░██╔╝██╔══██╗██║░░░██║  ░██║░░██╗░░██║██╔══██╗████╗░██║\n" +
+                                    "░╚████╔╝░██║░░██║██║░░░██║  ░╚██╗████╗██╔╝██║░░██║██╔██╗██║\n" +
+                                    "░░╚██╔╝░░██║░░██║██║░░░██║  ░░████╔═████║░██║░░██║██║╚████║\n" +
+                                    "░░░██║░░░╚█████╔╝╚██████╔╝  ░░╚██╔╝░╚██╔╝░╚█████╔╝██║░╚███║\n" +
+                                    "░░░╚═╝░░░░╚════╝░░╚═════╝░  ░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚══╝");
                             System.out.println("Congratulations!");
                         }
                     }
@@ -131,7 +145,7 @@ public class Game {
         Enemy lynel_2 = new Enemy("lynel", 17, 5, 3, mace, false);
         Enemy stalfos = new Enemy("stalfos", 5, 3, 5, spear, false);
         Enemy darknut = new Enemy("darknut", 4, 2, 3, sword, false);
-        BossEnemy ganon = new BossEnemy("Ganon", 25, 0, 7, false, new ArrayList<WeaponItem>(Arrays.asList(axe, scythe, kunai)));
+        BossEnemy ganon = new BossEnemy("Ganon", 35, 0, 7, false, new ArrayList<WeaponItem>(Arrays.asList(axe, scythe, kunai)));
 
         // Initialisation riddles
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
