@@ -7,7 +7,7 @@ public class Enemy {
     private int health; // health points
     private int ap; // attack power
     private int crit; // critical hit chance
-    private Item item;
+    protected Item item;
     private boolean isDead;
 
     public Enemy(String name, int health, int ap, int crit, Item item, boolean isDead) {

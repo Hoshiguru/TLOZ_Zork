@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class CombatTutorial {
     // These initialization are only for the tutorial
     ArrayList<Item> itemArrayList = new ArrayList<Item>();
-    Player player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false);
+    Player player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false, false);
 
     Item root = new Item("root", "A melee weapon used to defeat enemies and hit close targets.", 0.2, "⚔️");
     Enemy dummy = new Enemy("dummy", 1, 1, 2147483647, root, false);

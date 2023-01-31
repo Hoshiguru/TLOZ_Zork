@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Gohma",
+    "health": 4,
+    "ap": 8,
+    "crit": true
+  },
+  {
+    "name": "ChuChu",
+    "health": 2,
+    "ap": 4,
+    "crit": false
+  },
+  {
+    "name": "LikeLike",
+    "health": 6,
+    "ap": 5,
+    "crit": false
+  },
+  {
+    "name": "Tektite",
+    "health": 3,
+    "ap": 5,
+    "crit": true
+  },
+  {
+    "name": "Leever",
+    "health": 6,
+    "ap": 7,
+    "crit": false
+  },
+  {
+    "name": "Keese",
+    "health": 3,
+    "ap": 6,
+    "crit": false
+  },
+  {
+    "name": "Dodongo",
+    "health": 4,
+    "ap": 4,
+    "crit": true
+  },
+  {
+    "name": "Darknut",
+    "health": 8,
+    "ap": 8,
+    "crit": true
+  },
+  {
+    "name": "Octorok",
+    "health": 2,
+    "ap": 5,
+    "crit": true
+  },
+  {
+    "name": "Zora",
+    "health": 3,
+    "ap": 4,
+    "crit": false
+  },
+  {
+    "name": "Bari",
+    "health": 5,
+    "ap": 7,
+    "crit": true
+  },
+  {
+    "name": "Ruto",
+    "health": 2,
+    "ap": 6,
+    "crit": true
+  },
+  {
+    "name": "Bubble",
+    "health": 7,
+    "ap": 8,
+    "crit": false
+  },
+  {
+    "name": "Ghini",
+    "health": 5,
+    "ap": 5,
+    "crit": false
+  },
+  {
+    "name": "Poe",
+    "health": 6,
+    "ap": 4,
+    "crit": true
+  },
+  {
+    "name": "Wizzrobe",
+    "health": 3,
+    "ap": 6,
+    "crit": false
+  },
+  {
+    "name": "Flare",
+    "health": 4,
+    "ap": 8,
+    "crit": true
+  },
+  {
+    "name": "Gel",
+    "health": 6,
+    "ap": 7,
+    "crit": true
+  },
+  {
+    "name": "Wallmaster",
+    "health": 4,
+    "ap": 4,
+    "crit": false
+  },
+  {
+    "name": "Stalfos",
+    "health": 8,
+    "ap": 4,
+    "crit": true
+  }
+]

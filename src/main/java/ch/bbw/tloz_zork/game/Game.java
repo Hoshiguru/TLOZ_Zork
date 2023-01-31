@@ -1,6 +1,7 @@
 package ch.bbw.tloz_zork.game;
 
 import ch.bbw.tloz_zork.cmds.CommandHandler;
+import ch.bbw.tloz_zork.enemies.BossEnemy;
 import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.exceptions.InvalidCommandException;
 import ch.bbw.tloz_zork.exceptions.InvalidDirectionException;
@@ -11,6 +12,8 @@ import ch.bbw.tloz_zork.locations.Location;
 import ch.bbw.tloz_zork.riddles.Riddle;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -21,7 +24,7 @@ public class Game {
 
     //private Place places; // oder auch Räume
     public void startGame() {
-        player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false);
+        player = new Player(3, 3, 1, 5, 5, null, 20.0, null, false, false);
         commandHandler = new CommandHandler();
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -32,7 +35,10 @@ public class Game {
         System.out.println(" /  \\  /  \\");
         System.out.println("/____\\/____\\");
         System.out.println("Welcome to");
-        System.out.println("\"The Legends of Zelda: Zork of the Wild\"");
+        System.out.println("\n" +
+                "▀█▀ █░█ █▀▀   █░░ █▀▀ █▀▀ █▀▀ █▄░█ █▀▄   █▀█ █▀▀   ▀█ █▀▀ █░░ █▀▄ ▄▀█\n" +
+                "░█░ █▀█ ██▄   █▄▄ ██▄ █▄█ ██▄ █░▀█ █▄▀   █▄█ █▀░   █▄ ██▄ █▄▄ █▄▀ █▀█");
+        System.out.println("Zork of the Wild");
         System.out.println("");
         System.out.println("Type 'start' to start the game");
         System.out.print("》 ");
@@ -42,7 +48,7 @@ public class Game {
             System.out.print("》 ");
         }
         System.out.println("Is this your first time playing The Legends of Zelda: Zork of the Wild?");
-        while (!player.isDead()) {
+        while (!player.isDead() || !player.isHasWon()) {
             System.out.print("》 ");
             switch (scanner.nextLine().toLowerCase()) {
                 case "yes":
@@ -60,7 +66,7 @@ public class Game {
                     System.out.print(".");
                     //loading(1000);
                     System.out.print(".");
-                    System.out.println("Link, are you awake? You're currently in the castle ruin. You have to find the master sword to defeat Ganon. Good luck!");
+                    System.out.println("Link, are you awake? You're currently in " + player.getCurrentLocation().getIcon() + " " + player.getCurrentLocation().getName() + ". You have to find the master sword to defeat Ganon. Good luck!");
                     // Hier startet das Spiel
                     while (!player.isDead()) {
                         System.out.print("》 ");
@@ -78,8 +84,28 @@ public class Game {
                             System.out.println();
                             System.out.println();
                             System.out.println();
-                            System.out.println("You died");
+                            System.out.println("\n" +
+                                    "██╗░░░██╗░█████╗░██╗░░░██╗  ██████╗░██╗███████╗██████╗░\n" +
+                                    "╚██╗░██╔╝██╔══██╗██║░░░██║  ██╔══██╗██║██╔════╝██╔══██╗\n" +
+                                    "░╚████╔╝░██║░░██║██║░░░██║  ██║░░██║██║█████╗░░██║░░██║\n" +
+                                    "░░╚██╔╝░░██║░░██║██║░░░██║  ██║░░██║██║██╔══╝░░██║░░██║\n" +
+                                    "░░░██║░░░╚█████╔╝╚██████╔╝  ██████╔╝██║███████╗██████╔╝\n" +
+                                    "░░░╚═╝░░░░╚════╝░░╚═════╝░  ╚═════╝░╚═╝╚══════╝╚═════╝░");
                             System.out.println("Game over!");
+                        } else if (player.isHasWon()) {
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println();
+                            System.out.println("\n" +
+                                    "██╗░░░██╗░█████╗░██╗░░░██╗  ░██╗░░░░░░░██╗░█████╗░███╗░░██╗\n" +
+                                    "╚██╗░██╔╝██╔══██╗██║░░░██║  ░██║░░██╗░░██║██╔══██╗████╗░██║\n" +
+                                    "░╚████╔╝░██║░░██║██║░░░██║  ░╚██╗████╗██╔╝██║░░██║██╔██╗██║\n" +
+                                    "░░╚██╔╝░░██║░░██║██║░░░██║  ░░████╔═████║░██║░░██║██║╚████║\n" +
+                                    "░░░██║░░░╚█████╔╝╚██████╔╝  ░░╚██╔╝░╚██╔╝░╚█████╔╝██║░╚███║\n" +
+                                    "░░░╚═╝░░░░╚════╝░░╚═════╝░  ░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚══╝");
+                            System.out.println("Congratulations!");
                         }
                     }
                     break;
@@ -98,21 +124,20 @@ public class Game {
         HealingItem banana = new HealingItem("Banana", "A healing item used to restore health.", 0.5, "🍌", 2);
         HealingItem fish = new HealingItem("Fish", "A healing item used to restore health.", 0.8, "🐟", 3);
         HealingItem meat = new HealingItem("Meat", "A healing item used to restore health.", 1.0, "🥩", 4);
-
+        HealingItem steak = new HealingItem("Steak", "A healing item used to restore health.", 1.5, "🥩", 5);
         // All Weapons, which u can use to fight
         WeaponItem sword = new WeaponItem("Sword", "A melee weapon used to defeat enemies and hit close targets.", 1.8, "🗡️", 5);
         WeaponItem hammer = new WeaponItem("Hammer", "A heavy melee weapon used to defeat enemies and break through obstacles.", 5.0, "🔨", 3);
         WeaponItem axe = new WeaponItem("Axe", "A heavy melee weapon used to defeat enemies and chop down trees.", 3.5, "🪓", 4);
         WeaponItem spear = new WeaponItem("Spear", "A long melee weapon used to defeat enemies from a distance.", 2.0, "🗿", 2);
         WeaponItem mace = new WeaponItem("Mace", "A heavy melee weapon used to defeat enemies and crush armor.", 4.0, "🔨", 5);
-        WeaponItem scythe = new WeaponItem("Scythe", "A long melee weapon used to defeat enemies and harvest crops.", 2.5, "🌾", 3);
-        WeaponItem kunai = new WeaponItem("Kunai", "A short ranged weapon used to defeat enemies and hit distant targets.", 0.5, "🗡️", 1);
-        WeaponItem throwingKnives = new WeaponItem("ThrowingKnives", "A ranged weapon used to defeat enemies and hit distant targets.", 0.7, "🗡️", 5);
+        WeaponItem scythe = new WeaponItem("Scythe", "A long melee weapon used to defeat enemies and harvest crops.", 2.5, "🌾", 5);
+        WeaponItem kunai = new WeaponItem("Kunai", "A short ranged weapon used to defeat enemies and hit distant targets.", 0.5, "🗡️", 6);
         WeaponItem bow = new WeaponItem("Bow", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🏹", 3);
         WeaponItem boomerang = new WeaponItem("Boomerang", "A ranged weapon used to defeat enemies and hit distant targets.", 1.2, "🪃", 1);
         WeaponItem root = new WeaponItem("Root", "A stick. Very light to carry but unfortunately not too strong.", 0.7, "🌲", 1);
         WeaponItem shield = new WeaponItem("Shield", "A defensive item used to protect the player from enemy attacks.", 6.5, "🛡️", 1); //TODO: Eventuell eigene Klasse für defensive Items
-
+        WeaponItem masterSword = new WeaponItem("Master Sword", "The legendary sword of the hero of time. It is said that only the chosen one can wield it.", 10.0, "⚔️", 10);
         // Initialisation Enemy
         Enemy bokoblin = new Enemy("Bokoblin", 5, 1, 10, root, false);
         Enemy moblin = new Enemy("moblin", 3, 1, 10, sword, false);
@@ -120,7 +145,7 @@ public class Game {
         Enemy lynel_2 = new Enemy("lynel", 17, 5, 3, mace, false);
         Enemy stalfos = new Enemy("stalfos", 5, 3, 5, spear, false);
         Enemy darknut = new Enemy("darknut", 4, 2, 3, sword, false);
-        Enemy ganon = new Enemy("Ganon", 20, 6, 7, throwingKnives, false);
+        BossEnemy ganon = new BossEnemy("Ganon", 35, 0, 7, false, new ArrayList<WeaponItem>(Arrays.asList(axe, scythe, kunai)));
 
         // Initialisation riddles
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
@@ -147,7 +172,8 @@ public class Game {
         woodland.addItem(banana);
         castle.addItem(hammer);
         cave.addItem(apple);
-        underwater_temple.addItem(boomerang);
+        desert.addItem(steak);
+        underwater_temple.addItem(masterSword);
         underwater_temple.addItem(fish);
 
         // Initialisation Gates
