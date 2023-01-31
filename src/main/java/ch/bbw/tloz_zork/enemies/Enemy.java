@@ -18,6 +18,14 @@ public class Enemy {
         this.item = item;
         this.isDead = isDead;
     }
+    public Enemy(String name, int health, int ap, int crit) {
+        this.name = name;
+        this.health = health;
+        this.ap = ap;
+        this.crit = crit;
+        this.item = item;
+        this.isDead = false;
+    }
 
     public String getName() {
         return name;
