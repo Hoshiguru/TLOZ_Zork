@@ -246,8 +246,8 @@ public class Player {
         return kills;
     }
 
-    public void setKills(int kills) {
-        this.kills = kills;
+    public void increaseKills() {
+        this.kills += 1;
     }
 
     public boolean isHasWon() {

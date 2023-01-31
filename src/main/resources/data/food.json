@@ -1,0 +1,205 @@
+[
+  {
+    "name": "Apple",
+    "description": "A juicy red apple, typical of the land of Hyrule.",
+    "weight": 0.8,
+    "icon": "\uD83C\uDF4E",
+    "healingAmount": 3
+  },
+  {
+    "name": "Peach",
+    "description": "A round, fragrant peach typical of the land of Hyrule.",
+    "weight": 0.7,
+    "icon": "\uD83C\uDF51",
+    "healingAmount": 4
+  },
+  {
+    "name": "Carrot",
+    "description": "A crunchy orange vegetable, typical of the land of Hyrule.",
+    "weight": 0.6,
+    "icon": "\uD83E\uDD55",
+    "healingAmount": 2
+  },
+  {
+    "name": "Fish",
+    "description": "A tasty fish that can be found in many rivers of Hyrule.",
+    "weight": 1.2,
+    "icon": "\uD83D\uDC1F",
+    "healingAmount": 5
+  },
+  {
+    "name": "Piggy",
+    "description": "A succulent roasted pig with crisp skin, typical of the land of Hyrule.",
+    "weight": 1.1,
+    "icon": "\uD83D\uDC37",
+    "healingAmount": 3
+  },
+  {
+    "name": "Bread",
+    "description": "A soft and chewy loaf of bread, typical of the land of Hyrule.",
+    "weight": 0.9,
+    "icon": "\uD83C\uDF5E",
+    "healingAmount": 2
+  },
+  {
+    "name": "Steak",
+    "description": "A juicy and savory steak, typical of the land of Hyrule.",
+    "weight": 1.3,
+    "icon": "\uD83C\uDF54",
+    "healingAmount": 4
+  },
+  {
+    "name": "Soup",
+    "description": "A nourishing soup cooked with herbs from the land of Hyrule.",
+    "weight": 1.0,
+    "icon": "\uD83C\uDF75",
+    "healingAmount": 3
+  },
+  {
+    "name": "Pie",
+    "description": "A delicious fruity pie typical of the land of Hyrule.",
+    "weight": 0.7,
+    "icon": "\uD83C\uDF69",
+    "healingAmount": 4
+  },
+  {
+    "name": "Cheese",
+    "description": "A creamy and savory cheese, typical of the land of Hyrule.",
+    "weight": 0.5,
+    "icon": "\uD83E\uDDC0",
+    "healingAmount": 2
+  },
+  {
+    "name": "Honey",
+    "description": "A sweet and sticky honey, typical of the land of Hyrule.",
+    "weight": 0.4,
+    "icon": "\uD83C\uDF6F",
+    "healingAmount": 5
+  },
+  {
+    "name": "Tea",
+    "description": "A refreshing and invigorating cup of tea, typical of the land of Hyrule.",
+    "weight": 0.3,
+    "icon": "\u2615\uFE0F",
+    "healingAmount": 3
+  },
+  {
+    "name": "Stew",
+    "description": "A hearty stew full of vegetables, typical of the land of Hyrule.",
+    "weight": 1.5,
+    "icon": "\uD83C\uDF72",
+    "healingAmount": 4
+  },
+  {
+    "name": "Yam",
+    "description": "A sweet and starchy yam, typical of the land of Hyrule.",
+    "weight": 0.8,
+    "icon": "\uD83E\uDD88",
+    "healingAmount": 2
+  },
+  {
+    "name": "Nuts",
+    "description": "A healthy mix of nuts and seeds, typical of the land of Hyrule.",
+    "weight": 0.2,
+    "icon": "\uD83E\uDD42",
+    "healingAmount": 5
+  },
+  {
+    "name": "Milk",
+    "description": "A rich and creamy glass of milk, typical of the land of Hyrule.",
+    "weight": 0.6,
+    "icon": "\uD83E\uDD5B",
+    "healingAmount": 3
+  },
+  {
+    "name": "Wine",
+    "description": "A bold and fruity glass of wine, typical of the land of Hyrule.",
+    "weight": 0.4,
+    "icon": "\uD83C\uDF77",
+    "healingAmount": 4
+  },
+  {
+    "name": "Rice",
+    "description": "A fluffy grain of rice, typical of the land of Hyrule.",
+    "weight": 0.3,
+    "icon": "\uD83C\uDF5A",
+    "healingAmount": 2
+  },
+  {
+    "name": "Buns",
+    "description": "A fluffy and sweet bun, typical of the land of Hyrule.",
+    "weight": 0.2,
+    "icon": "\uD83C\uDF67",
+    "healingAmount": 5
+  },
+  {
+    "name": "Cake",
+    "description": "A moist and flavorful cake, typical of the land of Hyrule.",
+    "weight": 1.0,
+    "icon": "\uD83C\uDF70",
+    "healingAmount": 3
+  },
+  {
+    "name": "Veggie",
+    "description": "A crunchy and fresh-tasting vegetable, typical of the land of Hyrule.",
+    "weight": 0.5,
+    "icon": "\uD83E\uDD77",
+    "healingAmount": 4
+  },
+  {
+    "name": "Sushi",
+    "description": "A sushi roll filled with fresh seafood, typical of the land of Hyrule.",
+    "weight": 1.2,
+    "icon": "\uD83C\uDF63",
+    "healingAmount": 2
+  },
+  {
+    "name": "Fruit",
+    "description": "A juicy selection of fruits, typical of the land of Hyrule.",
+    "weight": 0.7,
+    "icon": "\uD83C\uDF4D",
+    "healingAmount": 5
+  },
+  {
+    "name": "Curry",
+    "description": "A spicy and flavorful curry, typical of the land of Hyrule.",
+    "weight": 2.0,
+    "icon": "\uD83C\uDF5B",
+    "healingAmount": 3
+  },
+  {
+    "name": "Eggs",
+    "description": "A freshly laid egg, typical of the land of Hyrule.",
+    "weight": 0.9,
+    "icon": "\uD83E\uDD5A",
+    "healingAmount": 4
+  },
+  {
+    "name": "Pickle",
+    "description": "A tangy pickled cucumber, typical of the land of Hyrule.",
+    "weight": 0.5,
+    "icon": "\uD83E\uDD8E",
+    "healingAmount": 2
+  },
+  {
+    "name": "Beans",
+    "description": "A bowl of steaming beans, typical of the land of Hyrule.",
+    "weight": 0.4,
+    "icon": "\uD83C\uDF21",
+    "healingAmount": 5
+  },
+  {
+    "name": "Mushroom",
+    "description": "A wild mushroom, typical of the land of Hyrule.",
+    "weight": 0.6,
+    "icon": "\uD83C\uDF44",
+    "healingAmount": 3
+  },
+  {
+    "name": "Porridge",
+    "description": "A warm and filling porridge, typical of the land of Hyrule.",
+    "weight": 1.0,
+    "icon": "\uD83E\uDD5C",
+    "healingAmount": 4
+  }
+]
