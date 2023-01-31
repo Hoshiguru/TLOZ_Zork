@@ -78,7 +78,7 @@ public class MoveCommand {
      * Check if there is an enemy in the current Location
      * @param location
      */
-    private void checkEnemyStatus(Location location) {
+    protected void checkEnemyStatus(Location location) {
         if (location.getEnemy() != null && !location.getEnemy().getIsDead()){
             System.out.println("⚠️There is also a " + location.getEnemy().getName() + " in this area. This enemy holds a " + location.getEnemy().getItem().getName() + ".\nYou can 'fight' him anytime while you are in this Location");
         }
@@ -102,4 +102,5 @@ public class MoveCommand {
             System.out.println("You can\'t go back.");
         }
     }
+
 }

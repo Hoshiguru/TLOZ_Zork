@@ -40,6 +40,7 @@ public class Player {
         this.hasWon=hasWon;
         this.kills=0;
     }
+
     /**
      * Adds an item to the inventory
      * @param item
