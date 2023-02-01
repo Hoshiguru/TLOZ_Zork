@@ -75,9 +75,11 @@ public class Player {
             Item item = iterator.next();
             if (item.getName().equalsIgnoreCase(itemName) && item instanceof HealingItem) {
                 HealingItem healingItem = (HealingItem) item;
-                if (hearts + healingItem.getHealingAmount() > maxHearts) {
-                    hearts = maxHearts;
+                if (hearts == maxHearts) {
                     System.out.println("Your hearts are full!");
+                } else if (hearts + healingItem.getHealingAmount() > maxHearts) {
+                    hearts = maxHearts;
+                    System.out.println("You ate " + healingItem.getIcon() + healingItem.getName() + " 【+" + healingItem.getHealingAmount() + "♥】");
                 } else {
                     iterator.remove();
                     hearts += healingItem.getHealingAmount();
