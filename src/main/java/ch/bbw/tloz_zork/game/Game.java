@@ -7,7 +7,6 @@ import ch.bbw.tloz_zork.game.initializer.LocationInitializer;
 import ch.bbw.tloz_zork.locations.Location;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +15,9 @@ public class Game {
     private Location castle_ruin, woodland, castle, cave, desert, underwater_temple;
     private CommandHandler commandHandler;
 
-    //private Place places; // oder auch Räume
+    /**
+     * @return the player
+     */
     public void startGame() throws Exception {
         player = new Player(3, 3, 1, 5, 5, null, 20.0, null, false, false);
         commandHandler = new CommandHandler();
@@ -110,24 +111,14 @@ public class Game {
         }
 
     }
-
+    /**
+     * Initializes the game
+     * @throws Exception
+     */
     private void initializeGame() throws Exception {
         LocationInitializer locationInitializer = new LocationInitializer();
         List<Location> locations = locationInitializer.initializeLocations();
 
-        // Startposition festlegen
         player.setCurrentLocation(locations.get(0));
-    }
-
-    // Methode für loading times
-    public static void loading(long limit) {
-
-        long startTime = System.currentTimeMillis();
-        long elapsedTime = 0L;
-
-        while (elapsedTime < limit) {
-
-            elapsedTime = (new Date()).getTime() - startTime;
-        }
     }
 }

@@ -117,6 +117,11 @@ public class ItemCommands {
             System.out.println("❌ You don't have this item in your inventory.");
         }
     }
+    /**
+     * This method is used to drop a specific item from the current location.
+     * @param player
+     * @param itemName
+     */
     public void drop(Player player, String itemName) {
         Item item = player.findItem(itemName);
         ArrayList<Item> roomItems = player.getCurrentLocation().getItems();

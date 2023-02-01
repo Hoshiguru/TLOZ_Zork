@@ -2,12 +2,12 @@ package ch.bbw.tloz_zork.game;
 
 import ch.bbw.tloz_zork.locations.Location;
 
-// Every game.Location could have 4 Gates, which are the directions you can go to.
+// Every location could have 4 Gates, which are the directions you can go to.
 // On every game.Gate, you can append only 2 Locations -> Please note the map for orientation in the documentation
 public class Gate {
     private Location location1;
     private Location location2;
-    private boolean isBlocked; // if the gate is blocked, you can't go through it
+    private boolean isBlocked;
 
     public Gate(Location location1, Location location2, boolean isBlocked) {
         this.location1 = location1;
@@ -31,6 +31,9 @@ public class Gate {
         this.location2 = location2;
     }
 
+    /** Checks if the gate is blocked
+     * @return the isBlocked
+     */
     public boolean isBlocked(Player player) {
         if (player.getMaxHearts() < 6 && this.isBlocked) {
             this.isBlocked = true;

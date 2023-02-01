@@ -28,6 +28,9 @@ public class BossEnemy extends Enemy{
             this.item = null;
     }
 
+    /**
+     * @return the weapons
+     */
     public WeaponItem getWeaponInHand() {
         return (WeaponItem) this.item;
     }

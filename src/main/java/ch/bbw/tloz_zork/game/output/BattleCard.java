@@ -1,6 +1,17 @@
 package ch.bbw.tloz_zork.game.output;
 
 public class BattleCard {
+    /**
+     * Prints the battle card
+     * @param playerWeapon
+     * @param playerAttack
+     * @param playerHealth
+     * @param playerStamina
+     * @param enemyName
+     * @param enemyWeapon
+     * @param enemyAttack
+     * @param enemyHealth
+     */
     public static void printBattleCard(String playerWeapon, int playerAttack, String playerHealth, String playerStamina, String enemyName, String enemyWeapon, int enemyAttack, String enemyHealth) {
         System.out.println("╔═══════════════════════════════════════════════╗");
         System.out.println("║                                               ║");

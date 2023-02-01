@@ -93,6 +93,11 @@ public class Player {
         return null;
     }
 
+    /**
+     * Returns the item with the given name and removes it from the inventory
+     * @param weaponName
+     * @return
+     */
     public WeaponItem useWeapon(String weaponName) {
         Iterator<Item> iterator = inventory.iterator();
         while (iterator.hasNext()) {

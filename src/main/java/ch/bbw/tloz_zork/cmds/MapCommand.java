@@ -12,7 +12,6 @@ import java.io.IOException;
 public class MapCommand {
     /**
      * Displays the map for the current location
-     *
      * @param player
      */
     public void map(Player player) throws IOException {

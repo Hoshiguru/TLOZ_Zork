@@ -5,7 +5,6 @@ import ch.bbw.tloz_zork.game.Player;
 
 public class ScoreCommand {
     private Player player;
-    // TODO: Move Stats Screen to Player Stats Class
     /**
      * Constructor for ScoreCommand
      * @param player

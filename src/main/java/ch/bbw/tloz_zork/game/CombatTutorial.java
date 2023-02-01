@@ -15,6 +15,9 @@ public class CombatTutorial {
     Enemy dummy = new Enemy("dummy", 1, 1, 2147483647, root);
     Scanner command = new Scanner(System.in);
 
+    /**
+     * This method is only for the tutorial
+     */
     public void dummyTutorial() {
         boolean contin = false;
         System.out.println("Then let's start with a quick tutorial on the combat system");

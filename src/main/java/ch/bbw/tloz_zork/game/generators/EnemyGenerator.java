@@ -20,6 +20,9 @@ public class EnemyGenerator {
         this.random = new Random();
     }
 
+    /**
+     * @return a random enemy from the list of enemies
+     */
     public Enemy getRandomEnemy() throws FileNotFoundException {
         ItemGenerator ig = new ItemGenerator();
         WeaponItem weapon = ig.getRandomWeapon();
