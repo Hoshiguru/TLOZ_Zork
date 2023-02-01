@@ -50,7 +50,7 @@ public class MoveCommandTest {
     @Test
     void testCheckEnemyStatus() {
         MoveCommand moveCommand = new MoveCommand();
-        Enemy enemy = new Enemy("name", 2, 3, 3, testItem, false);
+        Enemy enemy = new Enemy("name", 2, 3, 3, (WeaponItem) testItem, false);
         firstTestLocation.setEnemy(enemy);
         moveCommand.checkEnemyStatus(firstTestLocation);
         assertFalse(enemy.getIsDead());

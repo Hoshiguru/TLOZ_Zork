@@ -1,6 +1,7 @@
 package ch.bbw.tloz_zork.enemies;
 
 import ch.bbw.tloz_zork.items.Item;
+import ch.bbw.tloz_zork.items.WeaponItem;
 
 public class Enemy {
     private String name;
@@ -18,7 +19,7 @@ public class Enemy {
         this.item = item;
         this.isDead = this.isDead;
     }
-    public Enemy(String name, int health, int ap, int crit) {
+    public Enemy(String name, int health, int ap, int crit, WeaponItem testWeapon, boolean b) {
         this.name = name;
         this.health = health;
         this.ap = ap;
