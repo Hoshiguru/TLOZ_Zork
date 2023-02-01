@@ -8,8 +8,8 @@ public class BossEnemy extends Enemy{
     private ArrayList<WeaponItem> weapons;
     private int phase = 1;
 
-    public BossEnemy(String name, int health, int ap, int crit, boolean isDead, ArrayList<WeaponItem> weapons) {
-        super(name, health, ap, crit, null, isDead);
+    public BossEnemy(String name, int health, int ap, int crit, ArrayList<WeaponItem> weapons) {
+        super(name, health, ap, crit, null);
         this.weapons = weapons;
         this.item = weapons.get(0);
         this.phase = phase;

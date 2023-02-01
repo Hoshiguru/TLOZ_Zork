@@ -23,7 +23,6 @@ public class Dungeon extends Location {
         this.isCompleted = isCompleted;
         this.enemy = enemy;
     }
-
     /**
      * Starts the challenge of the dungeon
      * @param player
