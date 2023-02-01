@@ -25,7 +25,6 @@ public class MoveCommand {
             player.setCurrentLocation(nextLocation);
             System.out.println(nextLocation.getIcon() + "You are now in " + nextLocation.getName());
             System.out.println(nextLocation.getQuote());
-            System.out.println(nextLocation.getItems());
             checkEnemyStatus(nextLocation);
             if (nextLocation instanceof Dungeon) {
                 Dungeon dungeon = (Dungeon) nextLocation;

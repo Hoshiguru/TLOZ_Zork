@@ -25,7 +25,7 @@
     "description": "A powerful magical weapon, the Mega Blade is larger than a standard sword and more powerful.",
     "weight": 3.2,
     "icon": "⚔️",
-    "damage": 6
+    "damage": 4
   },
   {
     "name": "Boomerang",
@@ -39,14 +39,14 @@
     "description": "Small robotic mice with bombs on their backs, Bombchus can be used to destroy obstacles and enemies.",
     "weight": 0.4,
     "icon": "🤖",
-    "damage": 5
+    "damage": 3
   },
   {
     "name": "FireRod",
     "description": "The Fire Rod is a magical weapon that shoots fireballs at enemies, and can even light torches and be used as a light source.",
     "weight": 2.6,
     "icon": "🔥",
-    "damage": 5
+    "damage": 3
   },
   {
     "name": "IceRod",
@@ -67,7 +67,7 @@
     "description": "A heavy and powerful weapon, the Hammer can be used to smash objects, break through walls, and stun enemies.",
     "weight": 4.7,
     "icon": "🔨",
-    "damage": 6
+    "damage": 3
   },
   {
     "name": "Lamp",
@@ -95,21 +95,21 @@
     "description": "A magical spell cast by the Goddess Din, Din's Fire creates a ring of fire around Link, burning any enemies within range.",
     "weight": 0,
     "icon": "🔥",
-    "damage": 6
+    "damage": 2
   },
   {
     "name": "MegatonHammer",
     "description": "A massive hammer forged from an ancient rock, the Megaton Hammer smashes through rocks and enemies alike.",
     "weight": 12.5,
     "icon": "🔨",
-    "damage": 7
+    "damage": 5
   },
   {
     "name": "LensFlare",
     "description": "A magical lens that uses sunlight to create a powerful beam of energy, the Lens of Truth can be used to cast a beam of light that damages enemies.",
     "weight": 1.2,
     "icon": "🔦",
-    "damage": 5
+    "damage": 4
   },
   {
     "name": "SuperSlingshot",
@@ -123,13 +123,13 @@
     "description": "The Biggoron Sword is a massive two-handed sword made by the Gorons, and is one of the most powerful weapons in the game.",
     "weight": 8.2,
     "icon": "🗡️",
-    "damage": 7
+    "damage": 5
   },
   {
     "name": "GiantsKnife",
     "description": "The Giant's Knife is a large sword with an enormous blade, and is powerful enough to cut through almost anything.",
     "weight": 6.7,
     "icon": "🗡️",
-    "damage": 6
+    "damage": 3
   }
 ]

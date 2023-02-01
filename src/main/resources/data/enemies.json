@@ -1,8 +1,8 @@
 [
   {
     "name": "Gohma",
-    "health": 4,
-    "ap": 8,
+    "health": 9,
+    "ap": 2,
     "crit": 0
   },
   {
@@ -13,32 +13,32 @@
   },
   {
     "name": "LikeLike",
-    "health": 6,
-    "ap": 5,
+    "health": 8,
+    "ap": 2,
     "crit": 0
   },
   {
     "name": "Tektite",
     "health": 3,
-    "ap": 5,
+    "ap": 2,
     "crit": 0
   },
   {
     "name": "Leever",
-    "health": 6,
-    "ap": 7,
+    "health": 10,
+    "ap": 3,
     "crit": 0
   },
   {
     "name": "Keese",
-    "health": 3,
+    "health": 7,
     "ap": 6,
     "crit": 0
   },
   {
     "name": "Dodongo",
-    "health": 4,
-    "ap": 4,
+    "health": 6,
+    "ap": 1,
     "crit": 0
   },
   {
@@ -49,7 +49,7 @@
   },
   {
     "name": "Octorok",
-    "health": 2,
+    "health": 5,
     "ap": 5,
     "crit": 0
   },
@@ -79,8 +79,8 @@
   },
   {
     "name": "Ghini",
-    "health": 5,
-    "ap": 5,
+    "health": 13,
+    "ap": 2,
     "crit": 0
   },
   {
@@ -92,7 +92,7 @@
   {
     "name": "Wizzrobe",
     "health": 3,
-    "ap": 6,
+    "ap": 3,
     "crit": 0
   },
   {
@@ -115,7 +115,7 @@
   },
   {
     "name": "Stalfos",
-    "health": 8,
+    "health": 9,
     "ap": 4,
     "crit": 0
   }
