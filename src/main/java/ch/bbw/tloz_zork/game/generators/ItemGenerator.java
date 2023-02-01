@@ -11,6 +11,10 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Generates a random item from a list of items
+ * @author Yao Kaiser
+ */
 public class ItemGenerator {
     private ArrayList<WeaponItem> weapons;
     private ArrayList<HealingItem> foods;

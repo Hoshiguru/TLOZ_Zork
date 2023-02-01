@@ -1,5 +1,9 @@
 package ch.bbw.tloz_zork.cmds;
 
+/**
+ * Prints a list of all available commands
+ * @author Yao Kaiser
+ */
 public class HelpCommand {
     /**
      * Prints a list of all available commands

@@ -3,6 +3,10 @@ package ch.bbw.tloz_zork.enemies;
 import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.items.WeaponItem;
 
+/**
+ * Entity for the enemies
+ * @author Yao Kaiser
+ */
 public class Enemy {
     private String name;
     private int health; // health points

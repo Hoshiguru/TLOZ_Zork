@@ -8,6 +8,10 @@ import ch.bbw.tloz_zork.locations.Location;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Entity for the player
+ * @author Yao Kaiser
+ */
 public class Player {
     private int hearts;
     private int maxHearts;

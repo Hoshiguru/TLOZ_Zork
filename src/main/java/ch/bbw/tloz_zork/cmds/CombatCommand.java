@@ -11,6 +11,10 @@ import ch.bbw.tloz_zork.items.WeaponItem;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The CombatCommand class is used to start a combat
+ * @author Andy Lam
+ */
 public class CombatCommand {
     boolean contin = false;
     Scanner scan = new Scanner(System.in);

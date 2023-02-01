@@ -4,6 +4,9 @@ import ch.bbw.tloz_zork.items.WeaponItem;
 
 import java.util.ArrayList;
 
+/** Entity for the boss enemies
+ * @author Yao Kaiser
+ */
 public class BossEnemy extends Enemy{
     private ArrayList<WeaponItem> weapons;
     private int phase = 1;

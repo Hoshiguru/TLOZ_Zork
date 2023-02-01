@@ -10,6 +10,10 @@ import java.io.FileReader;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Generates a random enemy from a list of enemies
+ * @author Yao Kaiser
+ */
 public class EnemyGenerator {
     private List<Enemy> enemies;
     private Random random;

@@ -7,7 +7,10 @@ import ch.bbw.tloz_zork.items.Item;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// same as "Room"
+/**
+ * Entity for the game.Location
+ * @author Yao Kaiser
+ */
 public class Location {
     private String name;
     private String quote; // e.g. Is it cold or dark?

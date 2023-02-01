@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * All commands that are related to items.
+ * @author Yao Kaiser
+ */
 public class ItemCommands {
     /** With this method, the player can view his inventory. *
      * @param player
