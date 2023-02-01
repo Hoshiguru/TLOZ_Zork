@@ -3,6 +3,7 @@ package ch.bbw.tloz_zork.cmds;
 import ch.bbw.tloz_zork.enemies.BossEnemy;
 import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.game.Player;
+import ch.bbw.tloz_zork.game.output.BattleCard;
 import ch.bbw.tloz_zork.items.HealingItem;
 import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.items.WeaponItem;
@@ -23,6 +24,8 @@ public class CombatCommand {
     public void combat(Player player, Enemy enemy, boolean isInDungeon) {
         // New Array List to add enemies Item if defeated
         ArrayList<Item> inventory = player.getInventory();
+        BattleCard battleCard = new BattleCard();
+
         if (!enemy.getIsDead()) {
             System.out.println("You have decided to fight a " + enemy.getName() + "!");
             // This while goes so long, until the enemies health goes to 0
@@ -36,13 +39,12 @@ public class CombatCommand {
                         ((BossEnemy) enemy).switchPhase();
                         System.out.println(enemy.getName() + " is getting angrier! He now has a " + ((BossEnemy) enemy).getWeaponInHand().getName() + "【 +" + ((BossEnemy) enemy).getWeaponInHand().getDamage() + "\uD83D\uDCA5】" + " in hand!");
                     }
-                    System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " + ((BossEnemy) enemy).getWeaponInHand().getIcon() + ((BossEnemy) enemy).getWeaponInHand().getName()+ " |");
-                    System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getFullAp() + " | stamina: " + player.getStamina() + " | ");
-                    System.out.println();
+                    battleCard.printBattleCard(player.getWeaponInHand().getName(), player.getFullAp(), player.getHeartIcons(), player.getStaminaIcons(),enemy.getName(), ((BossEnemy) enemy).getItem().getName(), enemy.getAp(), enemy.getHeartIcons());
                 } else {
-                    System.out.println("| " + enemy.getName() + " | hearts: " + enemy.getHealth() + " | damage: " + enemy.getAp() + " | " +enemy.getItem().getIcon() + enemy.getItem().getName() + " |");
-                    System.out.println("| Player | hearts: " + player.getHearts() + " | damage: " + player.getFullAp() + " | stamina: " + player.getStamina() + " | ");
-                    System.out.println();
+                    if(player.getWeaponInHand() != null)
+                        battleCard.printBattleCard(player.getWeaponInHand().getName(), player.getFullAp(), player.getHeartIcons(), player.getStaminaIcons(), enemy.getName(), enemy.getItem().getName(), enemy.getAp(), enemy.getHeartIcons());
+                    else
+                        battleCard.printBattleCard("Fists", player.getFullAp(), player.getHeartIcons(), player.getStaminaIcons(), enemy.getName(), enemy.getItem().getName(), enemy.getAp(), enemy.getHeartIcons());
                 }
 
                 // Loop

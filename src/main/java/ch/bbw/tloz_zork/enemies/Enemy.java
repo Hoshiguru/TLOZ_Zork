@@ -43,6 +43,17 @@ public class Enemy {
     public void setHealth(int health) {
         this.health = health;
     }
+    public String getHeartIcons() {
+        String hearts = "";
+        for (int i = 0; i < this.health; i++) {
+            if (i < this.health) {
+                hearts += "❤️";
+            } else {
+                hearts += "♡";
+            }
+        }
+        return hearts;
+    }
 
     public int getAp() {
         return ap;

@@ -139,7 +139,7 @@ public class Player {
         String hearts = "";
         for (int i = 0; i < this.maxHearts; i++) {
             if (i < this.hearts) {
-                hearts += "♥";
+                hearts += "❤️";
             } else {
                 hearts += "♡";
             }
