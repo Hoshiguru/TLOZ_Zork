@@ -5,7 +5,6 @@ import ch.bbw.tloz_zork.enemies.Enemy;
 import ch.bbw.tloz_zork.game.Gate;
 import ch.bbw.tloz_zork.game.generators.EnemyGenerator;
 import ch.bbw.tloz_zork.game.generators.ItemGenerator;
-import ch.bbw.tloz_zork.items.HealingItem;
 import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.items.WeaponItem;
 import ch.bbw.tloz_zork.locations.Dungeon;
@@ -37,19 +36,18 @@ public class LocationInitializer {
         ItemGenerator ig = new ItemGenerator();
         ArrayList<Item> items = ig.getRandomItems();
         Enemy enemy = eg.getRandomEnemy();
-        WeaponItem weapon = ig.getRandomWeapon();
         List<Location> locations = new ArrayList<>();
 
         // Initialize BossEnemy
         BossEnemy ganon = new BossEnemy("Ganon", 35, 0, 7, new ArrayList<WeaponItem>(ig.getRandomWeapons(3)));
 
         // Initialize Locations
-        Location castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. ", "castle_ruin", enemy, items);
+        Location castle_ruin = new Location("Castle Ruin", "\uD83C\uDFDB", "A mysterious, crumbling castle awaits exploration, filled with dangerous enemies and valuable treasures. ", "castle_ruin", enemy, ig.getRandomItems());
         Location woodland = new Location("Woodland", "\uD83C\uDF33", "A dense forest filled with dangerous enemies and valuable treasures. Location of the master sword.", "woodland", enemy, items);
-        Location castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle", ganon, items);
-        Location cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave", enemy, items);
-        Location desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert", enemy, items);
-        Location underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple", enemy, items);
+        Location castle = new Location("Castle", "\uD83C\uDFF0", "A grand and imposing castle stands at the center of the kingdom, guarded by powerful enemies and holding secrets of ancient power.", "castle", ganon, ig.getRandomItems());
+        Location cave = new Location("Cave", "\uD83E\uDEA8", "A dark and treacherous cave system winds deep into the earth, filled with dangerous creatures and hidden treasures.", "cave", enemy, ig.getRandomItems());
+        Location desert = new Location("Desert", "\uD83C\uDFDC️", "A vast and scorching desert stretches as far as the eye can see, with hidden oases, ancient ruins, and deadly sandstorms.", "desert", enemy, ig.getRandomItems());
+        Location underwater_temple = new Location("Underwater Temple", "\uD83D\uDED5", "A mysterious underwater temple lies beneath the waves, filled with treacherous currents, ancient technology and deadly guardians.", "underwater_temple", enemy, ig.getRandomItems());
 
         Riddle zelda_name_riddle = new Riddle("What is the name of the princess of Hyrule?", null, "Zelda");
         Riddle master_sword_riddle = new Riddle("How many heart chambers does it take to pull the master sword out of the stone?", null, "13");

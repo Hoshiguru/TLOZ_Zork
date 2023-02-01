@@ -24,7 +24,7 @@ public class Location {
         this.quote = quote;
         this.assignedMap = assignedMap;
         this.enemy = enemy;
-        this.items = new ArrayList<Item>();
+        this.items = items;
     }
     public Location(String name, String icon, String quote, String assignedMap, Enemy enemy) {
         this.name = name;
@@ -33,15 +33,6 @@ public class Location {
         this.assignedMap = assignedMap;
         this.enemy = enemy;
         this.items = new ArrayList<Item>();
-    }
-
-    public Location(String name, String icon, String quote, String assignedMap, ArrayList<Item> items) {
-        this.name = name;
-        this.icon = icon;
-        this.quote = quote;
-        this.items = new ArrayList<Item>();
-        this.assignedMap = assignedMap;
-        this.directions = new HashMap<>();
     }
 
     public Location(String name, String icon, String quote, String assignedMap) {
