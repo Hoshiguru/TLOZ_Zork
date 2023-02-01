@@ -10,13 +10,21 @@ public class Enemy {
     protected Item item;
     private boolean isDead;
 
-    public Enemy(String name, int health, int ap, int crit, Item item, boolean isDead) {
+    public Enemy(String name, int health, int ap, int crit, Item item) {
         this.name = name;
         this.health = health;
         this.ap = ap;
         this.crit = crit;
         this.item = item;
-        this.isDead = isDead;
+        this.isDead = this.isDead;
+    }
+    public Enemy(String name, int health, int ap, int crit) {
+        this.name = name;
+        this.health = health;
+        this.ap = ap;
+        this.crit = crit;
+        this.item = item;
+        this.isDead = false;
     }
 
     public String getName() {

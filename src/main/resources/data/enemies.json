@@ -1,122 +1,122 @@
 [
   {
     "name": "Gohma",
-    "health": 4,
-    "ap": 8,
-    "crit": true
+    "health": 9,
+    "ap": 2,
+    "crit": 0
   },
   {
     "name": "ChuChu",
     "health": 2,
     "ap": 4,
-    "crit": false
+    "crit": 0
   },
   {
     "name": "LikeLike",
-    "health": 6,
-    "ap": 5,
-    "crit": false
+    "health": 8,
+    "ap": 2,
+    "crit": 0
   },
   {
     "name": "Tektite",
     "health": 3,
-    "ap": 5,
-    "crit": true
+    "ap": 2,
+    "crit": 0
   },
   {
     "name": "Leever",
-    "health": 6,
-    "ap": 7,
-    "crit": false
+    "health": 10,
+    "ap": 3,
+    "crit": 0
   },
   {
     "name": "Keese",
-    "health": 3,
+    "health": 7,
     "ap": 6,
-    "crit": false
+    "crit": 0
   },
   {
     "name": "Dodongo",
-    "health": 4,
-    "ap": 4,
-    "crit": true
+    "health": 6,
+    "ap": 1,
+    "crit": 0
   },
   {
     "name": "Darknut",
     "health": 8,
     "ap": 8,
-    "crit": true
+    "crit": 0
   },
   {
     "name": "Octorok",
-    "health": 2,
+    "health": 5,
     "ap": 5,
-    "crit": true
+    "crit": 0
   },
   {
     "name": "Zora",
     "health": 3,
     "ap": 4,
-    "crit": false
+    "crit": 0
   },
   {
     "name": "Bari",
     "health": 5,
     "ap": 7,
-    "crit": true
+    "crit": 0
   },
   {
     "name": "Ruto",
     "health": 2,
     "ap": 6,
-    "crit": true
+    "crit": 0
   },
   {
     "name": "Bubble",
     "health": 7,
     "ap": 8,
-    "crit": false
+    "crit": 0
   },
   {
     "name": "Ghini",
-    "health": 5,
-    "ap": 5,
-    "crit": false
+    "health": 13,
+    "ap": 2,
+    "crit": 0
   },
   {
     "name": "Poe",
     "health": 6,
     "ap": 4,
-    "crit": true
+    "crit": 0
   },
   {
     "name": "Wizzrobe",
     "health": 3,
-    "ap": 6,
-    "crit": false
+    "ap": 3,
+    "crit": 0
   },
   {
     "name": "Flare",
     "health": 4,
     "ap": 8,
-    "crit": true
+    "crit": 0
   },
   {
     "name": "Gel",
     "health": 6,
     "ap": 7,
-    "crit": true
+    "crit": 0
   },
   {
     "name": "Wallmaster",
     "health": 4,
     "ap": 4,
-    "crit": false
+    "crit": 0
   },
   {
     "name": "Stalfos",
-    "health": 8,
+    "health": 9,
     "ap": 4,
-    "crit": true
+    "crit": 0
   }
 ]

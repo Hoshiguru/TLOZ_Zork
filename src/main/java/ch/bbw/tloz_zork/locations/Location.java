@@ -18,6 +18,14 @@ public class Location {
     private Enemy enemy;
 
     // Constructor to init the game.Location
+    public Location(String name, String icon, String quote, String assignedMap, Enemy enemy, ArrayList<Item> items) {
+        this.name = name;
+        this.icon = icon;
+        this.quote = quote;
+        this.assignedMap = assignedMap;
+        this.enemy = enemy;
+        this.items = items;
+    }
     public Location(String name, String icon, String quote, String assignedMap, Enemy enemy) {
         this.name = name;
         this.icon = icon;
@@ -26,7 +34,8 @@ public class Location {
         this.enemy = enemy;
         this.items = new ArrayList<Item>();
     }
-    public Location(String name, String icon, String quote, String assignedMap){
+
+    public Location(String name, String icon, String quote, String assignedMap) {
         this.name = name;
         this.icon = icon;
         this.quote = quote;
@@ -34,7 +43,6 @@ public class Location {
         this.assignedMap = assignedMap;
         this.directions = new HashMap<>();
     }
-
 
     public String getName() {
         return name;
