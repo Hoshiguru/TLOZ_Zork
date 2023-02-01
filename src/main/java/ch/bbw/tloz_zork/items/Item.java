@@ -1,5 +1,8 @@
 package ch.bbw.tloz_zork.items;
-
+/**
+ * Entity for the healing items
+ * @author Yao Kaiser
+ */
 public class Item {
     private String name;
     private String description;

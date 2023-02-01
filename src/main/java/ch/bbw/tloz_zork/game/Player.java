@@ -8,6 +8,10 @@ import ch.bbw.tloz_zork.locations.Location;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Entity for the player
+ * @author Yao Kaiser
+ */
 public class Player {
     private int hearts;
     private int maxHearts;
@@ -93,6 +97,11 @@ public class Player {
         return null;
     }
 
+    /**
+     * Returns the item with the given name and removes it from the inventory
+     * @param weaponName
+     * @return
+     */
     public WeaponItem useWeapon(String weaponName) {
         Iterator<Item> iterator = inventory.iterator();
         while (iterator.hasNext()) {
@@ -139,7 +148,7 @@ public class Player {
         String hearts = "";
         for (int i = 0; i < this.maxHearts; i++) {
             if (i < this.hearts) {
-                hearts += "♥";
+                hearts += "❤️";
             } else {
                 hearts += "♡";
             }

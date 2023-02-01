@@ -6,8 +6,11 @@ import ch.bbw.tloz_zork.items.Item;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class is only for the tutorial
+ * @author Yao Kaiser
+ */
 public class CombatTutorial {
-    // These initialization are only for the tutorial
     ArrayList<Item> itemArrayList = new ArrayList<Item>();
     Player player = new Player(3, 3 ,1, 5, 5, null, 20.0, null, false, false);
 
@@ -15,6 +18,9 @@ public class CombatTutorial {
     Enemy dummy = new Enemy("dummy", 1, 1, 2147483647, root);
     Scanner command = new Scanner(System.in);
 
+    /**
+     * This method is only for the tutorial
+     */
     public void dummyTutorial() {
         boolean contin = false;
         System.out.println("Then let's start with a quick tutorial on the combat system");

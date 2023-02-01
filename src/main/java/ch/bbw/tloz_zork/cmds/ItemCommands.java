@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * All commands that are related to items.
+ * @author Yao Kaiser
+ */
 public class ItemCommands {
     /** With this method, the player can view his inventory. *
      * @param player
@@ -117,6 +121,11 @@ public class ItemCommands {
             System.out.println("❌ You don't have this item in your inventory.");
         }
     }
+    /**
+     * This method is used to drop a specific item from the current location.
+     * @param player
+     * @param itemName
+     */
     public void drop(Player player, String itemName) {
         Item item = player.findItem(itemName);
         ArrayList<Item> roomItems = player.getCurrentLocation().getItems();

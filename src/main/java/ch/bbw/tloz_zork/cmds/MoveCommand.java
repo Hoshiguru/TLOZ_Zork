@@ -5,6 +5,10 @@ import ch.bbw.tloz_zork.game.Player;
 import ch.bbw.tloz_zork.locations.Dungeon;
 import ch.bbw.tloz_zork.locations.Location;
 
+/**
+ * This class is used to move the player to a new location
+ * @author Yao Kaiser
+ */
 public class MoveCommand {
     /**
      * Move the player to a new Location

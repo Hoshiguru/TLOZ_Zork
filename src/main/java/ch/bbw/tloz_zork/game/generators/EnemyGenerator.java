@@ -10,6 +10,10 @@ import java.io.FileReader;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Generates a random enemy from a list of enemies
+ * @author Yao Kaiser
+ */
 public class EnemyGenerator {
     private List<Enemy> enemies;
     private Random random;
@@ -20,6 +24,9 @@ public class EnemyGenerator {
         this.random = new Random();
     }
 
+    /**
+     * @return a random enemy from the list of enemies
+     */
     public Enemy getRandomEnemy() throws FileNotFoundException {
         ItemGenerator ig = new ItemGenerator();
         WeaponItem weapon = ig.getRandomWeapon();

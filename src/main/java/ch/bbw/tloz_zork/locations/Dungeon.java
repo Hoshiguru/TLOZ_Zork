@@ -7,6 +7,10 @@ import ch.bbw.tloz_zork.riddles.Riddle;
 
 import java.util.Scanner;
 
+/**
+ * Entity for the dungeons
+ * @author Yao Kaiser
+ */
 public class Dungeon extends Location {
     private boolean isCompleted;
     private Riddle riddle;

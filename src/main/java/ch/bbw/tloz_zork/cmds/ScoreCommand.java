@@ -3,9 +3,12 @@ package ch.bbw.tloz_zork.cmds;
 
 import ch.bbw.tloz_zork.game.Player;
 
+/**
+ * Shows the score for the current player
+ * @author Andy Lam
+ */
 public class ScoreCommand {
     private Player player;
-    // TODO: Move Stats Screen to Player Stats Class
     /**
      * Constructor for ScoreCommand
      * @param player

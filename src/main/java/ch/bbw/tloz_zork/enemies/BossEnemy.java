@@ -4,6 +4,9 @@ import ch.bbw.tloz_zork.items.WeaponItem;
 
 import java.util.ArrayList;
 
+/** Entity for the boss enemies
+ * @author Yao Kaiser
+ */
 public class BossEnemy extends Enemy{
     private ArrayList<WeaponItem> weapons;
     private int phase = 1;
@@ -28,6 +31,9 @@ public class BossEnemy extends Enemy{
             this.item = null;
     }
 
+    /**
+     * @return the weapons
+     */
     public WeaponItem getWeaponInHand() {
         return (WeaponItem) this.item;
     }

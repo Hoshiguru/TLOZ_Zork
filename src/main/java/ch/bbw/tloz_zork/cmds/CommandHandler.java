@@ -6,7 +6,10 @@ import ch.bbw.tloz_zork.game.Player;
 
 import java.io.IOException;
 
-
+/**
+ * Handles the commands
+ * @author Yao Kaiser
+ */
 public class CommandHandler {
     private MoveCommand moveCommand;
     private HelpCommand helpCommand;

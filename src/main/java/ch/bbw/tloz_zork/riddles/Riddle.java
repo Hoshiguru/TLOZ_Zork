@@ -1,11 +1,13 @@
 package ch.bbw.tloz_zork.riddles;
 
-import ch.bbw.tloz_zork.cmds.MoveCommand;
-import ch.bbw.tloz_zork.game.Player;
 import ch.bbw.tloz_zork.locations.Dungeon;
+
 import java.util.Scanner;
 
-
+/**
+ * Entity for the riddles
+ * @author Yao Kaiser
+ */
 public class Riddle {
     private String question;
     private String answer;

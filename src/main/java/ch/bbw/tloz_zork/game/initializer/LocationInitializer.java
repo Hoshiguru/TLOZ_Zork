@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Initializes the locations of the game
+ * @author Yao Kaiser
+ */
 public class LocationInitializer {
     public List<Location> initializeLocations() throws Exception {
         EnemyGenerator eg = new EnemyGenerator();

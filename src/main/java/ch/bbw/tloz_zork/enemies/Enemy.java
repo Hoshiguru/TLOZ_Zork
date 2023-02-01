@@ -3,6 +3,10 @@ package ch.bbw.tloz_zork.enemies;
 import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.items.WeaponItem;
 
+/**
+ * Entity for the enemies
+ * @author Yao Kaiser
+ */
 public class Enemy {
     private String name;
     private int health; // health points
@@ -42,6 +46,17 @@ public class Enemy {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+    public String getHeartIcons() {
+        String hearts = "";
+        for (int i = 0; i < this.health; i++) {
+            if (i < this.health) {
+                hearts += "❤️";
+            } else {
+                hearts += "♡";
+            }
+        }
+        return hearts;
     }
 
     public int getAp() {
