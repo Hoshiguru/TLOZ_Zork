@@ -14,6 +14,12 @@ public class CombatCommand {
     boolean contin = false;
     Scanner scan = new Scanner(System.in);
 
+    /**
+     * This method is used to start a combat
+     * @param player
+     * @param enemy
+     * @param isInDungeon
+     */
     public void combat(Player player, Enemy enemy, boolean isInDungeon) {
         // New Array List to add enemies Item if defeated
         ArrayList<Item> inventory = player.getInventory();
