@@ -7,6 +7,7 @@ import ch.bbw.tloz_zork.game.initializer.LocationInitializer;
 import ch.bbw.tloz_zork.locations.Location;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -55,11 +56,11 @@ public class Game {
                     System.out.println("Then let's jump right into your adventure!");
                     initializeGame();
                     System.out.println("");
-                    //loading(1000);
+                    loading(1000);
                     System.out.print(".");
-                    //loading(1000);
+                    loading(1000);
                     System.out.print(".");
-                    //loading(1000);
+                    loading(1000);
                     System.out.print(".");
                     System.out.println("Link, are you awake? You're currently in " + player.getCurrentLocation().getIcon() + " " + player.getCurrentLocation().getName() + ". You have to find the master sword to defeat Ganon. Good luck!");
                     // Hier startet das Spiel
@@ -121,4 +122,16 @@ public class Game {
 
         player.setCurrentLocation(locations.get(0));
     }
+
+    public static void loading(long limit) {
+
+        long startTime = System.currentTimeMillis();
+        long elapsedTime = 0L;
+
+        while (elapsedTime < limit) {
+
+            elapsedTime = (new Date()).getTime() - startTime;
+        }
+    }
+
 }
