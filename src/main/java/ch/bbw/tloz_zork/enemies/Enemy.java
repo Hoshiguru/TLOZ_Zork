@@ -1,22 +1,35 @@
 package ch.bbw.tloz_zork.enemies;
 
 import ch.bbw.tloz_zork.items.Item;
+import ch.bbw.tloz_zork.items.WeaponItem;
 
+/**
+ * Entity for the enemies
+ * @author Yao Kaiser
+ */
 public class Enemy {
     private String name;
     private int health; // health points
     private int ap; // attack power
     private int crit; // critical hit chance
-    private Item item;
+    protected Item item;
     private boolean isDead;
 
-    public Enemy(String name, int health, int ap, int crit, Item item, boolean isDead) {
+    public Enemy(String name, int health, int ap, int crit, Item item) {
         this.name = name;
         this.health = health;
         this.ap = ap;
         this.crit = crit;
         this.item = item;
-        this.isDead = isDead;
+        this.isDead = this.isDead;
+    }
+    public Enemy(String name, int health, int ap, int crit, WeaponItem testWeapon, boolean b) {
+        this.name = name;
+        this.health = health;
+        this.ap = ap;
+        this.crit = crit;
+        this.item = item;
+        this.isDead = false;
     }
 
     public String getName() {
@@ -33,6 +46,17 @@ public class Enemy {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+    public String getHeartIcons() {
+        String hearts = "";
+        for (int i = 0; i < this.health; i++) {
+            if (i < this.health) {
+                hearts += "❤️";
+            } else {
+                hearts += "♡";
+            }
+        }
+        return hearts;
     }
 
     public int getAp() {

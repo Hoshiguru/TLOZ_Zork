@@ -9,10 +9,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Shows the map for the current location
+ * @author Andy Lam
+ */
 public class MapCommand {
     /**
      * Displays the map for the current location
-     *
      * @param player
      */
     public void map(Player player) throws IOException {

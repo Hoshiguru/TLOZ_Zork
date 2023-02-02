@@ -7,12 +7,18 @@ import ch.bbw.tloz_zork.items.Item;
 import ch.bbw.tloz_zork.items.WeaponItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+/**
+ * All commands that are related to items.
+ * @author Yao Kaiser
+ */
 public class ItemCommands {
     /** With this method, the player can view his inventory. *
      * @param player
      */
-    public void inventory(Player player){
+    public void inventory(Player player) {
         double inventoryWeight = player.getInventoryWeight();
         ArrayList<Item> inventory = player.getInventory();
         if (inventory.size() == 0) {
@@ -26,17 +32,32 @@ public class ItemCommands {
             System.out.println("⚖ Weight: " + inventoryWeight + " kg / " + player.getMaxWeight() + " kg");
             System.out.println("\uD83D\uDCBC Your inventory contains:");
 
+            Map<String, Integer> itemCounts = new HashMap<>();
             for (Item item : inventory) {
-                if(item instanceof HealingItem){
-                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【⚖" + item.getWeight() + " kg | +" + ((HealingItem) item).getHealingAmount() + "♥】");
-                } else if (item instanceof WeaponItem) {
-                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【⚖" + item.getWeight() + " kg | +" + ((WeaponItem) item).getDamage() + "\uD83D\uDCA5】");
+                itemCounts.put(item.getName(), itemCounts.getOrDefault(item.getName(), 0) + 1);
+            }
+
+            for (Map.Entry<String, Integer> entry : itemCounts.entrySet()) {
+                String name = entry.getKey();
+                int count = entry.getValue();
+                Item sampleItem = null;
+                for (Item item : inventory) {
+                    if (item.getName().equals(name)) {
+                        sampleItem = item;
+                        break;
+                    }
+                }
+                if (sampleItem instanceof HealingItem) {
+                    System.out.println("〉" + count + "x " + sampleItem.getIcon() + sampleItem.getName() + " - " + sampleItem.getDescription() + " 【⚖" + sampleItem.getWeight() + " kg | +" + ((HealingItem) sampleItem).getHealingAmount() + "♥】");
+                } else if (sampleItem instanceof WeaponItem) {
+                    System.out.println("〉" + count + "x " + sampleItem.getIcon() + sampleItem.getName() + " - " + sampleItem.getDescription() + " 【⚖" + sampleItem.getWeight() + " kg | +" + ((WeaponItem) sampleItem).getDamage() + "\uD83D\uDCA5】");
                 } else {
-                    System.out.println("〉" + item.getIcon() + item.getName() + " - " + item.getDescription() + " 【⚖" + item.getWeight() + " kg】");
+                    System.out.println("〉" + count + "x " + sampleItem.getIcon() + sampleItem.getName() + " - " + sampleItem.getDescription() + " 【⚖" + sampleItem.getWeight() + " kg】");
                 }
             }
         }
     }
+
     /**
      * This method is used to collect an item from the current location.
      *
@@ -100,6 +121,11 @@ public class ItemCommands {
             System.out.println("❌ You don't have this item in your inventory.");
         }
     }
+    /**
+     * This method is used to drop a specific item from the current location.
+     * @param player
+     * @param itemName
+     */
     public void drop(Player player, String itemName) {
         Item item = player.findItem(itemName);
         ArrayList<Item> roomItems = player.getCurrentLocation().getItems();

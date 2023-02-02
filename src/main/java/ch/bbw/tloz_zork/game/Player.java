@@ -8,6 +8,10 @@ import ch.bbw.tloz_zork.locations.Location;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Entity for the player
+ * @author Yao Kaiser
+ */
 public class Player {
     private int hearts;
     private int maxHearts;
@@ -20,9 +24,11 @@ public class Player {
     private Location currentLocation;
     private Location previousLocation;
     private int moves;
+    private int kills;
     private boolean dead;
+    private boolean hasWon;
 
-    public Player(int hearts, int maxHearts, int ap, int stamina, int maxStagima, ArrayList<Item> inventory, double maxWeight, Location currentLocation, boolean dead) {
+    public Player(int hearts, int maxHearts, int ap, int stamina, int maxStagima, ArrayList<Item> inventory, double maxWeight, Location currentLocation, boolean dead, boolean hasWon) {
         this.hearts = hearts;
         this.maxHearts = maxHearts;
         this.ap = ap;
@@ -35,7 +41,10 @@ public class Player {
         this.previousLocation = null;
         this.moves = 0;
         this.dead=dead;
+        this.hasWon=hasWon;
+        this.kills=0;
     }
+
     /**
      * Adds an item to the inventory
      * @param item
@@ -70,9 +79,11 @@ public class Player {
             Item item = iterator.next();
             if (item.getName().equalsIgnoreCase(itemName) && item instanceof HealingItem) {
                 HealingItem healingItem = (HealingItem) item;
-                if (hearts + healingItem.getHealingAmount() > maxHearts) {
-                    hearts = maxHearts;
+                if (hearts == maxHearts) {
                     System.out.println("Your hearts are full!");
+                } else if (hearts + healingItem.getHealingAmount() > maxHearts) {
+                    hearts = maxHearts;
+                    System.out.println("You ate " + healingItem.getIcon() + healingItem.getName() + " 【+" + healingItem.getHealingAmount() + "♥】");
                 } else {
                     iterator.remove();
                     hearts += healingItem.getHealingAmount();
@@ -86,6 +97,11 @@ public class Player {
         return null;
     }
 
+    /**
+     * Returns the item with the given name and removes it from the inventory
+     * @param weaponName
+     * @return
+     */
     public WeaponItem useWeapon(String weaponName) {
         Iterator<Item> iterator = inventory.iterator();
         while (iterator.hasNext()) {
@@ -132,7 +148,7 @@ public class Player {
         String hearts = "";
         for (int i = 0; i < this.maxHearts; i++) {
             if (i < this.hearts) {
-                hearts += "♥";
+                hearts += "❤️";
             } else {
                 hearts += "♡";
             }
@@ -237,5 +253,19 @@ public class Player {
         return weaponInHand;
     }
 
+    public int getKills() {
+        return kills;
+    }
 
+    public void increaseKills() {
+        this.kills += 1;
+    }
+
+    public boolean isHasWon() {
+        return hasWon;
+    }
+
+    public void setHasWon(boolean hasWon) {
+        this.hasWon = hasWon;
+    }
 }

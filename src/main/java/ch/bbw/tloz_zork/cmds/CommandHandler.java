@@ -6,7 +6,10 @@ import ch.bbw.tloz_zork.game.Player;
 
 import java.io.IOException;
 
-
+/**
+ * Handles the commands
+ * @author Yao Kaiser
+ */
 public class CommandHandler {
     private MoveCommand moveCommand;
     private HelpCommand helpCommand;
@@ -82,7 +85,7 @@ public class CommandHandler {
             } else {
                 System.out.println("Please provide an item to eat. Type 'eat <item>' to eat an item.");
             }
-        } else if (command.startsWith("use") || command.startsWith("u")) {
+        } else if (command.startsWith("use")) {
             if (command.length() > 3) {
                 String input = command.substring(3);
                 String[] parts = input.split(" ");

@@ -1,0 +1,135 @@
+[
+  {
+    "name": "Bow",
+    "description": "A classic weapon used by Link, the Bow is a ranged weapon that can shoot Arrows at enemies.",
+    "weight": 0.5,
+    "icon": "⚔️",
+    "damage": 4
+  },
+  {
+    "name": "Hookshot",
+    "description": "The Hookshot is a grappling hook that can latch onto specific objects and pull Link towards them.",
+    "weight": 1.3,
+    "icon": "🔗",
+    "damage": 2
+  },
+  {
+    "name": "MasterSword",
+    "description": "The legendary sword of the Hero of Hyrule, the Master Sword has immense power that can defeat evil forces.",
+    "weight": 4.5,
+    "icon": "🗡️",
+    "damage": 7
+  },
+  {
+    "name": "MegaBlade",
+    "description": "A powerful magical weapon, the Mega Blade is larger than a standard sword and more powerful.",
+    "weight": 3.2,
+    "icon": "⚔️",
+    "damage": 4
+  },
+  {
+    "name": "Boomerang",
+    "description": "A traditional weapon used by many heroes throughout the Zelda series, the Boomerang is a thrown weapon that can stun or damage enemies.",
+    "weight": 0.9,
+    "icon": "🔃",
+    "damage": 3
+  },
+  {
+    "name": "Bombchu",
+    "description": "Small robotic mice with bombs on their backs, Bombchus can be used to destroy obstacles and enemies.",
+    "weight": 0.4,
+    "icon": "🤖",
+    "damage": 3
+  },
+  {
+    "name": "FireRod",
+    "description": "The Fire Rod is a magical weapon that shoots fireballs at enemies, and can even light torches and be used as a light source.",
+    "weight": 2.6,
+    "icon": "🔥",
+    "damage": 3
+  },
+  {
+    "name": "IceRod",
+    "description": "The Ice Rod is a magical weapon that shoots ice blasts at enemies, freezing them in place.",
+    "weight": 2.2,
+    "icon": "❄️",
+    "damage": 4
+  },
+  {
+    "name": "DekuStick",
+    "description": "A wooden stick found throughout Termina, the Deku Stick can be used to bash and light torches.",
+    "weight": 0.3,
+    "icon": "🪓",
+    "damage": 2
+  },
+  {
+    "name": "Hammer",
+    "description": "A heavy and powerful weapon, the Hammer can be used to smash objects, break through walls, and stun enemies.",
+    "weight": 4.7,
+    "icon": "🔨",
+    "damage": 3
+  },
+  {
+    "name": "Lamp",
+    "description": "An oil lamp that produces a bright light, the Lamp can be used to light dark areas and even burn enemies.",
+    "weight": 1.5,
+    "icon": "💡",
+    "damage": 3
+  },
+  {
+    "name": "Slingshot",
+    "description": "A small handheld weapon, the Slingshot fires pellets, rocks, or arrows at enemies.",
+    "weight": 0.8,
+    "icon": "🔫",
+    "damage": 2
+  },
+  {
+    "name": "MagicBeam",
+    "description": "A beam of magical energy that can be used to target and damage distant enemies.",
+    "weight": 2.1,
+    "icon": "✨",
+    "damage": 4
+  },
+  {
+    "name": "Din'sFire",
+    "description": "A magical spell cast by the Goddess Din, Din's Fire creates a ring of fire around Link, burning any enemies within range.",
+    "weight": 0,
+    "icon": "🔥",
+    "damage": 2
+  },
+  {
+    "name": "MegatonHammer",
+    "description": "A massive hammer forged from an ancient rock, the Megaton Hammer smashes through rocks and enemies alike.",
+    "weight": 12.5,
+    "icon": "🔨",
+    "damage": 5
+  },
+  {
+    "name": "LensFlare",
+    "description": "A magical lens that uses sunlight to create a powerful beam of energy, the Lens of Truth can be used to cast a beam of light that damages enemies.",
+    "weight": 1.2,
+    "icon": "🔦",
+    "damage": 4
+  },
+  {
+    "name": "SuperSlingshot",
+    "description": "A more powerful version of the standard Slingshot, the Super Slingshot fires more powerful pellets, rocks, or arrows at enemies.",
+    "weight": 1.2,
+    "icon": "🔫",
+    "damage": 4
+  },
+  {
+    "name": "BiggoronSword",
+    "description": "The Biggoron Sword is a massive two-handed sword made by the Gorons, and is one of the most powerful weapons in the game.",
+    "weight": 8.2,
+    "icon": "🗡️",
+    "damage": 5
+  },
+  {
+    "name": "GiantsKnife",
+    "description": "The Giant's Knife is a large sword with an enormous blade, and is powerful enough to cut through almost anything.",
+    "weight": 6.7,
+    "icon": "🗡️",
+    "damage": 3
+  }
+]
