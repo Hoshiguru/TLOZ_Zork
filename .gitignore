@@ -1,3 +1,11 @@
-# Project exclude paths
-/target/
-/.idea/
+ # IntelliJ
+.idea/
+*.iml
+out/
+ # Maven
+target/
+mvn-archiver/
+ # Other files and directories
+.DS_Store
+*.log
+.*.swp
